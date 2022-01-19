@@ -10,7 +10,7 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
-    var button = MainButton(title: "안농", type: .inactive)
+    var button = MainButton(title: "안농", type: .disable)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class MainViewController: UIViewController {
     }
     
     @objc func buttonSelected() {
-        print("dd")
-        button = MainButton(title: "yes", type: .fill)
+        button.isSelected = !button.isSelected
+        button.isSelected ? button.fill() : button.disable()
     }
     
     

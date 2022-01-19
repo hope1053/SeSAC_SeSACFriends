@@ -19,6 +19,11 @@
 		CB2098972796A0F9005F6A73 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2098962796A0F9005F6A73 /* MainViewController.swift */; };
 		CB20989A2796A26C005F6A73 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB2098982796A26B005F6A73 /* NotoSansKR-Medium.otf */; };
 		CB20989B2796A26C005F6A73 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB2098992796A26C005F6A73 /* NotoSansKR-Regular.otf */; };
+		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
+		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
+		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
+		CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58122797A75D003C0F1E /* BaseViewController.swift */; };
+		CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		CB2098962796A0F9005F6A73 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CB2098982796A26B005F6A73 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "Noto_Sans_KR/NotoSansKR-Medium.otf"; sourceTree = SOURCE_ROOT; };
 		CB2098992796A26C005F6A73 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Regular.otf"; path = "Noto_Sans_KR/NotoSansKR-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
+		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
+		CB6C58122797A75D003C0F1E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +78,11 @@
 		CB20986E27968952005F6A73 /* SeSAC_SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				CB6C58112797A751003C0F1E /* Protocol */,
+				CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */,
+				CB6C58092797A689003C0F1E /* Enums */,
 				CB20988527968E7D005F6A73 /* Extension */,
-				CB209890279698F7005F6A73 /* View */,
+				CB209890279698F7005F6A73 /* CustomView */,
 				CB20988827968EDC005F6A73 /* Asset */,
 				CB20986F27968952005F6A73 /* AppDelegate.swift */,
 				CB20987127968952005F6A73 /* SceneDelegate.swift */,
@@ -85,6 +98,7 @@
 			children = (
 				CB20988627968E87005F6A73 /* UIColor+Extension.swift */,
 				CB20988E279693D4005F6A73 /* UIFont+Extension.swift */,
+				CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -108,12 +122,53 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		CB209890279698F7005F6A73 /* View */ = {
+		CB209890279698F7005F6A73 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				CB20989127969902005F6A73 /* MainButton.swift */,
 			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		CB6C58092797A689003C0F1E /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C580A2797A695003C0F1E /* ButtonStatus.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C58172797AEB7003C0F1E /* ViewModel */,
+				CB6C58152797AEAC003C0F1E /* View */,
+			);
+			path = PhoneNumberAuth;
+			sourceTree = "<group>";
+		};
+		CB6C58112797A751003C0F1E /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C58122797A75D003C0F1E /* BaseViewController.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CB6C58152797AEAC003C0F1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */,
+				CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */,
+			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CB6C58172797AEB7003C0F1E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +255,12 @@
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
 				CB2098972796A0F9005F6A73 /* MainViewController.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
+				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
+				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
+				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
+				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
+				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
