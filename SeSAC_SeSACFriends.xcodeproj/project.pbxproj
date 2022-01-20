@@ -24,6 +24,10 @@
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
 		CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58122797A75D003C0F1E /* BaseViewController.swift */; };
 		CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */; };
+		CB6C581B27990467003C0F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6C581A27990467003C0F1E /* GoogleService-Info.plist */; };
+		CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C581C279904CF003C0F1E /* PhoneNumAuthViewModel.swift */; };
+		CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C581F2799050D003C0F1E /* RxCocoa */; };
+		CB6C58222799050D003C0F1E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C58212799050D003C0F1E /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,8 @@
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
 		CB6C58122797A75D003C0F1E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthViewController.swift; sourceTree = "<group>"; };
+		CB6C581A27990467003C0F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "SeSAC_SPL/GoogleService-Info.plist/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CB6C581C279904CF003C0F1E /* PhoneNumAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
+				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +114,7 @@
 		CB20988827968EDC005F6A73 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				CB6C581A27990467003C0F1E /* GoogleService-Info.plist */,
 				CB20988D279692B4005F6A73 /* Fonts */,
 				CB20988327968BAE005F6A73 /* Colors.xcassets */,
 				CB20987827968955005F6A73 /* Assets.xcassets */,
@@ -167,6 +176,7 @@
 		CB6C58172797AEB7003C0F1E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB6C581C279904CF003C0F1E /* PhoneNumAuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -189,6 +199,8 @@
 			name = SeSAC_SeSACFriends;
 			packageProductDependencies = (
 				CB2098942796A0EA005F6A73 /* SnapKit */,
+				CB6C581F2799050D003C0F1E /* RxCocoa */,
+				CB6C58212799050D003C0F1E /* RxSwift */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -220,6 +232,7 @@
 			mainGroup = CB20986327968952005F6A73;
 			packageReferences = (
 				CB2098932796A0E9005F6A73 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -240,6 +253,7 @@
 				CB20988427968BAE005F6A73 /* Colors.xcassets in Resources */,
 				CB20987927968955005F6A73 /* Assets.xcassets in Resources */,
 				CB20989B2796A26C005F6A73 /* NotoSansKR-Regular.otf in Resources */,
+				CB6C581B27990467003C0F1E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +274,7 @@
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
+				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +416,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYR6MP3VKX;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_SeSACFriends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -413,7 +428,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.linda.SeSAC-SeSACFriends";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -428,7 +443,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYR6MP3VKX;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_SeSACFriends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -440,7 +455,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.linda.SeSAC-SeSACFriends";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -480,6 +495,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -487,6 +510,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB2098932796A0E9005F6A73 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CB6C581F2799050D003C0F1E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CB6C58212799050D003C0F1E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
