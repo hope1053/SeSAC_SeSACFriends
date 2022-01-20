@@ -29,6 +29,10 @@
 		CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C581F2799050D003C0F1E /* RxCocoa */; };
 		CB6C58222799050D003C0F1E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C58212799050D003C0F1E /* RxSwift */; };
 		CB6C582727992302003C0F1E /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C582627992302003C0F1E /* Toast */; };
+		CB6C582A2799A8A2003C0F1E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C58292799A8A2003C0F1E /* FirebaseAuth */; };
+		CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */; };
+		CB6C58302799B8A7003C0F1E /* RequestAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582F2799B8A7003C0F1E /* RequestAuthorizationStatus.swift */; };
+		CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,11 @@
 		CB6C58182797AF2D003C0F1E /* PhoneNumAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthViewController.swift; sourceTree = "<group>"; };
 		CB6C581A27990467003C0F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "SeSAC_SPL/GoogleService-Info.plist/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CB6C581C279904CF003C0F1E /* PhoneNumAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthViewModel.swift; sourceTree = "<group>"; };
+		CB6C582B2799A8EB003C0F1E /* SeSAC_SeSACFriends.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_SeSACFriends.entitlements; sourceTree = "<group>"; };
+		CB6C582C2799A8F3003C0F1E /* SeSAC_SeSACFriendsRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_SeSACFriendsRelease.entitlements; sourceTree = "<group>"; };
+		CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthStatus.swift; sourceTree = "<group>"; };
+		CB6C582F2799B8A7003C0F1E /* RequestAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAuthorizationStatus.swift; sourceTree = "<group>"; };
+		CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6C582727992302003C0F1E /* Toast in Frameworks */,
+				CB6C582A2799A8A2003C0F1E /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
@@ -88,6 +98,9 @@
 		CB20986E27968952005F6A73 /* SeSAC_SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				CB6C58312799B994003C0F1E /* SignUp */,
+				CB6C582C2799A8F3003C0F1E /* SeSAC_SeSACFriendsRelease.entitlements */,
+				CB6C582B2799A8EB003C0F1E /* SeSAC_SeSACFriends.entitlements */,
 				CB6C58112797A751003C0F1E /* Protocol */,
 				CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */,
 				CB6C58092797A689003C0F1E /* Enums */,
@@ -145,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				CB6C580A2797A695003C0F1E /* ButtonStatus.swift */,
+				CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */,
+				CB6C582F2799B8A7003C0F1E /* RequestAuthorizationStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -183,6 +198,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CB6C58312799B994003C0F1E /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C58322799B9AB003C0F1E /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		CB6C58322799B9AB003C0F1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +235,7 @@
 				CB6C581F2799050D003C0F1E /* RxCocoa */,
 				CB6C58212799050D003C0F1E /* RxSwift */,
 				CB6C582627992302003C0F1E /* Toast */,
+				CB6C58292799A8A2003C0F1E /* FirebaseAuth */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -237,6 +269,7 @@
 				CB2098932796A0E9005F6A73 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				CB6C58282799A8A2003C0F1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -272,10 +305,13 @@
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
 				CB2098972796A0F9005F6A73 /* MainViewController.swift in Sources */,
+				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
+				CB6C58302799B8A7003C0F1E /* RequestAuthorizationStatus.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
 				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
 				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
+				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
@@ -418,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SeSAC_SeSACFriends/SeSAC_SeSACFriends.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
@@ -445,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SeSAC_SeSACFriends/SeSAC_SeSACFriendsRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
@@ -515,6 +553,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CB6C58282799A8A2003C0F1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -537,6 +583,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		CB6C58292799A8A2003C0F1E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB6C58282799A8A2003C0F1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

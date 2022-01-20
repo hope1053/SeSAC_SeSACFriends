@@ -6,13 +6,12 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
-import Toast
 
-// 사용자가 텍스트 필드에 숫자 입력
-// 유효성 체크를 계속 업데이트
-// 유효성 체크를 만족시키면 버튼 상태도 업데이트
+import FirebaseAuth
+import RxCocoa
+import RxSwift
+import SnapKit
+import Toast
 
 class PhoneNumInputViewController: BaseViewController {
     
@@ -57,7 +56,7 @@ class PhoneNumInputViewController: BaseViewController {
             .bind(to: viewModel.phoneNumObserver)
             .disposed(by: disposeBag)
         
-        viewModel.isValid
+        viewModel.isPhoneNumValid
             .subscribe { valid in
                 valid.element! ? self.getAuthNumButton.fill() : self.getAuthNumButton.disable()
                 self.isValid = valid.element!
@@ -68,8 +67,19 @@ class PhoneNumInputViewController: BaseViewController {
             .rx.tap
             .subscribe { _ in
                 if self.isValid {
-                    let vc = PhoneNumAuthViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.viewModel.requestMsg { status in
+                        switch status {
+                        case .success:
+                            self.view.makeToast("전화 번호 인증 시작", duration: 1.0, position: .bottom) { _ in
+                                let vc = PhoneNumAuthViewController()
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        case .overRequest:
+                            self.view.makeToast("과도한 인증 시도가 있었습니다. 나중에 다시 시도해주세요", duration: 1.0, position: .bottom)
+                        case .error:
+                            self.view.makeToast("에러가 발생했습니다. 다시 시도해주세요", duration: 1.0, position: .bottom)
+                        }
+                    }
                 } else {
                     self.view.makeToast("잘못된 전화번호 형식입니다", duration: 1.0, position: .bottom)
                 }

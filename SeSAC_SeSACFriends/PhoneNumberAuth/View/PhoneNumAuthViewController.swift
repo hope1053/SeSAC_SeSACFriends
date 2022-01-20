@@ -6,10 +6,17 @@
 //
 
 import UIKit
-import SnapKit
+
+import RxCocoa
 import RxSwift
+import SnapKit
+import Toast
 
 class PhoneNumAuthViewController: BaseViewController {
+    
+    let viewModel = PhoneNumAuthViewModel()
+    let disposeBag = DisposeBag()
+    var isValid: Bool = false
     
     let guideLabel: UILabel = {
         let label = UILabel()
@@ -57,11 +64,49 @@ class PhoneNumAuthViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func bind() {
+        
+        authNumTextField
+            .rx.text
+            .orEmpty
+            .bind(to: viewModel.authNumObserver)
+            .disposed(by: disposeBag)
 
+        viewModel.isAuthNumValid
+            .subscribe { valid in
+                valid.element! ? self.authorizeButton.fill() : self.authorizeButton.disable()
+                self.isValid = valid.element!
+            }
+            .disposed(by: disposeBag)
+
+        authorizeButton
+            .rx.tap
+            .subscribe { _ in
+                if self.isValid {
+                    let requestResult = self.viewModel.requestAuthorization()
+                    switch requestResult {
+                    case .success:
+                        let vc = UserNameViewController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    case .error:
+                        self.view.makeToast("에러가 발생했습니다. 다시 시도해주세요", duration: 1.0, position: .bottom)
+                    }
+                } else {
+                    self.view.makeToast("잘못된 인증 번호 형식입니다", duration: 1.0, position: .bottom)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     override func configureView() {
         super.configureView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.view.makeToast("인증 번호를 보냈습니다", duration: 1.0, position: .bottom)
+        }
+        
         [guideLabel, additionalInfoLabel, authNumTextField, timerLabel, sendMsgButton, authorizeButton].forEach { subView in
             view.addSubview(subView)
         }
