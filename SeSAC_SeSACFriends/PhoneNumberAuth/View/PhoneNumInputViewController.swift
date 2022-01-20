@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast
 
 // 사용자가 텍스트 필드에 숫자 입력
 // 유효성 체크를 계속 업데이트
@@ -17,6 +18,7 @@ class PhoneNumInputViewController: BaseViewController {
     
     let viewModel = PhoneNumAuthViewModel()
     let disposeBag = DisposeBag()
+    var isValid: Bool = false
 
     let guideLabel: UILabel = {
         let label = UILabel()
@@ -58,36 +60,21 @@ class PhoneNumInputViewController: BaseViewController {
         viewModel.isValid
             .subscribe { valid in
                 valid.element! ? self.getAuthNumButton.fill() : self.getAuthNumButton.disable()
+                self.isValid = valid.element!
             }
             .disposed(by: disposeBag)
         
-//        viewModel.inputPhoneNum
-//            .asDriver()
-//            .drive(phoneNumTextField.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        //        let validation = nameTextField
-//        //            .rx.text
-//        //            .orEmpty // 텍스트의 옵셔널을 해제한 상태
-//        //            .map { $0.count >= 8 }// 조건확인
-//        //            .share(replay: 1, scope: .whileConnected) // 호출 여러번 일어나지 않도록 막기, replay,scope 뭔지 찾아보기!
-//
-//        viewModel.validStatus
-//            .subscribe
-//        let input = PhoneNumAuthViewModel.Input(inputPhoneNum: phoneNumTextField.rx.text)
-//        let output: Observable<Bool> = viewModel.validatePhoneNum(input: input)
-//
-//        output
-//            .bind(to: getAuthNumButton.rx.isHidden)
-//            .disposed(by: disposeBag)
-//
-//        getAuthNumButton
-//            .rx.tap
-//            .subscribe { _ in
-//                let vc = PhoneNumAuthViewController()
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//            .disposed(by: disposeBag)
+        getAuthNumButton
+            .rx.tap
+            .subscribe { _ in
+                if self.isValid {
+                    let vc = PhoneNumAuthViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.view.makeToast("잘못된 전화번호 형식입니다", duration: 1.0, position: .bottom)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     override func configureView() {

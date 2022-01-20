@@ -28,6 +28,7 @@
 		CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C581C279904CF003C0F1E /* PhoneNumAuthViewModel.swift */; };
 		CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C581F2799050D003C0F1E /* RxCocoa */; };
 		CB6C58222799050D003C0F1E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C58212799050D003C0F1E /* RxSwift */; };
+		CB6C582727992302003C0F1E /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CB6C582627992302003C0F1E /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6C582727992302003C0F1E /* Toast in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
@@ -201,6 +203,7 @@
 				CB2098942796A0EA005F6A73 /* SnapKit */,
 				CB6C581F2799050D003C0F1E /* RxCocoa */,
 				CB6C58212799050D003C0F1E /* RxSwift */,
+				CB6C582627992302003C0F1E /* Toast */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -233,6 +236,7 @@
 			packageReferences = (
 				CB2098932796A0E9005F6A73 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -503,6 +507,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		CB6C582627992302003C0F1E /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
