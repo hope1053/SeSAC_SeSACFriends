@@ -16,16 +16,15 @@ class PhoneNumAuthViewModel {
     
     let phoneNumObserver = BehaviorRelay<String>(value: "")
     let authNumObserver = BehaviorRelay<String>(value: "")
-    var verifyID: String = ""
+//    var verifyID: String = ""
     
     var isPhoneNumValid: Observable<Bool> {
         return phoneNumObserver.map { return self.validatePhoneNum(phoneNum: $0) }
     }
     
     var isAuthNumValid: Observable<Bool> {
-        return authNumObserver.map {
-            print($0.count)
-            return $0.count == 6
+        return authNumObserver.map { input in
+            return input.allSatisfy { $0.isNumber } && input.count == 6
         }
     }
     
@@ -34,7 +33,7 @@ class PhoneNumAuthViewModel {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber("+82\(phoneNumObserver.value)", uiDelegate: nil) { verificationID, error in
                 if error == nil {
-                    self.verifyID = verificationID ?? ""
+                    UserDefaults.standard.setValue(verificationID ?? "", forKey: "verifyID")
                 } else {
                     if let errorNameKey = (error as NSError?)?.userInfo["FIRAuthErrorUserInfoNameKey"] as? String, errorNameKey == "ERROR_TOO_MANY_REQUESTS" {
                         result = .overRequest
@@ -46,17 +45,18 @@ class PhoneNumAuthViewModel {
           }
     }
     
-    func requestAuthorization() -> RequestAuthorizationStatus {
+    func requestAuthorization(completion: @escaping (RequestAuthorizationStatus) -> Void) {
+        let verifyID = UserDefaults.standard.string(forKey: "verifyID") ?? ""
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verifyID, verificationCode: authNumObserver.value)
         var result = RequestAuthorizationStatus.success
         
         Auth.auth().signIn(with: credential) { success, error in
             if error != nil {
+                print(error)
                 result = RequestAuthorizationStatus.error
             }
+            completion(result)
         }
-        
-        return result
     }
     
     // 유효성검사 메서드

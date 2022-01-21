@@ -17,6 +17,7 @@ class PhoneNumAuthViewController: BaseViewController {
     let viewModel = PhoneNumAuthViewModel()
     let disposeBag = DisposeBag()
     var isValid: Bool = false
+    var limitTime: Int = 60
     
     let guideLabel: UILabel = {
         let label = UILabel()
@@ -39,21 +40,21 @@ class PhoneNumAuthViewController: BaseViewController {
     
     let authNumTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
-//        textField.backgroundColor = .yellow
+        textField.placeholder = "인증번호 입력"
         return textField
     }()
     
     let timerLabel: UILabel = {
         let label = UILabel()
-        label.text = "05:00"
+        label.text = "01:00"
         label.textColor = .brandGreen
         label.font = .Title3_M14
         return label
     }()
     
+    // sendMsgButton 누르면 enabled=false, disable로 다시 변경
     let sendMsgButton: MainButton = {
-        let button = MainButton(title: "재전송", type: .fill)
+        let button = MainButton(title: "재전송", type: .disable)
         return button
     }()
     
@@ -64,10 +65,10 @@ class PhoneNumAuthViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
     }
     
     func bind() {
-        
         authNumTextField
             .rx.text
             .orEmpty
@@ -85,19 +86,44 @@ class PhoneNumAuthViewController: BaseViewController {
             .rx.tap
             .subscribe { _ in
                 if self.isValid {
-                    let requestResult = self.viewModel.requestAuthorization()
-                    switch requestResult {
-                    case .success:
-                        let vc = UserNameViewController()
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    case .error:
-                        self.view.makeToast("에러가 발생했습니다. 다시 시도해주세요", duration: 1.0, position: .bottom)
+                    self.viewModel.requestAuthorization { status in
+                        switch status {
+                        case .success:
+                            let vc = UserNameViewController()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        case .error:
+                            self.view.makeToast("전화번호 인증 실패", duration: 1.0, position: .bottom)
+                        }
                     }
                 } else {
                     self.view.makeToast("잘못된 인증 번호 형식입니다", duration: 1.0, position: .bottom)
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    @objc func setTime() {
+        secToTime(sec: limitTime)
+        limitTime -= 1
+    }
+    
+    func secToTime(sec: Int) {
+        let minute = (sec % 3600) / 60
+        let second = (sec % 3600) % 60
+        
+        if second < 10 {
+            timerLabel.text = "0\(minute):0\(second)"
+        } else {
+            timerLabel.text = "0\(minute):\(second)"
+        }
+        
+        if limitTime != 0 {
+            perform(#selector(setTime), with: nil, afterDelay: 1.0)
+        } else {
+            self.view.makeToast("전화번호 인증 실패", duration: 1.0, position: .bottom)
+            sendMsgButton.isEnabled = true
+            sendMsgButton.fill()
+        }
     }
     
     override func configureView() {
@@ -110,6 +136,10 @@ class PhoneNumAuthViewController: BaseViewController {
         [guideLabel, additionalInfoLabel, authNumTextField, timerLabel, sendMsgButton, authorizeButton].forEach { subView in
             view.addSubview(subView)
         }
+        
+        authNumTextField.textContentType = .oneTimeCode
+        setTime()
+        sendMsgButton.isEnabled = false
     }
     
     override func setupConstraints() {

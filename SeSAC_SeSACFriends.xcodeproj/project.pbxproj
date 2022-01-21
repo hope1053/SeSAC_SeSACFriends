@@ -33,6 +33,7 @@
 		CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */; };
 		CB6C58302799B8A7003C0F1E /* RequestAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582F2799B8A7003C0F1E /* RequestAuthorizationStatus.swift */; };
 		CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */; };
+		CBAFAE942799C63900FE7421 /* AnyFormatKit in Frameworks */ = {isa = PBXBuildFile; productRef = CBAFAE932799C63900FE7421 /* AnyFormatKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6C582727992302003C0F1E /* Toast in Frameworks */,
+				CBAFAE942799C63900FE7421 /* AnyFormatKit in Frameworks */,
 				CB6C582A2799A8A2003C0F1E /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
@@ -236,6 +238,7 @@
 				CB6C58212799050D003C0F1E /* RxSwift */,
 				CB6C582627992302003C0F1E /* Toast */,
 				CB6C58292799A8A2003C0F1E /* FirebaseAuth */,
+				CBAFAE932799C63900FE7421 /* AnyFormatKit */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -270,6 +273,7 @@
 				CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CB6C58282799A8A2003C0F1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CBAFAE922799C63900FE7421 /* XCRemoteSwiftPackageReference "AnyFormatKit" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -561,6 +565,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		CBAFAE922799C63900FE7421 /* XCRemoteSwiftPackageReference "AnyFormatKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luximetr/AnyFormatKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -588,6 +600,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6C58282799A8A2003C0F1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		CBAFAE932799C63900FE7421 /* AnyFormatKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBAFAE922799C63900FE7421 /* XCRemoteSwiftPackageReference "AnyFormatKit" */;
+			productName = AnyFormatKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
