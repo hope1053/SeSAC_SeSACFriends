@@ -86,11 +86,21 @@ class PhoneNumAuthViewController: BaseViewController {
             .rx.tap
             .subscribe { _ in
                 if self.isValid {
-                    self.viewModel.requestAuthorization { status in
-                        switch status {
+                    self.viewModel.requestAuthorization { requestResult, userInfoRequest in
+                        switch requestResult {
                         case .success:
-                            let vc = UserNameViewController()
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            switch userInfoRequest {
+                            case .none:
+                                let vc = HomeViewController()
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            case .notMember:
+                                let vc = UserNameViewController()
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            case .FirebaseTokenError:
+                                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                            case .serverError:
+                                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                            }
                         case .error:
                             self.view.makeToast("전화번호 인증 실패", duration: 1.0, position: .bottom)
                         }

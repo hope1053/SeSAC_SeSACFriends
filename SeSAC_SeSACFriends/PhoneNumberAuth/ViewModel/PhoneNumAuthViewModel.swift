@@ -45,17 +45,37 @@ class PhoneNumAuthViewModel {
           }
     }
     
-    func requestAuthorization(completion: @escaping (RequestAuthorizationStatus) -> Void) {
+    func requestAuthorization(completion: @escaping (RequestStatus, APIError?) -> Void) {
         let verifyID = UserDefaults.standard.string(forKey: "verifyID") ?? ""
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verifyID, verificationCode: authNumObserver.value)
-        var result = RequestAuthorizationStatus.success
         
         Auth.auth().signIn(with: credential) { success, error in
+            // 핸드폰 인증번호 + verifyID로 인증요청했는데 error가 생긴 경우
             if error != nil {
-                print(error)
-                result = RequestAuthorizationStatus.error
+                completion(RequestStatus.error, nil)
+            } else {
+                // 성공한 경우 -> firebaes IDToken 요청
+                self.requestIDToken { idTokenRequest, apiError in
+                    completion(idTokenRequest, apiError)
+                }
             }
-            completion(result)
+        }
+    }
+    
+    // firebase에 IDToken 요청
+    func requestIDToken(completion: @escaping (RequestStatus, APIError?) -> Void) {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            // 에러가 생기는 경우
+            if error != nil {
+                completion(RequestStatus.error, nil)
+            } else {
+                // IDToken 잘 받아온 경우 -> APIService signin으로 사용자 정보 확인 요청
+                UserDefaults.standard.setValue(idToken ?? "", forKey: "idToken")
+                APIService.signIn { error in
+                    completion(RequestStatus.success, error)
+                }
+            }
         }
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RequestAuthorizationStatus {
+enum RequestStatus {
     case success
     case error
 }
