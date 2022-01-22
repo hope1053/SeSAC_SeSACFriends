@@ -27,9 +27,6 @@ class OnBoardingViewController: BaseViewController {
         "SeSAC Friends"
     ]
     
-    let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
-    let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
-    
     let guideLabel: UILabel = {
         let label = UILabel()
         label.text = """
@@ -63,6 +60,7 @@ class OnBoardingViewController: BaseViewController {
         super.viewDidLoad()
         checkFirstLaunch()
         bind()
+        addSwipeGesture()
     }
     
     func bind() {
@@ -80,21 +78,32 @@ class OnBoardingViewController: BaseViewController {
         UserDefaults.standard.set("no", forKey: "isFirstLaunch")
     }
     
+    func addSwipeGesture() {
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+        
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            if sender == leftSwipe {
-                if currentPage < 2 {
-                    currentPage += 1
-                }
-            } else {
-                if currentPage > 0 {
-                    currentPage -= 1
-                }
+        print("swiped!")
+        if sender.direction == .left {
+            if currentPage < 2 {
+                currentPage += 1
             }
-            
-            guideLabel.text = onboardingGuide[currentPage]
-            imageView.image = onboardingImages[currentPage]
+        } else {
+            if currentPage > 0 {
+                currentPage -= 1
+            }
         }
+        
+        guideLabel.text = onboardingGuide[currentPage]
+        imageView.image = onboardingImages[currentPage]
+        pageControl.currentPage = currentPage
     }
     
     @objc func pageChanged(_ sender: UIPageControl) {
@@ -107,12 +116,6 @@ class OnBoardingViewController: BaseViewController {
         [guideLabel, imageView, pageControl, nextButton].forEach { subView in
             view.addSubview(subView)
         }
-        
-        leftSwipe.direction = .left
-        rightSwipe.direction = .right
-
-        view.addGestureRecognizer(leftSwipe)
-        view.addGestureRecognizer(rightSwipe)
     }
     
     override func setupConstraints() {
