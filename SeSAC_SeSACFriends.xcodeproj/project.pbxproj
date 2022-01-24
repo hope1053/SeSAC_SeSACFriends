@@ -16,7 +16,7 @@
 		CB11F139279BB2A500028234 /* UserBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F138279BB2A500028234 /* UserBirthViewController.swift */; };
 		CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F13A279BB3B100028234 /* UserEmailViewController.swift */; };
 		CB11F13D279BB3C700028234 /* UserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F13C279BB3C700028234 /* UserGenderViewController.swift */; };
-		CB11F140279BB55100028234 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F13F279BB55100028234 /* OnBoardingViewController.swift */; };
+		CB11F143279BD7FE00028234 /* UserSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F142279BD7FE00028234 /* UserSignUp.swift */; };
 		CB20987027968952005F6A73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20986F27968952005F6A73 /* AppDelegate.swift */; };
 		CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20987127968952005F6A73 /* SceneDelegate.swift */; };
 		CB20987927968955005F6A73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB20987827968955005F6A73 /* Assets.xcassets */; };
@@ -42,6 +42,13 @@
 		CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */; };
 		CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */; };
 		CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */; };
+		CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D37279E4B210047D4F5 /* BirthSubView.swift */; };
+		CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */; };
+		CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D3B279E4BD50047D4F5 /* MainTextField.swift */; };
+		CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D3D279E4D690047D4F5 /* UITextField+Extension.swift */; };
+		CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D44279E7F090047D4F5 /* OnBoardingViewModel.swift */; };
+		CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */; };
+		CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */; };
 		CBAFAE942799C63900FE7421 /* AnyFormatKit in Frameworks */ = {isa = PBXBuildFile; productRef = CBAFAE932799C63900FE7421 /* AnyFormatKit */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +61,7 @@
 		CB11F138279BB2A500028234 /* UserBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthViewController.swift; sourceTree = "<group>"; };
 		CB11F13A279BB3B100028234 /* UserEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailViewController.swift; sourceTree = "<group>"; };
 		CB11F13C279BB3C700028234 /* UserGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderViewController.swift; sourceTree = "<group>"; };
-		CB11F13F279BB55100028234 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		CB11F142279BD7FE00028234 /* UserSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUp.swift; sourceTree = "<group>"; };
 		CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB20986F27968952005F6A73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB20987127968952005F6A73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +86,13 @@
 		CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthStatus.swift; sourceTree = "<group>"; };
 		CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
 		CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
+		CB936D37279E4B210047D4F5 /* BirthSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthSubView.swift; sourceTree = "<group>"; };
+		CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStatus.swift; sourceTree = "<group>"; };
+		CB936D3B279E4BD50047D4F5 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		CB936D3D279E4D690047D4F5 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		CB936D44279E7F090047D4F5 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +149,18 @@
 		CB11F13E279BB40600028234 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				CB11F13F279BB55100028234 /* OnBoardingViewController.swift */,
+				CB936D49279E7F5F0047D4F5 /* ViewModel */,
+				CB936D48279E7F5A0047D4F5 /* View */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		CB11F141279BD7E700028234 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				CB11F142279BD7FE00028234 /* UserSignUp.swift */,
+			);
+			path = Struct;
 			sourceTree = "<group>";
 		};
 		CB20986327968952005F6A73 = {
@@ -160,13 +183,14 @@
 			isa = PBXGroup;
 			children = (
 				CB11F13E279BB40600028234 /* OnBoarding */,
+				CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */,
 				CB6C58312799B994003C0F1E /* SignUp */,
 				CB11F131279B0D1700028234 /* Home */,
-				CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */,
 				CB6C58112797A751003C0F1E /* Protocol */,
-				CB6C58092797A689003C0F1E /* Enums */,
 				CB11F127279AB48200028234 /* API */,
 				CB20988527968E7D005F6A73 /* Extension */,
+				CB6C58092797A689003C0F1E /* Enums */,
+				CB11F141279BD7E700028234 /* Struct */,
 				CB209890279698F7005F6A73 /* CustomView */,
 				CB20988827968EDC005F6A73 /* Asset */,
 				CB20986F27968952005F6A73 /* AppDelegate.swift */,
@@ -185,6 +209,7 @@
 				CB20988627968E87005F6A73 /* UIColor+Extension.swift */,
 				CB20988E279693D4005F6A73 /* UIFont+Extension.swift */,
 				CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */,
+				CB936D3D279E4D690047D4F5 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -214,6 +239,8 @@
 			children = (
 				CB6C58122797A75D003C0F1E /* BaseViewController.swift */,
 				CB20989127969902005F6A73 /* MainButton.swift */,
+				CB936D3B279E4BD50047D4F5 /* MainTextField.swift */,
+				CB936D37279E4B210047D4F5 /* BirthSubView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -221,6 +248,7 @@
 		CB6C58092797A689003C0F1E /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */,
 				CB6C580A2797A695003C0F1E /* ButtonStatus.swift */,
 				CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */,
 				CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */,
@@ -280,6 +308,23 @@
 				CB11F13C279BB3C700028234 /* UserGenderViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CB936D48279E7F5A0047D4F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */,
+				CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB936D49279E7F5F0047D4F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB936D44279E7F090047D4F5 /* OnBoardingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,25 +422,32 @@
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
 				CB11F130279AFD6200028234 /* APIError.swift in Sources */,
-				CB11F140279BB55100028234 /* OnBoardingViewController.swift in Sources */,
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
+				CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */,
 				CB11F137279BAF2C00028234 /* SignUpViewModel.swift in Sources */,
 				CB11F13D279BB3C700028234 /* UserGenderViewController.swift in Sources */,
+				CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */,
+				CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */,
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
+				CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
 				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
+				CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */,
 				CB11F139279BB2A500028234 /* UserBirthViewController.swift in Sources */,
 				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
+				CB11F143279BD7FE00028234 /* UserSignUp.swift in Sources */,
 				CB11F129279AB49000028234 /* Endpoint.swift in Sources */,
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
+				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
+				CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

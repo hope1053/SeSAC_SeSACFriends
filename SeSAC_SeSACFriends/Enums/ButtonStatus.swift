@@ -13,6 +13,4 @@ enum ButtonStatus {
     case outline
     case cancel
     case disable
-    // 아이콘 이미지 있는 경우도 추가
-    // 폰트가 다른 경우 구분
 }

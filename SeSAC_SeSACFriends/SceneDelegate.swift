@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // idToken && FCMToken 둘 다 존재 -> 인증 & 회원가입 모두 완료 : 홈 화면으로
         // idToken은 있는데 FCMToken은 없는 경우 -> 인증은 완료했는데 회원가입은 하지 않은 상태이기 때문에 회원가입(닉네임 입력화면으로)
         // 둘 다 없으면 아무것도 안했기 때문에 온보딩 화면으로
+        
         let isFirstLaunch = UserDefaults.standard.string(forKey: "isFirstLaunch")
         let idToken = UserDefaults.standard.string(forKey: "idToken")
         let FCMToken = UserDefaults.standard.string(forKey: "FCMToken")
