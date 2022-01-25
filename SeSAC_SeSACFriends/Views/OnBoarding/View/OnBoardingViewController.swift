@@ -12,27 +12,14 @@ import RxSwift
 
 class OnBoardingViewController: BaseViewController {
     
+    let mainView = OnBoardingView()
+    
     let viewModel = OnBoardingViewModel()
     let disposeBag = DisposeBag()
     
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.showsHorizontalScrollIndicator = false
-        return view
-    }()
-    
-    let pageControl: UIPageControl = {
-        let control = UIPageControl()
-        control.numberOfPages = 3
-        control.currentPageIndicatorTintColor = UIColor.customBlack
-        control.pageIndicatorTintColor = UIColor.gray5
-        return control
-    }()
-    
-    let nextButton = MainButton(title: "시작하기", type: .fill)
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +28,13 @@ class OnBoardingViewController: BaseViewController {
         bind()
     }
     
+    override func configureView() {
+        mainView.collectionView.delegate = self
+        mainView.collectionView.dataSource = self
+    }
+    
     func bind() {
-        nextButton
+        mainView.nextButton
             .rx.tap
             .subscribe { _ in
                 let phoneAuthVC = PhoneNumInputViewController()
@@ -56,39 +48,6 @@ class OnBoardingViewController: BaseViewController {
         UserDefaults.standard.set("no", forKey: "isFirstLaunch")
     }
     
-    override func configureView() {
-        super.configureView()
-        [collectionView, pageControl, nextButton].forEach { subView in
-            view.addSubview(subView)
-        }
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
-        collectionView.register(OnBoardingCollectionViewCell.self, forCellWithReuseIdentifier: OnBoardingCollectionViewCell.identifier)
-    }
-    
-    override func setupConstraints() {
-        collectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalToSuperview().multipliedBy(0.75)
-        }
-        
-        nextButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(48)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
-        }
-        
-        pageControl.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(collectionView.snp.bottom)
-            $0.bottom.equalTo(nextButton.snp.top)
-        }
-    }
 }
 
 extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -113,7 +72,7 @@ extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let page = Int(targetContentOffset.pointee.x / scrollView.frame.width)
-        self.pageControl.currentPage = page
+        self.mainView.pageControl.currentPage = page
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

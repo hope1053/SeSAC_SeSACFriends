@@ -8,7 +8,6 @@
 import Foundation
 
 class OnBoardingViewModel {
-    
     let onboardingImages: [String] = ["onboarding_img1", "onboarding_img2", "onboarding_img3"]
     
     let onboardingGuide: [String] = [

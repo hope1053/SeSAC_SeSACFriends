@@ -1,18 +1,13 @@
 //
-//  UserGenderViewController.swift
+//  UserGenderView.swift
 //  SeSAC_SeSACFriends
 //
-//  Created by 최혜린 on 2022/01/22.
+//  Created by 최혜린 on 2022/01/25.
 //
 
 import UIKit
 
-
-class UserGenderViewController: BaseViewController {
-    
-    let viewModel = SignUpViewModel()
-//    let disposeBag = DisposeBag()
-    var isValid = false
+class UserGenderView: UIView {
     
     let guideLabel: UILabel = {
         let label = UILabel()
@@ -60,24 +55,28 @@ class UserGenderViewController: BaseViewController {
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView()
+        setupConstraints()
     }
-
     
-    override func configureView() {
-        super.configureView()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureView() {
         
         [manButton, womanButton].forEach { subView in
             stackView.addArrangedSubview(subView)
         }
         
         [guideLabel, additionalInfoLabel, stackView , nextButton].forEach { subView in
-            view.addSubview(subView)
+            self.addSubview(subView)
         }
     }
     
-    override func setupConstraints() {
+    func setupConstraints() {
         
         guideLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -105,4 +104,6 @@ class UserGenderViewController: BaseViewController {
             $0.centerY.equalToSuperview().multipliedBy(1.1)
         }
     }
+    
 }
+

@@ -1,21 +1,13 @@
 //
-//  UserNameViewController.swift
+//  UserNameView.swift
 //  SeSAC_SeSACFriends
 //
-//  Created by 최혜린 on 2022/01/21.
+//  Created by 최혜린 on 2022/01/25.
 //
 
 import UIKit
 
-import RxCocoa
-import RxSwift
-import Toast
-
-class UserNameViewController: BaseViewController {
-    
-    let viewModel = SignUpViewModel()
-    let disposeBag = DisposeBag()
-    var isValid = false
+class UserNameView: UIView {
     
     let guideLabel: UILabel = {
         let label = UILabel()
@@ -37,47 +29,24 @@ class UserNameViewController: BaseViewController {
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView()
+        setupConstraints()
     }
     
-    func bind() {
-        userNameTextField
-            .rx.text
-            .orEmpty
-            .bind(to: viewModel.userNameObserver)
-            .disposed(by: disposeBag)
-        
-        viewModel.isUserNameValid
-            .subscribe { isValid in
-                isValid.element! ? self.nextButton.fill() : self.nextButton.disable()
-                self.isValid = isValid.element!
-            }
-            .disposed(by: disposeBag)
-        
-        nextButton
-            .rx.tap
-            .subscribe { _ in
-                if self.isValid {
-                    let vc = UserBirthViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    self.view.makeToast("닉네임은 1자 이상 10자 이내로 부탁드려요.", duration: 1.0, position: .bottom)
-                }
-            }
-            .disposed(by: disposeBag)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func configureView() {
-        super.configureView()
+    func configureView() {
         userNameTextField.becomeFirstResponder()
         [guideLabel, userNameTextField, nextButton].forEach { subView in
-            view.addSubview(subView)
+            self.addSubview(subView)
         }
     }
     
-    override func setupConstraints() {
+    func setupConstraints() {
         guideLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview().multipliedBy(0.52)
@@ -98,4 +67,5 @@ class UserNameViewController: BaseViewController {
             $0.centerY.equalToSuperview().multipliedBy(1.1)
         }
     }
+    
 }
