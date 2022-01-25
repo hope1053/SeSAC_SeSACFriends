@@ -18,6 +18,8 @@ class PhoneNumAuthViewModel {
     let authNumObserver = BehaviorRelay<String>(value: "")
 //    var verifyID: String = ""
     
+    var phoneNumber: String = ""
+    
     var isPhoneNumValid: Observable<Bool> {
         return phoneNumObserver.map { return self.validatePhoneNum(phoneNum: $0) }
     }
@@ -31,7 +33,7 @@ class PhoneNumAuthViewModel {
     func requestMsg(completion: @escaping (PhoneNumAuthStatus) -> Void) {
         var result = PhoneNumAuthStatus.success
         PhoneAuthProvider.provider()
-            .verifyPhoneNumber("+82\(phoneNumObserver.value)", uiDelegate: nil) { verificationID, error in
+            .verifyPhoneNumber("+82\(phoneNumber)", uiDelegate: nil) { verificationID, error in
                 if error == nil {
                     UserDefaults.standard.setValue(verificationID ?? "", forKey: "verifyID")
                 } else {

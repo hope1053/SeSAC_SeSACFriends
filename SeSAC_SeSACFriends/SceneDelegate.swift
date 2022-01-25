@@ -28,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let idToken = UserDefaults.standard.string(forKey: "idToken")
         let FCMToken = UserDefaults.standard.string(forKey: "FCMToken")
         
-        print(isFirstLaunch)
         if isFirstLaunch != "no" {
             window?.rootViewController = OnBoardingViewController()
         } else {

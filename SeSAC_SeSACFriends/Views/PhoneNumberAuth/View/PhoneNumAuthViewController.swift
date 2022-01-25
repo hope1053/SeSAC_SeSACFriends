@@ -31,6 +31,7 @@ class PhoneNumAuthViewController: BaseViewController {
     }
     
     override func configureView() {
+        super.configureView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.view.makeToast("인증 번호를 보냈습니다", duration: 1.0, position: .bottom)
         }

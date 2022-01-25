@@ -57,6 +57,8 @@
 		CBC67197279FC8CA00722D78 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CBC67196279FC8CA00722D78 /* RealmSwift */; };
 		CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67199279FC98400722D78 /* PhoneNumInputView.swift */; };
 		CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6719B279FC9F600722D78 /* PhoneNumAuthView.swift */; };
+		CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6719D279FDF1A00722D78 /* String+Extension.swift */; };
+		CBC671A0279FE33300722D78 /* UserBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6719F279FE33300722D78 /* UserBirthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,8 @@
 		CBC67190279FC56600722D78 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		CBC67199279FC98400722D78 /* PhoneNumInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputView.swift; sourceTree = "<group>"; };
 		CBC6719B279FC9F600722D78 /* PhoneNumAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthView.swift; sourceTree = "<group>"; };
+		CBC6719D279FDF1A00722D78 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CBC6719F279FE33300722D78 /* UserBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +167,9 @@
 		CB11F13E279BB40600028234 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				CBC6718F279FC55D00722D78 /* CustomView */,
 				CB936D49279E7F5F0047D4F5 /* ViewModel */,
 				CB936D48279E7F5A0047D4F5 /* View */,
+				CBC6718F279FC55D00722D78 /* CustomView */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -212,6 +216,7 @@
 				CB20988E279693D4005F6A73 /* UIFont+Extension.swift */,
 				CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */,
 				CB936D3D279E4D690047D4F5 /* UITextField+Extension.swift */,
+				CBC6719D279FDF1A00722D78 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				CBC67188279FC20B00722D78 /* UserNameView.swift */,
+				CBC6719F279FE33300722D78 /* UserBirthView.swift */,
 				CBC6718D279FC49B00722D78 /* UserEmailView.swift */,
 				CBC6718A279FC3E500722D78 /* UserGenderView.swift */,
 				CB936D37279E4B210047D4F5 /* BirthSubView.swift */,
@@ -470,6 +476,7 @@
 				CB11F130279AFD6200028234 /* APIError.swift in Sources */,
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
 				CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */,
+				CBC671A0279FE33300722D78 /* UserBirthView.swift in Sources */,
 				CB11F137279BAF2C00028234 /* SignUpViewModel.swift in Sources */,
 				CB11F13D279BB3C700028234 /* UserGenderViewController.swift in Sources */,
 				CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */,
@@ -492,6 +499,7 @@
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
+				CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,

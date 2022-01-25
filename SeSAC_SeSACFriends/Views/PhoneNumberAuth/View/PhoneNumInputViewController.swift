@@ -28,22 +28,23 @@ class PhoneNumInputViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.phoneNumTextField.delegate = self
         bind()
     }
     
     func bind() {
-        mainView.phoneNumTextField
-            .rx.text
-            .orEmpty
-            .bind(to: viewModel.phoneNumObserver)
-            .disposed(by: disposeBag)
-        
-        viewModel.isPhoneNumValid
-            .subscribe { valid in
-                valid.element! ? self.mainView.getAuthNumButton.fill() : self.mainView.getAuthNumButton.disable()
-                self.isValid = valid.element!
-            }
-            .disposed(by: disposeBag)
+//        mainView.phoneNumTextField
+//            .rx.text
+//            .orEmpty
+//            .bind(to: viewModel.phoneNumObserver)
+//            .disposed(by: disposeBag)
+//
+//        viewModel.isPhoneNumValid
+//            .subscribe { valid in
+//                valid.element! ? self.mainView.getAuthNumButton.fill() : self.mainView.getAuthNumButton.disable()
+//                self.isValid = valid.element!
+//            }
+//            .disposed(by: disposeBag)
         
         mainView.getAuthNumButton
             .rx.tap
@@ -69,3 +70,32 @@ class PhoneNumInputViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 }
+
+extension PhoneNumInputViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        
+        let selectedRange: UITextRange? = textField.selectedTextRange
+        let newPosition = textField.position(from: selectedRange!.start, offset: -1)
+        
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = newString.format(with: "XXX-XXXX-XXXX")
+        
+        if range.length == 1 {
+            textField.selectedTextRange = textField.textRange(from: newPosition!, to: newPosition!)
+        }
+        
+        if viewModel.validatePhoneNum(phoneNum: textField.text ?? "") {
+            mainView.getAuthNumButton.fill()
+            isValid = true
+            viewModel.phoneNumber = textField.text ?? ""
+        } else {
+            mainView.getAuthNumButton.disable()
+            isValid = false
+        }
+        
+        return false
+    }
+}
+
+

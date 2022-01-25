@@ -29,6 +29,7 @@ class OnBoardingViewController: BaseViewController {
     }
     
     override func configureView() {
+        super.configureView()
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
     }
