@@ -22,11 +22,11 @@ class PhoneNumInputView: UIView {
         return label
     }()
     
-    let phoneNumTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
-        textField.keyboardType = .numberPad
-        return textField
+    let phoneNumInputView: MainTextFieldView = {
+        let view = MainTextFieldView()
+        view.textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
+        view.textField.keyboardType = .numberPad
+        return view
     }()
     
     let getAuthNumButton: MainButton = {
@@ -45,7 +45,7 @@ class PhoneNumInputView: UIView {
     }
     
     func configureView() {
-        [guideLabel, phoneNumTextField, getAuthNumButton].forEach { subView in
+        [guideLabel, phoneNumInputView, getAuthNumButton].forEach { subView in
             self.addSubview(subView)
         }
 //        phoneNumTextField.delegate = self
@@ -57,7 +57,7 @@ class PhoneNumInputView: UIView {
             $0.centerY.equalToSuperview().multipliedBy(0.52)
         }
         
-        phoneNumTextField.snp.makeConstraints {
+        phoneNumInputView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
@@ -67,7 +67,7 @@ class PhoneNumInputView: UIView {
         
         getAuthNumButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalTo(phoneNumTextField)
+            $0.leading.trailing.equalTo(phoneNumInputView)
             $0.height.equalTo(48)
             $0.centerY.equalToSuperview().multipliedBy(1.1)
         }

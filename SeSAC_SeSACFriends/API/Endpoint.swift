@@ -9,14 +9,17 @@ import Foundation
 import Alamofire
 
 enum Endpoint {
-    case signIn
+    case user
+    case withdraw
 }
 
 extension Endpoint {
     var url: URL {
         switch self {
-        case .signIn:
+        case .user:
             return .makeEndpoint("user")
+        case .withdraw:
+            return .makeEndpoint("user/withdraw")
         }
     }
 }

@@ -28,27 +28,23 @@ class PhoneNumInputViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.phoneNumTextField.delegate = self
+        mainView.phoneNumInputView.textField.delegate = self
         bind()
     }
     
     func bind() {
-//        mainView.phoneNumTextField
-//            .rx.text
-//            .orEmpty
-//            .bind(to: viewModel.phoneNumObserver)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.isPhoneNumValid
-//            .subscribe { valid in
-//                valid.element! ? self.mainView.getAuthNumButton.fill() : self.mainView.getAuthNumButton.disable()
-//                self.isValid = valid.element!
-//            }
-//            .disposed(by: disposeBag)
+
+        viewModel.isPhoneNumValid
+            .subscribe { valid in
+                valid.element! ? self.mainView.getAuthNumButton.fill() : self.mainView.getAuthNumButton.disable()
+                self.isValid = valid.element!
+            }
+            .disposed(by: disposeBag)
         
         mainView.getAuthNumButton
             .rx.tap
             .subscribe { _ in
+                self.view.endEditing(true)
                 if self.isValid {
                     self.viewModel.requestMsg { status in
                         switch status {
@@ -72,27 +68,28 @@ class PhoneNumInputViewController: BaseViewController {
 }
 
 extension PhoneNumInputViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        mainView.phoneNumInputView.focus()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        mainView.phoneNumInputView.active()
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         
         let selectedRange: UITextRange? = textField.selectedTextRange
-        let newPosition = textField.position(from: selectedRange!.start, offset: -1)
+        let deletePosition = textField.position(from: selectedRange!.start, offset: -1)
         
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         textField.text = newString.format(with: "XXX-XXXX-XXXX")
         
         if range.length == 1 {
-            textField.selectedTextRange = textField.textRange(from: newPosition!, to: newPosition!)
+            textField.selectedTextRange = textField.textRange(from: deletePosition!, to: deletePosition!)
         }
         
-        if viewModel.validatePhoneNum(phoneNum: textField.text ?? "") {
-            mainView.getAuthNumButton.fill()
-            isValid = true
-            viewModel.phoneNumber = textField.text ?? ""
-        } else {
-            mainView.getAuthNumButton.disable()
-            isValid = false
-        }
+        viewModel.user.phoneNumber.accept(textField.text!.replacingOccurrences(of: "-", with: ""))
         
         return false
     }

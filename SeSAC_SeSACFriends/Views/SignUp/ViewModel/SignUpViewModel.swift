@@ -11,46 +11,37 @@ import RxSwift
 import RxRelay
 
 class SignUpViewModel {
-        
-    let userNameObserver = BehaviorRelay<String>(value: "")
-    let userBirthObserver = BehaviorRelay<Date>(value: Date())
+    
+    static let shared = SignUpViewModel()
+    
+    let user = User.shared
     
     var isUserNameValid: Observable<Bool> {
-        return userNameObserver.map {
+        return user.userName.map {
             $0.count >= 1 && $0.count <= 10
         }
     }
     
     var isBirthValid: Observable<Bool> {
-        return userBirthObserver.map {
+        return user.birth.map {
             self.validateBirth($0)
         }
     }
     
-    func returnDateComponent(_ selectedDate: Date) -> [String] {
-        var dates: [String] = []
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY"
-        dates.append(dateFormatter.string(from: selectedDate))
-        dateFormatter.dateFormat = "M"
-        dates.append(dateFormatter.string(from: selectedDate))
-        dateFormatter.dateFormat = "d"
-        dates.append(dateFormatter.string(from: selectedDate))
-        return dates
+    var isEmailValid: Observable<Bool> {
+        return user.email.map {
+            self.validateEmail($0)
+        }
     }
     
     func validateBirth(_ birth: Date) -> Bool {
-        let currentYear = getYearInt(Date())
-        let bornYear = getYearInt(birth)
+        let currentYear = Date().getYearInt()
+        let bornYear = birth.getYearInt()
         var yearSub = currentYear - bornYear
         
-        // 1. 현재 년도 - 태어난 년도
-        // 2. 날짜끼리 비교해서 생일 지났으면 그대로, 안지났으면 -1
-        if compareDate(yearSub, birth) {
+        if birth.compareDate(yearSub) {
             yearSub -= 1
         }
-        
-        print("만 나이는...", yearSub)
         
         if yearSub >= 17 {
             return true
@@ -59,22 +50,9 @@ class SignUpViewModel {
         return false
     }
     
-    func getYearInt(_ date: Date) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY"
-        return Int(dateFormatter.string(from: date)) ?? 0
-    }
-    
-    func compareDate(_ sub: Int, _ birth: Date) -> Bool {
-        // 올해 생일
-        let currentBirth = Calendar.current.date(byAdding: .year, value: sub, to: birth) ?? Date()
-        let compareResult = Date().compare(currentBirth)
-        
-        if compareResult == .orderedAscending {
-            return true
-        } else {
-            return false
-        }
-
+    func validateEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
 }

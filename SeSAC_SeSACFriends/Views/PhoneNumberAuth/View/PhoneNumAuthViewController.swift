@@ -17,8 +17,11 @@ class PhoneNumAuthViewController: BaseViewController {
     let mainView = PhoneNumAuthView()
     
     let viewModel = PhoneNumAuthViewModel()
+    
     let disposeBag = DisposeBag()
+    
     var isValid: Bool = false
+    
     var limitTime: Int = 60
     
     override func loadView() {
@@ -35,12 +38,12 @@ class PhoneNumAuthViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.view.makeToast("인증 번호를 보냈습니다", duration: 1.0, position: .bottom)
         }
-        
+        mainView.authNumInputView.textField.delegate = self
         setTime()
     }
     
     func bind() {
-        mainView.authNumTextField
+        mainView.authNumInputView.textField
             .rx.text
             .orEmpty
             .bind(to: viewModel.authNumObserver)
@@ -56,12 +59,13 @@ class PhoneNumAuthViewController: BaseViewController {
         mainView.authorizeButton
             .rx.tap
             .subscribe { _ in
+                self.view.endEditing(true)
                 if self.isValid {
                     self.viewModel.requestAuthorization { requestResult, userInfoRequest in
                         switch requestResult {
                         case .success:
                             switch userInfoRequest {
-                            case .none:
+                            case .success:
                                 let vc = HomeViewController()
                                 self.navigationController?.pushViewController(vc, animated: true)
                             case .notMember:
@@ -70,6 +74,8 @@ class PhoneNumAuthViewController: BaseViewController {
                             case .FirebaseTokenError:
                                 self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
                             case .serverError:
+                                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                            default:
                                 self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
                             }
                         case .error:
@@ -107,4 +113,14 @@ class PhoneNumAuthViewController: BaseViewController {
         }
     }
 
+}
+
+extension PhoneNumAuthViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        mainView.authNumInputView.focus()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        mainView.authNumInputView.active()
+    }
 }

@@ -14,7 +14,7 @@ class UserBirthViewController: BaseViewController {
     
     let mainView = UserBirthView()
     
-    let viewModel = SignUpViewModel()
+    let viewModel = SignUpViewModel.shared
     let disposeBag = DisposeBag()
     var isValid = false
     
@@ -28,16 +28,15 @@ class UserBirthViewController: BaseViewController {
     }
     
     func bind() {
-        
         mainView.datePicker
             .rx.date
             .asDriver(onErrorJustReturn: Date())
-            .drive(viewModel.userBirthObserver)
+            .drive(viewModel.user.birth)
             .disposed(by: disposeBag)
         
-        viewModel.userBirthObserver
-            .subscribe { date in
-                let dateList = self.viewModel.returnDateComponent(date.element ?? Date())
+        viewModel.user.birth
+            .bind { [self] birthDay in
+                let dateList = birthDay.returnDateComponent()
                 self.mainView.yearView.textField.text = dateList[0]
                 self.mainView.monthView.textField.text = dateList[1]
                 self.mainView.dateView.textField.text = dateList[2]

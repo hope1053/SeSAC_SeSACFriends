@@ -28,10 +28,12 @@ class PhoneNumAuthView: UIView {
         return label
     }()
     
-    let authNumTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "인증번호 입력"
-        return textField
+    let authNumInputView: MainTextFieldView = {
+        let view = MainTextFieldView()
+        view.textField.placeholder = "인증번호 입력"
+        view.textField.keyboardType = .numberPad
+        view.textField.textContentType = .oneTimeCode
+        return view
     }()
     
     let timerLabel: UILabel = {
@@ -64,11 +66,11 @@ class PhoneNumAuthView: UIView {
     }
     
     func configureView() {
-        [guideLabel, additionalInfoLabel, authNumTextField, timerLabel, sendMsgButton, authorizeButton].forEach { subView in
+        [guideLabel, additionalInfoLabel, authNumInputView, timerLabel, sendMsgButton, authorizeButton].forEach { subView in
             self.addSubview(subView)
         }
         
-        authNumTextField.textContentType = .oneTimeCode
+        authNumInputView.textField.textContentType = .oneTimeCode
         sendMsgButton.isEnabled = false
     }
     
@@ -83,7 +85,7 @@ class PhoneNumAuthView: UIView {
             $0.top.equalTo(guideLabel.snp.bottom).offset(8)
         }
         
-        authNumTextField.snp.makeConstraints {
+        authNumInputView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.width.equalToSuperview().multipliedBy(0.72)
             $0.centerY.equalToSuperview().multipliedBy(0.85)
@@ -91,20 +93,20 @@ class PhoneNumAuthView: UIView {
         }
         
         timerLabel.snp.makeConstraints {
-            $0.centerY.equalTo(authNumTextField)
-            $0.trailing.equalTo(authNumTextField.snp.trailing).offset(-5)
+            $0.centerY.equalTo(authNumInputView)
+            $0.trailing.equalTo(authNumInputView.snp.trailing).offset(-5)
         }
         
         sendMsgButton.snp.makeConstraints {
-            $0.leading.equalTo(authNumTextField.snp.trailing).offset(8)
-            $0.bottom.equalTo(authNumTextField.snp.bottom)
+            $0.leading.equalTo(authNumInputView.snp.trailing).offset(8)
+            $0.bottom.equalTo(authNumInputView.snp.bottom)
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(48)
         }
         
         authorizeButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.leading.equalTo(authNumTextField.snp.leading)
+            $0.leading.equalTo(authNumInputView.snp.leading)
             $0.height.equalTo(48)
             $0.centerY.equalToSuperview().multipliedBy(1.1)
         }

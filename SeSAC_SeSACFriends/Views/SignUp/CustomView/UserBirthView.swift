@@ -1,5 +1,5 @@
 //
-//  UserGenderView.swift
+//  UserBirthView.swift
 //  SeSAC_SeSACFriends
 //
 //  Created by 최혜린 on 2022/01/25.
@@ -7,52 +7,55 @@
 
 import UIKit
 
-class UserGenderView: UIView {
+class UserBirthView: UIView {
     
     let guideLabel: UILabel = {
         let label = UILabel()
-        label.text = "성별을 선택해 주세요"
+        label.text = "생년월일을 알려주세요"
         label.font = .Display1_R20
         label.textColor = UIColor.customBlack
         label.textAlignment = .center
         return label
     }()
     
-    let additionalInfoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "새싹 찾기 기능을 이용하기 위해서 필요해요"
-        label.textColor = .gray7
-        label.font = .Title2_R16
-        label.textAlignment = .center
-        return label
+    let yearView: BirthSubView = {
+        let view = BirthSubView()
+        return view
     }()
     
-    let manButton: MainButton = {
-        let button = MainButton(title: "남자", type: .inactive)
-        button.setImage(UIImage(named: "man"), for: .normal)
-        button.alignTextBelow()
-        return button
+    let monthView: BirthSubView = {
+        let view = BirthSubView()
+        view.textLabel.text = "월"
+        return view
     }()
-    
-    let womanButton: MainButton = {
-        let button = MainButton(title: "여자", type: .inactive)
-        button.setImage(UIImage(named: "woman"), for: .normal)
-        button.alignTextBelow()
-        return button
+    let dateView: BirthSubView = {
+        let view = BirthSubView()
+        view.textLabel.text = "일"
+        return view
     }()
     
     let stackView: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .horizontal
         stack.spacing = 10
+        stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fillEqually
         return stack
     }()
     
     let nextButton: MainButton = {
-        let button = MainButton(title: "다음", type: .fill)
+        let button = MainButton(title: "다음", type: .disable)
         return button
+    }()
+    
+    let datePicker: UIDatePicker = {
+        let bound = UIScreen.main.bounds
+        let picker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: bound.width, height: bound.height / 3))
+        picker.preferredDatePickerStyle = .wheels
+        picker.datePickerMode = .date
+        picker.locale = Locale(identifier: "ko_KR")
+        picker.maximumDate = Date()
+        return picker
     }()
     
     override init(frame: CGRect) {
@@ -66,36 +69,32 @@ class UserGenderView: UIView {
     }
     
     func configureView() {
-        
-        [manButton, womanButton].forEach { subView in
-            stackView.addArrangedSubview(subView)
+        [guideLabel, stackView, nextButton, datePicker].forEach { subView in
+            self.addSubview(subView)
         }
         
-        [guideLabel, additionalInfoLabel, stackView , nextButton].forEach { subView in
-            self.addSubview(subView)
+        yearView.textField.becomeFirstResponder()
+        
+        [yearView, monthView, dateView].forEach { subView in
+            stackView.addArrangedSubview(subView)
+            subView.textField.inputView = datePicker
         }
     }
     
     func setupConstraints() {
-        
         guideLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview().multipliedBy(0.52)
         }
         
-        additionalInfoLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(guideLabel.snp.bottom).offset(8)
-            $0.height.equalTo(30)
-        }
-        
         stackView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalTo(additionalInfoLabel.snp.bottom).offset(32)
-            $0.bottom.equalTo(nextButton.snp.top).offset(-32)
+            $0.centerY.equalToSuperview().multipliedBy(0.85)
+            $0.height.equalTo(48)
         }
-        
+
         nextButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
@@ -104,6 +103,4 @@ class UserGenderView: UIView {
             $0.centerY.equalToSuperview().multipliedBy(1.1)
         }
     }
-    
 }
-

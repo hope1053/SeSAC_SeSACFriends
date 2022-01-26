@@ -8,9 +8,13 @@
 import Foundation
 
 enum APIError: Error {
+    case success
     case notMember
     case FirebaseTokenError
     case serverError
+    case forbiddenName
+    case alreadyMember
+    case alreadyWithdraw
 //    case invalidResponse
 //    case noData
 //    case failed

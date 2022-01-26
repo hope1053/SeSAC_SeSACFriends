@@ -14,14 +14,14 @@ import RxCocoa
 
 class PhoneNumAuthViewModel {
     
-    let phoneNumObserver = BehaviorRelay<String>(value: "")
+    let user = User.shared
+    
     let authNumObserver = BehaviorRelay<String>(value: "")
-//    var verifyID: String = ""
     
     var phoneNumber: String = ""
     
     var isPhoneNumValid: Observable<Bool> {
-        return phoneNumObserver.map { return self.validatePhoneNum(phoneNum: $0) }
+        return user.phoneNumber.map { return self.validatePhoneNum(phoneNum: $0) }
     }
     
     var isAuthNumValid: Observable<Bool> {
@@ -33,7 +33,7 @@ class PhoneNumAuthViewModel {
     func requestMsg(completion: @escaping (PhoneNumAuthStatus) -> Void) {
         var result = PhoneNumAuthStatus.success
         PhoneAuthProvider.provider()
-            .verifyPhoneNumber("+82\(phoneNumber)", uiDelegate: nil) { verificationID, error in
+            .verifyPhoneNumber("+82\(user.phoneNumber.value)", uiDelegate: nil) { verificationID, error in
                 if error == nil {
                     UserDefaults.standard.setValue(verificationID ?? "", forKey: "verifyID")
                 } else {
@@ -73,6 +73,7 @@ class PhoneNumAuthViewModel {
                 completion(RequestStatus.error, nil)
             } else {
                 // IDToken 잘 받아온 경우 -> APIService signin으로 사용자 정보 확인 요청
+                print(idToken)
                 UserDefaults.standard.setValue(idToken ?? "", forKey: "idToken")
                 APIService.signIn { error in
                     completion(RequestStatus.success, error)
@@ -83,7 +84,8 @@ class PhoneNumAuthViewModel {
     
     // 유효성검사 메서드
     func validatePhoneNum(phoneNum: String) -> Bool {
-        let checkPattern = "^01([0-9])-([0-9]{4})-([0-9]{4})$"
+        print(phoneNum)
+        let checkPattern = "^01([0-9])([0-9]{4})([0-9]{4})$"
         let regex = try? NSRegularExpression(pattern: checkPattern)
 
         if let _ = regex?.firstMatch(in: phoneNum, options: [], range: NSRange(location: 0, length: phoneNum.count)) {

@@ -9,34 +9,16 @@ import Foundation
 import UIKit
 
 class MainTextField: UITextField {
-    // placeholder 색깔
-    // textColor
-    // background
-    // cornerRadius
-    // underline 색
-    // underline text + textColor
-//    func inactive() {
-//
-//    }
-//
-//    func focus() {
-//
-//    }
-//
-//    func active() {
-//
-//    }
-//
-//    func disable() {
-//
-//    }
-//
-//    func error() {
-//
-//    }
-//
-//    func success() {
-//
-//    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.addLeftPadding()
+        self.font = .Title4_R14
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }

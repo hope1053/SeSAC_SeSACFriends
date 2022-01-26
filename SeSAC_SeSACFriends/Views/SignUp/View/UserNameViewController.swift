@@ -15,7 +15,7 @@ class UserNameViewController: BaseViewController {
     
     let mainView = UserNameView()
     
-    let viewModel = SignUpViewModel()
+    let viewModel = SignUpViewModel.shared
     
     let disposeBag = DisposeBag()
     var isValid = false
@@ -33,7 +33,7 @@ class UserNameViewController: BaseViewController {
         mainView.userNameTextField
             .rx.text
             .orEmpty
-            .bind(to: viewModel.userNameObserver)
+            .bind(to: viewModel.user.userName)
             .disposed(by: disposeBag)
 
         viewModel.isUserNameValid
