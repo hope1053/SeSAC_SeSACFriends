@@ -26,7 +26,18 @@ class UserGenderViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         bind()
+    }
+    
+    func loadData() {
+        let gender = viewModel.user.gender.value
+        
+        if gender == .woman {
+            mainView.womanButton.fill()
+        } else if gender == .man {
+            mainView.manButton.fill()
+        }
     }
     
     func bind() {
@@ -90,18 +101,17 @@ class UserGenderViewController: BaseViewController {
                                 let tabBarController = MainTabBarController()
                                 let sd = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                                 sd?.window?.rootViewController = tabBarController
-                            case .FirebaseTokenError:
-                                print("error")
                             default:
-                                print("error")
+                                self.view.makeToast("서버 에러입니다")
                             }
                         }
                     case .alreadyMember:
-                        self.view.makeToast("이미 회원입니다.")
+                        self.view.makeToast("이미 회원입니다")
                     case .forbiddenName:
-                        self.view.makeToast("금지된 닉네임입니다")
-                    case .FirebaseTokenError:
-                        self.view.makeToast("파베 에러입니다")
+                        // 닉네임 뷰컨트롤러로 돌아가는 코드
+                        if let vc = self.navigationController?.viewControllers.last(where: { $0.isKind(of: UserNameViewController.self) }) {
+                            self.navigationController?.popToViewController(vc, animated: true)
+                        }
                     case .serverError:
                         self.view.makeToast("서버 에러입니다")
                     default:

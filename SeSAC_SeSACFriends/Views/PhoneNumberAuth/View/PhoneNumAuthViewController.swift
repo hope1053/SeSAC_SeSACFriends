@@ -71,8 +71,8 @@ class PhoneNumAuthViewController: BaseViewController {
                             case .notMember:
                                 let vc = UserNameViewController()
                                 self.navigationController?.pushViewController(vc, animated: true)
-                            case .FirebaseTokenError:
-                                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+//                            case .FirebaseTokenError:
+//                                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
                             case .serverError:
                                 self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
                             default:

@@ -24,7 +24,12 @@ class UserEmailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         bind()
+    }
+    
+    func loadData() {
+        mainView.userEmailTextField.text = viewModel.user.email.value
     }
     
     func bind() {

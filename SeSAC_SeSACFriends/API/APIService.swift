@@ -11,13 +11,13 @@ import SwiftyJSON
 
 class APIService {
     
-    static let header: HTTPHeaders = [
+    static var header: HTTPHeaders = [
         "Content-Type": "application/x-www-form-urlencoded",
         "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
     ]
     
     // 로그인
-    static func signIn(completion: @escaping (APIError?) -> Void) {
+    static func signIn(completion: @escaping (APIStatus?) -> Void) {
         AF.request(Endpoint.user.url, method: .get, headers: header).validate().response { response in
             switch response.result {
             case .success(let value):
@@ -33,26 +33,26 @@ class APIService {
                     } catch {
                         print("error")
                     }
-                    completion(APIError.success)
+                    completion(APIStatus.success)
                 case 201:
                     // 미가입 회원 -> 닉네임 입력창으로
-                    completion(APIError.notMember)
+                    completion(APIStatus.notMember)
                 case 401:
-                    // Firebase Error
-                    completion(APIError.FirebaseTokenError)
+                    break
+                    // firebase token error
                 case 500:
-                    completion(APIError.serverError)
+                    completion(APIStatus.serverError)
                 default:
-                    completion(APIError.serverError)
+                    completion(APIStatus.serverError)
                 }
             case .failure(_):
-                completion(APIError.serverError)
+                print("error")
             }
         }
     }
     
     // 회원가입
-    static func signUp(completion: @escaping ( APIError?) -> Void) {
+    static func signUp(completion: @escaping (APIStatus?) -> Void) {
         let user = User.shared
         
         let parameter: [String: Any] = [
@@ -70,15 +70,16 @@ class APIService {
                 let statusCode = response.response?.statusCode ?? 500
                 switch statusCode {
                 case 200:
-                    completion(APIError.success)
+                    completion(APIStatus.success)
                 case 201:
-                    completion(APIError.alreadyMember)
+                    completion(APIStatus.alreadyMember)
                 case 202:
-                    completion(APIError.forbiddenName)
+                    completion(APIStatus.forbiddenName)
                 case 401:
-                    completion(APIError.FirebaseTokenError)
+                    // firebase token error
+                    break
                 case 500:
-                    completion(APIError.serverError)
+                    completion(APIStatus.serverError)
                 default:
                     break
                 }
@@ -88,22 +89,29 @@ class APIService {
         }
     }
     
-    static func withdraw(completion: @escaping (APIError?) -> Void) {
+    static func withdraw(completion: @escaping (APIStatus?) -> Void) {
         AF.request(Endpoint.withdraw.url, method: .post, headers: header).validate().response { response in
-            let statusCode = response.response?.statusCode ?? 500
-            switch statusCode {
-            case 200:
-                UserDefaults.standard.set(nil, forKey: "uid")
-                UserDefaults.standard.set(nil, forKey: "idToken")
-                completion(APIError.success)
-            case 401:
-                completion(APIError.FirebaseTokenError)
-            case 406:
-                completion(APIError.alreadyWithdraw)
-            case 500:
-                completion(APIError.serverError)
-            default:
-                break
+            switch response.result {
+            case .success(_):
+                let statusCode = response.response?.statusCode ?? 500
+                switch statusCode {
+                case 200:
+                    // 회원 탈퇴 성공 시, 저장된 uid, idToken 모두 삭제
+                    UserDefaults.standard.set(nil, forKey: "uid")
+                    UserDefaults.standard.set(nil, forKey: "idToken")
+                    completion(APIStatus.success)
+                case 401:
+                    // firebase token error
+                    break
+                case 406:
+                    completion(APIStatus.alreadyWithdraw)
+                case 500:
+                    completion(APIStatus.serverError)
+                default:
+                    break
+                }
+            case .failure(_):
+                print("error")
             }
         }
     }

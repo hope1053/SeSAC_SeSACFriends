@@ -425,10 +425,10 @@
 		CBC67192279FC77600722D78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CB1C362827A1795700AF90DB /* MainMenu */,
 				CB11F13E279BB40600028234 /* OnBoarding */,
 				CB6C580C2797A70C003C0F1E /* PhoneNumberAuth */,
 				CB6C58312799B994003C0F1E /* SignUp */,
+				CB1C362827A1795700AF90DB /* MainMenu */,
 				CB209890279698F7005F6A73 /* CustomView */,
 			);
 			path = Views;

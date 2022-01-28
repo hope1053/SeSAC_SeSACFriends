@@ -24,19 +24,29 @@ class UserBirthViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         bind()
+    }
+    
+    func loadData() {
+        let birth = viewModel.user.birth.value
+        mainView.datePicker.date = birth
+        let dateList = birth.returnDateComponent()
+        mainView.yearView.textField.text = dateList[0]
+        mainView.monthView.textField.text = dateList[1]
+        mainView.dateView.textField.text = dateList[2]
     }
     
     func bind() {
         mainView.datePicker
             .rx.date
-            .asDriver(onErrorJustReturn: Date())
-            .drive(viewModel.user.birth)
+            .bind(to: viewModel.user.birth)
             .disposed(by: disposeBag)
         
         viewModel.user.birth
             .bind { [self] birthDay in
                 let dateList = birthDay.returnDateComponent()
+                print("viewModel birthList: ", dateList)
                 self.mainView.yearView.textField.text = dateList[0]
                 self.mainView.monthView.textField.text = dateList[1]
                 self.mainView.dateView.textField.text = dateList[2]

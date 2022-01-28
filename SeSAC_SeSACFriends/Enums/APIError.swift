@@ -7,10 +7,9 @@
 
 import Foundation
 
-enum APIError: Error {
+enum APIStatus: String {
     case success
     case notMember
-    case FirebaseTokenError
     case serverError
     case forbiddenName
     case alreadyMember

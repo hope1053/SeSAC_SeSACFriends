@@ -42,8 +42,8 @@ class HomeViewController: UIViewController {
                         sd?.window?.rootViewController = onboardingView
                         
 //                        UserDefaults.standard.set(nil, forKey: "idToken")
-                    case .FirebaseTokenError:
-                        self.view.makeToast("파베에러", duration: 1.0, position: .bottom)
+//                    case .FirebaseTokenError:
+//                        self.view.makeToast("파베에러", duration: 1.0, position: .bottom)
                     case .alreadyWithdraw:
                         self.view.makeToast("이미 탈퇴된 회원", duration: 1.0, position: .bottom)
                     case .serverError:

@@ -47,7 +47,7 @@ class PhoneNumAuthViewModel {
           }
     }
     
-    func requestAuthorization(completion: @escaping (RequestStatus, APIError?) -> Void) {
+    func requestAuthorization(completion: @escaping (RequestStatus, APIStatus?) -> Void) {
         let verifyID = UserDefaults.standard.string(forKey: "verifyID") ?? ""
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verifyID, verificationCode: authNumObserver.value)
         
@@ -65,7 +65,7 @@ class PhoneNumAuthViewModel {
     }
     
     // firebase에 IDToken 요청
-    func requestIDToken(completion: @escaping (RequestStatus, APIError?) -> Void) {
+    func requestIDToken(completion: @escaping (RequestStatus, APIStatus?) -> Void) {
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
             // 에러가 생기는 경우

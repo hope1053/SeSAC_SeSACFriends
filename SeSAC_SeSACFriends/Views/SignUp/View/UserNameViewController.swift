@@ -29,6 +29,13 @@ class UserNameViewController: BaseViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print(viewModel.user.userName.value)
+        print(viewModel.user.birth.value)
+        print(viewModel.user.email.value)
+        print(viewModel.user.gender.value)
+    }
+    
     func bind() {
         mainView.userNameTextField
             .rx.text
