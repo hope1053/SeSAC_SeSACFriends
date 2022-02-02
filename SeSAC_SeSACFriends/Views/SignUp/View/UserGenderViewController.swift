@@ -110,6 +110,7 @@ class UserGenderViewController: BaseViewController {
                     case .forbiddenName:
                         // 닉네임 뷰컨트롤러로 돌아가는 코드
                         if let vc = self.navigationController?.viewControllers.last(where: { $0.isKind(of: UserNameViewController.self) }) {
+                            vc.view.makeToast("금지된 닉네임입니다.")
                             self.navigationController?.popToViewController(vc, animated: true)
                         }
                     case .serverError:

@@ -46,6 +46,12 @@
 		CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */; };
 		CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */; };
 		CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */; };
+		CB736F4127A3BBE9000E285D /* TabBarIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB736F4027A3BBE8000E285D /* TabBarIcon.xcassets */; };
+		CB736F4527A3DC25000E285D /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4427A3DC25000E285D /* MyPageView.swift */; };
+		CB736F4727A3DDA8000E285D /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */; };
+		CB736F4927A3DEB6000E285D /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB736F4827A3DEB6000E285D /* Icon.xcassets */; };
+		CB736F4C27A3E608000E285D /* SecondSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */; };
+		CB736F4E27A3E636000E285D /* FirstSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */; };
 		CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D37279E4B210047D4F5 /* BirthSubView.swift */; };
 		CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */; };
 		CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D3B279E4BD50047D4F5 /* MainTextField.swift */; };
@@ -57,8 +63,6 @@
 		CBC6718B279FC3E500722D78 /* UserGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6718A279FC3E500722D78 /* UserGenderView.swift */; };
 		CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6718D279FC49B00722D78 /* UserEmailView.swift */; };
 		CBC67191279FC56600722D78 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67190279FC56600722D78 /* OnBoardingView.swift */; };
-		CBC67195279FC8CA00722D78 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CBC67194279FC8CA00722D78 /* Realm */; };
-		CBC67197279FC8CA00722D78 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CBC67196279FC8CA00722D78 /* RealmSwift */; };
 		CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67199279FC98400722D78 /* PhoneNumInputView.swift */; };
 		CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6719B279FC9F600722D78 /* PhoneNumAuthView.swift */; };
 		CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6719D279FDF1A00722D78 /* String+Extension.swift */; };
@@ -109,6 +113,12 @@
 		CB6C582D2799B05B003C0F1E /* PhoneNumAuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumAuthStatus.swift; sourceTree = "<group>"; };
 		CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatus.swift; sourceTree = "<group>"; };
 		CB6C58332799B9B5003C0F1E /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
+		CB736F4027A3BBE8000E285D /* TabBarIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBarIcon.xcassets; sourceTree = "<group>"; };
+		CB736F4427A3DC25000E285D /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		CB736F4827A3DEB6000E285D /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
+		CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionTableViewCell.swift; sourceTree = "<group>"; };
+		CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionTableViewCell.swift; sourceTree = "<group>"; };
 		CB936D37279E4B210047D4F5 /* BirthSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthSubView.swift; sourceTree = "<group>"; };
 		CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStatus.swift; sourceTree = "<group>"; };
 		CB936D3B279E4BD50047D4F5 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
@@ -137,11 +147,9 @@
 				CB6C582727992302003C0F1E /* Toast in Frameworks */,
 				CB11F12E279AB5E000028234 /* Alamofire in Frameworks */,
 				CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */,
-				CBC67197279FC8CA00722D78 /* RealmSwift in Frameworks */,
 				CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
-				CBC67195279FC8CA00722D78 /* Realm in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,11 +212,11 @@
 		CB1C362827A1795700AF90DB /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
-				CB1C362B27A1797800AF90DB /* MyPage */,
-				CB1C362A27A1797600AF90DB /* Friend */,
-				CB1C362927A1797100AF90DB /* Shop */,
-				CB11F131279B0D1700028234 /* Home */,
 				CB1C363227A17A5B00AF90DB /* MainTabBarController.swift */,
+				CB11F131279B0D1700028234 /* Home */,
+				CB1C362927A1797100AF90DB /* Shop */,
+				CB1C362A27A1797600AF90DB /* Friend */,
+				CB1C362B27A1797800AF90DB /* MyPage */,
 			);
 			path = MainMenu;
 			sourceTree = "<group>";
@@ -232,7 +240,9 @@
 		CB1C362B27A1797800AF90DB /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				CB1C362C27A1798600AF90DB /* MyPageViewController.swift */,
+				CB736F4327A3C24B000E285D /* ViewModel */,
+				CB736F4227A3C247000E285D /* View */,
+				CB736F4A27A3E40E000E285D /* CustomView */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -293,6 +303,8 @@
 				CB20988D279692B4005F6A73 /* Fonts */,
 				CB20988327968BAE005F6A73 /* Colors.xcassets */,
 				CB20987827968955005F6A73 /* Assets.xcassets */,
+				CB736F4027A3BBE8000E285D /* TabBarIcon.xcassets */,
+				CB736F4827A3DEB6000E285D /* Icon.xcassets */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -385,6 +397,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CB736F4227A3C247000E285D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB1C362C27A1798600AF90DB /* MyPageViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB736F4327A3C24B000E285D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB736F4A27A3E40E000E285D /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CB736F4427A3DC25000E285D /* MyPageView.swift */,
+				CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */,
+				CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		CB936D48279E7F5A0047D4F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,8 +503,6 @@
 				CB6C58212799050D003C0F1E /* RxSwift */,
 				CB6C582627992302003C0F1E /* Toast */,
 				CB11F12D279AB5E000028234 /* Alamofire */,
-				CBC67194279FC8CA00722D78 /* Realm */,
-				CBC67196279FC8CA00722D78 /* RealmSwift */,
 				CBC671A627A01D9A00722D78 /* FirebaseAuth */,
 				CBC671A827A01D9A00722D78 /* FirebaseMessaging */,
 			);
@@ -503,7 +539,6 @@
 				CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CB11F12C279AB5DF00028234 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				CBC67193279FC8CA00722D78 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
@@ -522,9 +557,11 @@
 			files = (
 				CB20989A2796A26C005F6A73 /* NotoSansKR-Medium.otf in Resources */,
 				CB20987C27968955005F6A73 /* LaunchScreen.storyboard in Resources */,
+				CB736F4927A3DEB6000E285D /* Icon.xcassets in Resources */,
 				CB20988427968BAE005F6A73 /* Colors.xcassets in Resources */,
 				CB20987927968955005F6A73 /* Assets.xcassets in Resources */,
 				CB20989B2796A26C005F6A73 /* NotoSansKR-Regular.otf in Resources */,
+				CB736F4127A3BBE9000E285D /* TabBarIcon.xcassets in Resources */,
 				CB6C581B27990467003C0F1E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,9 +576,11 @@
 				CB11F12B279AB4C300028234 /* APIService.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
+				CB736F4C27A3E608000E285D /* SecondSectionTableViewCell.swift in Sources */,
 				CBC671A427A0195F00722D78 /* Date+Extension.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
 				CB11F130279AFD6200028234 /* APIError.swift in Sources */,
+				CB736F4527A3DC25000E285D /* MyPageView.swift in Sources */,
 				CB1C363327A17A5B00AF90DB /* MainTabBarController.swift in Sources */,
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
 				CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */,
@@ -576,12 +615,14 @@
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
+				CB736F4E27A3E636000E285D /* FirstSectionTableViewCell.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,
 				CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */,
 				CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */,
 				CBC6718B279FC3E500722D78 /* UserGenderView.swift in Sources */,
 				CBC671A227A0133500722D78 /* Gender.swift in Sources */,
 				CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */,
+				CB736F4727A3DDA8000E285D /* MyPageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,14 +868,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		CBC67193279FC8CA00722D78 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -870,16 +903,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
-		};
-		CBC67194279FC8CA00722D78 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBC67193279FC8CA00722D78 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		CBC67196279FC8CA00722D78 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBC67193279FC8CA00722D78 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		CBC671A627A01D9A00722D78 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

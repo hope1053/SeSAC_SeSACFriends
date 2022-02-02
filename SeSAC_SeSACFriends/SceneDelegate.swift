@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = OnBoardingViewController()
         } else {
             if idToken != nil && uid != nil {
-                window?.rootViewController = UINavigationController(rootViewController: MainTabBarController())
+                window?.rootViewController = MainTabBarController()
             } else if idToken != nil && uid == nil {
                 window?.rootViewController = UINavigationController(rootViewController: UserNameViewController())
             } else {

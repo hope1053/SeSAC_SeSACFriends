@@ -26,14 +26,22 @@ class UserNameViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("---------personal info---------")
+        print(viewModel.user.phoneNumber.value)
         print(viewModel.user.userName.value)
         print(viewModel.user.birth.value)
         print(viewModel.user.email.value)
         print(viewModel.user.gender.value)
+    }
+    
+    func loadData() {
+        let phoneNum = UserDefaults.standard.string(forKey: "userPhoneNum") ?? ""
+        viewModel.user.phoneNumber.accept(phoneNum)
     }
     
     func bind() {

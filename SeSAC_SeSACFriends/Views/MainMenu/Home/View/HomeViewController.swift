@@ -12,14 +12,13 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     let button = MainButton(title: "탈퇴버튼", type: .fill)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
         view.addSubview(button)
         
         button.snp.makeConstraints {
@@ -27,7 +26,12 @@ class HomeViewController: UIViewController {
             $0.width.equalTo(200)
             $0.width.equalTo(48)
         }
+        
         bind()
+    }
+    
+    override func configureView() {
+        super.configureView()
     }
     
     func bind() {
@@ -40,10 +44,6 @@ class HomeViewController: UIViewController {
                         let onboardingView = OnBoardingViewController()
                         let sd = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                         sd?.window?.rootViewController = onboardingView
-                        
-//                        UserDefaults.standard.set(nil, forKey: "idToken")
-//                    case .FirebaseTokenError:
-//                        self.view.makeToast("파베에러", duration: 1.0, position: .bottom)
                     case .alreadyWithdraw:
                         self.view.makeToast("이미 탈퇴된 회원", duration: 1.0, position: .bottom)
                     case .serverError:

@@ -115,4 +115,8 @@ class APIService {
             }
         }
     }
+    
+    static func updateFCMToken() {
+        
+    }
 }

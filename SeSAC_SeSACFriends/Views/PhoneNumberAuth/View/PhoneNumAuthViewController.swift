@@ -69,6 +69,7 @@ class PhoneNumAuthViewController: BaseViewController {
                                 let vc = HomeViewController()
                                 self.navigationController?.pushViewController(vc, animated: true)
                             case .notMember:
+                                UserDefaults.standard.set(self.viewModel.user.phoneNumber.value, forKey: "userPhoneNum")
                                 let vc = UserNameViewController()
                                 self.navigationController?.pushViewController(vc, animated: true)
 //                            case .FirebaseTokenError:

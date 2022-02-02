@@ -46,7 +46,6 @@ class UserBirthViewController: BaseViewController {
         viewModel.user.birth
             .bind { [self] birthDay in
                 let dateList = birthDay.returnDateComponent()
-                print("viewModel birthList: ", dateList)
                 self.mainView.yearView.textField.text = dateList[0]
                 self.mainView.monthView.textField.text = dateList[1]
                 self.mainView.dateView.textField.text = dateList[2]
