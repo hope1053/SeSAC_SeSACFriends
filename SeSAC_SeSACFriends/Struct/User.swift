@@ -19,3 +19,17 @@ struct User {
     let email = BehaviorRelay<String>(value: "")
     let gender = BehaviorRelay<Gender>(value: .unknown)
 }
+
+class UserInfo {
+    
+    static let shared = UserInfo()
+    
+    var userName: String {
+        get {
+            UserDefaults.standard.string(forKey: "userName") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "userName")
+        }
+    }
+}

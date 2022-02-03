@@ -100,7 +100,7 @@ class UserGenderViewController: BaseViewController {
                             case .success:
                                 let tabBarController = MainTabBarController()
                                 let sd = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-                                sd?.window?.rootViewController = tabBarController
+                                sd?.window?.rootViewController? = tabBarController
                             default:
                                 self.view.makeToast("서버 에러입니다")
                             }

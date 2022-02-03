@@ -84,7 +84,6 @@ class PhoneNumAuthViewModel {
     
     // 유효성검사 메서드
     func validatePhoneNum(phoneNum: String) -> Bool {
-        print(phoneNum)
         let checkPattern = "^01([0-9])([0-9]{4})([0-9]{4})$"
         let regex = try? NSRegularExpression(pattern: checkPattern)
 

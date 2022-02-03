@@ -33,6 +33,11 @@
 		CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CB2098942796A0EA005F6A73 /* SnapKit */; };
 		CB20989A2796A26C005F6A73 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB2098982796A26B005F6A73 /* NotoSansKR-Medium.otf */; };
 		CB20989B2796A26C005F6A73 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB2098992796A26C005F6A73 /* NotoSansKR-Regular.otf */; };
+		CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */; };
+		CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0127AB943F00F1540D /* ManageInfoView.swift */; };
+		CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */; };
+		CB29DD0627ABA1A100F1540D /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0527ABA1A100F1540D /* UserInfoView.swift */; };
+		CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */; };
 		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
 		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
@@ -50,8 +55,6 @@
 		CB736F4527A3DC25000E285D /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4427A3DC25000E285D /* MyPageView.swift */; };
 		CB736F4727A3DDA8000E285D /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */; };
 		CB736F4927A3DEB6000E285D /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB736F4827A3DEB6000E285D /* Icon.xcassets */; };
-		CB736F4C27A3E608000E285D /* SecondSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */; };
-		CB736F4E27A3E636000E285D /* FirstSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */; };
 		CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D37279E4B210047D4F5 /* BirthSubView.swift */; };
 		CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */; };
 		CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D3B279E4BD50047D4F5 /* MainTextField.swift */; };
@@ -101,6 +104,11 @@
 		CB20989127969902005F6A73 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		CB2098982796A26B005F6A73 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "Noto_Sans_KR/NotoSansKR-Medium.otf"; sourceTree = SOURCE_ROOT; };
 		CB2098992796A26C005F6A73 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Regular.otf"; path = "Noto_Sans_KR/NotoSansKR-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CB29DD0127AB943F00F1540D /* ManageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoView.swift; sourceTree = "<group>"; };
+		CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
+		CB29DD0527ABA1A100F1540D /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewProtocol.swift; sourceTree = "<group>"; };
 		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
@@ -117,8 +125,6 @@
 		CB736F4427A3DC25000E285D /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		CB736F4827A3DEB6000E285D /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
-		CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionTableViewCell.swift; sourceTree = "<group>"; };
-		CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionTableViewCell.swift; sourceTree = "<group>"; };
 		CB936D37279E4B210047D4F5 /* BirthSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthSubView.swift; sourceTree = "<group>"; };
 		CB936D39279E4B880047D4F5 /* TextFieldStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStatus.swift; sourceTree = "<group>"; };
 		CB936D3B279E4BD50047D4F5 /* MainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 				CB936D3D279E4D690047D4F5 /* UITextField+Extension.swift */,
 				CBC6719D279FDF1A00722D78 /* String+Extension.swift */,
 				CBC671A327A0195F00722D78 /* Date+Extension.swift */,
+				CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -324,6 +331,7 @@
 				CB20989127969902005F6A73 /* MainButton.swift */,
 				CB936D3B279E4BD50047D4F5 /* MainTextField.swift */,
 				CBC671AB27A024C000722D78 /* MainTextFieldView.swift */,
+				CB29DD0527ABA1A100F1540D /* UserInfoView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				CB6C58122797A75D003C0F1E /* BaseViewController.swift */,
+				CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -401,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				CB1C362C27A1798600AF90DB /* MyPageViewController.swift */,
+				CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,8 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				CB736F4427A3DC25000E285D /* MyPageView.swift */,
-				CB736F4B27A3E608000E285D /* SecondSectionTableViewCell.swift */,
-				CB736F4D27A3E636000E285D /* FirstSectionTableViewCell.swift */,
+				CB29DD0127AB943F00F1540D /* ManageInfoView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -576,7 +585,6 @@
 				CB11F12B279AB4C300028234 /* APIService.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
-				CB736F4C27A3E608000E285D /* SecondSectionTableViewCell.swift in Sources */,
 				CBC671A427A0195F00722D78 /* Date+Extension.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
 				CB11F130279AFD6200028234 /* APIError.swift in Sources */,
@@ -594,8 +602,10 @@
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
 				CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */,
 				CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */,
+				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
+				CB29DD0627ABA1A100F1540D /* UserInfoView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
 				CB1C362F27A1798E00AF90DB /* FriendViewController.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
@@ -609,13 +619,15 @@
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
+				CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
+				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
 				CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
+				CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
-				CB736F4E27A3E636000E285D /* FirstSectionTableViewCell.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,
 				CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */,
 				CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */,

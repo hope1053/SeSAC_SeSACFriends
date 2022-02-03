@@ -23,11 +23,14 @@ class MyPageView: UIView {
     
     func configureView() {
         self.addSubview(tableView)
+        
+        tableView.isScrollEnabled = false
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }

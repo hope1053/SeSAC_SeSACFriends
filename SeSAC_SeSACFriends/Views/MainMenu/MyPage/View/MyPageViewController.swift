@@ -28,11 +28,19 @@ class MyPageViewController: BaseViewController {
     }
     
     func bind() {
-        viewModel.titleObservable
+        viewModel.data.title
             .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-                cell.textLabel?.text = "\(element) @ row \(row)"
+                cell.textLabel?.text = "\(element)"
+                cell.imageView?.image = self.viewModel.data.image[row]
                 return cell
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.tableView
+            .rx.itemSelected
+            .subscribe { [weak self] indexPath in
+                self?.navigationController?.pushViewController(ManageInfoViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }
@@ -41,5 +49,16 @@ class MyPageViewController: BaseViewController {
         super.configureView()
         
         mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+}
+
+extension MyPageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if indexPath.row == 0 {
+            return height * 0.1
+        } else {
+            return height * 0.05
+        }
     }
 }
