@@ -24,21 +24,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // idToken은 있는데 uid은 없는 경우 -> 인증은 완료했는데 회원가입은 하지 않은 상태이기 때문에 회원가입(닉네임 입력화면으로)
         // 둘 다 없으면 아무것도 안했기 때문에 온보딩 화면으로
         
-        let isFirstLaunch = UserDefaults.standard.string(forKey: "isFirstLaunch")
-        let idToken = UserDefaults.standard.string(forKey: "idToken")
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        
-        if isFirstLaunch != "no" {
-            window?.rootViewController = OnBoardingViewController()
-        } else {
-            if idToken != nil && uid != nil {
-                window?.rootViewController = MainTabBarController()
-            } else if idToken != nil && uid == nil {
-                window?.rootViewController = UINavigationController(rootViewController: UserNameViewController())
-            } else {
-                window?.rootViewController = UINavigationController(rootViewController: PhoneNumInputViewController())
-            }
-        }
+//        let isFirstLaunch = UserDefaults.standard.string(forKey: "isFirstLaunch")
+//        let idToken = UserDefaults.standard.string(forKey: "idToken")
+//        let uid = UserDefaults.standard.string(forKey: "uid")
+//
+//        if isFirstLaunch != "no" {
+//            window?.rootViewController = OnBoardingViewController()
+//        } else {
+//            if idToken != nil && uid != nil {
+//                window?.rootViewController = MainTabBarController()
+//            } else if idToken != nil && uid == nil {
+//                window?.rootViewController = UINavigationController(rootViewController: UserNameViewController())
+//            } else {
+//                window?.rootViewController = UINavigationController(rootViewController: PhoneNumInputViewController())
+//            }
+//        }
+        window?.rootViewController = TestViewController()
 
         window?.makeKeyAndVisible()
     }

@@ -5,7 +5,6 @@
 //  Created by 최혜린 on 2022/01/18.
 //
 
-import Foundation
 import UIKit
 
 class MainButton: UIButton {

@@ -38,6 +38,8 @@
 		CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */; };
 		CB29DD0627ABA1A100F1540D /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0527ABA1A100F1540D /* UserInfoView.swift */; };
 		CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */; };
+		CB29DD0A27ABAA6100F1540D /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0927ABAA6100F1540D /* TestViewController.swift */; };
+		CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */; };
 		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
 		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
@@ -109,6 +111,8 @@
 		CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		CB29DD0527ABA1A100F1540D /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewProtocol.swift; sourceTree = "<group>"; };
+		CB29DD0927ABAA6100F1540D /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButton.swift; sourceTree = "<group>"; };
 		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				CB20987D27968955005F6A73 /* Info.plist */,
 				CB6C582C2799A8F3003C0F1E /* SeSAC_SeSACFriendsRelease.entitlements */,
 				CB6C582B2799A8EB003C0F1E /* SeSAC_SeSACFriends.entitlements */,
+				CB29DD0927ABAA6100F1540D /* TestViewController.swift */,
 			);
 			path = SeSAC_SeSACFriends;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				CB20989127969902005F6A73 /* MainButton.swift */,
+				CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */,
 				CB936D3B279E4BD50047D4F5 /* MainTextField.swift */,
 				CBC671AB27A024C000722D78 /* MainTextFieldView.swift */,
 				CB29DD0527ABA1A100F1540D /* UserInfoView.swift */,
@@ -598,6 +604,7 @@
 				CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */,
 				CBC67191279FC56600722D78 /* OnBoardingView.swift in Sources */,
 				CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */,
+				CB29DD0A27ABAA6100F1540D /* TestViewController.swift in Sources */,
 				CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */,
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
 				CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */,
@@ -619,6 +626,7 @@
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
+				CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */,
 				CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
