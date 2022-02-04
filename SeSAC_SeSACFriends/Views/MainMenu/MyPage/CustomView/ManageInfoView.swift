@@ -17,7 +17,7 @@ class ManageInfoView: UIView, BaseView {
         return view
     }()
     
-    let cardView = UserInfoCardView(type: .user)
+    let cardView = UserInfoCardView(cardType: .user, reviewType: .moreThanOneReview)
     let userDetailView = UserDetailView()
 
     override init(frame: CGRect) {
@@ -49,7 +49,7 @@ class ManageInfoView: UIView, BaseView {
         
         cardView.snp.makeConstraints {
             $0.top.width.centerX.equalToSuperview()
-            $0.height.equalTo(250)
+//            $0.height.equalTo(250)
         }
         
         userDetailView.snp.makeConstraints {

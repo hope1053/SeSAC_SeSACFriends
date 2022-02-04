@@ -47,18 +47,19 @@ class MyPageViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        
+        title = "내 정보"
         mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        mainView.tableView.rowHeight = 75
     }
 }
 
-extension MyPageViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if indexPath.row == 0 {
-            return height * 0.1
-        } else {
-            return height * 0.05
-        }
-    }
-}
+//extension MyPageViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let height = UIScreen.main.bounds.height
+//        if indexPath.row == 0 {
+//            return height * 0.1
+//        } else {
+//            return height * 0.05
+//        }
+//    }
+//}

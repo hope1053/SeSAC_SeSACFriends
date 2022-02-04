@@ -37,20 +37,26 @@ class UserInfoCardView: UIView {
         stack.layer.cornerRadius = 8
         stack.axis = .vertical
         stack.distribution = .fill
-        stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         stack.isLayoutMarginsRelativeArrangement = true
+        stack.layer.borderWidth = 1
+        stack.layer.borderColor = UIColor.gray2?.cgColor
         return stack
     }()
     
     let nameView = UserNickNameView()
-    let reputationView = UserReputationView()
+    let reputationView: UserReputationView = {
+        let view = UserReputationView()
+        view.isHidden = true
+        return view
+    }()
     let hobbyView = UserHobbyView()
-    let reviewView = UserReviewView()
+    var reviewView = UserReviewView()
     
-    required init(type: CardViewType) {
+    required init(cardType: CardViewType, reviewType: ReviewViewType) {
         super.init(frame: .zero)
-        configureView(type: type)
-        setupConstraints(type: type)
+        configureView(cardType: cardType, reviewType: reviewType)
+        setupConstraints(type: cardType)
     }
     
     override init(frame: CGRect) {
@@ -61,8 +67,10 @@ class UserInfoCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView(type: CardViewType) {
-        switch type {
+    func configureView(cardType: CardViewType, reviewType: ReviewViewType) {
+        reviewView = UserReviewView(type: reviewType)
+        reviewView.isHidden = true
+        switch cardType {
         // 내정보 화면에서 사용할 때 (요청하기 버튼, 하고싶은 취미 없는 UI)
         case .user:
             [backgroundImageView, sesacImageView, stackView].forEach { subView in
@@ -80,6 +88,14 @@ class UserInfoCardView: UIView {
                 stackView.addArrangedSubview(subView)
             }
         }
+        
+        nameView.arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
+    }
+    
+    @objc func arrowTapped(_ button: UIButton) {
+        button.isSelected = !button.isSelected
+        reputationView.isHidden = !reputationView.isHidden
+        reviewView.isHidden = !reviewView.isHidden
     }
     
     func setupConstraints(type: CardViewType) {
@@ -96,12 +112,16 @@ class UserInfoCardView: UIView {
         stackView.snp.makeConstraints {
             $0.leading.trailing.equalTo(backgroundImageView)
             $0.top.equalTo(backgroundImageView.snp.bottom)
-//            $0.height.equalTo(200)
+            $0.bottom.equalToSuperview()
         }
         
         nameView.snp.makeConstraints {
             $0.height.equalTo(backgroundImageView).multipliedBy(0.25)
-            $0.bottom.equalToSuperview()
+//            $0.bottom.equalToSuperview()
+        }
+        
+        reputationView.snp.makeConstraints {
+            $0.height.equalTo(backgroundImageView).multipliedBy(0.8)
         }
         
         switch type {

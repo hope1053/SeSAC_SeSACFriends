@@ -20,7 +20,7 @@ extension UIFont {
     static let Title3_M14 = UIFont(name: NotoFont.medium.rawValue, size: 14)
     static let Title4_R14 = UIFont(name: NotoFont.regular.rawValue, size: 14)
     static let Title5_M12 = UIFont(name: NotoFont.medium.rawValue, size: 12)
-    static let Title5_R12 = UIFont(name: NotoFont.regular.rawValue, size: 12)
+    static let Title6_R12 = UIFont(name: NotoFont.regular.rawValue, size: 12)
     
     static let Body1_M16 = UIFont(name: NotoFont.medium.rawValue, size: 16)
     static let Body2_R16 = UIFont(name: NotoFont.regular.rawValue, size: 16)

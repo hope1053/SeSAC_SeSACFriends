@@ -17,7 +17,7 @@ class ManageInfoViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        
+        title = "정보 관리"
         view.addSubview(manageInfoView)
     }
     

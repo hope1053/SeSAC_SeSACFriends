@@ -8,6 +8,10 @@
 import UIKit
 
 class UserHobbyView: UIView, BaseView {
+    func configureView() {
+         
+    }
+    
     func setupConstraints() {
         print("")
     }
