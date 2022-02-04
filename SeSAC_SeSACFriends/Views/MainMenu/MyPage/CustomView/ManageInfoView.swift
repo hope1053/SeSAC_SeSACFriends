@@ -49,13 +49,13 @@ class ManageInfoView: UIView, BaseView {
         
         cardView.snp.makeConstraints {
             $0.top.width.centerX.equalToSuperview()
-//            $0.height.equalTo(250)
         }
         
         userDetailView.snp.makeConstraints {
             $0.top.equalTo(cardView.snp.bottom).offset(20)
             $0.width.centerX.equalToSuperview()
             $0.height.equalTo(height)
+            $0.bottom.equalToSuperview()
         }
     }
 }
