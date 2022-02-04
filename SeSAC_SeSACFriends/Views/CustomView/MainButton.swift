@@ -24,7 +24,6 @@ class MainButton: UIButton {
     
     func setupButton(title: String, type: ButtonStatus) {
         self.setTitle(title, for: .normal)
-        self.titleLabel?.font = .Body3_R14
         self.layer.cornerRadius = 8
         
         switch type {
@@ -42,6 +41,10 @@ class MainButton: UIButton {
             
         case .disable:
             self.disable()
+        case .canRequest:
+            self.canRequest()
+        case .alreadyRequested:
+            self.alreadyRequested()
         }
     }
 }

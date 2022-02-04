@@ -36,10 +36,22 @@
 		CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */; };
 		CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0127AB943F00F1540D /* ManageInfoView.swift */; };
 		CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */; };
-		CB29DD0627ABA1A100F1540D /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0527ABA1A100F1540D /* UserInfoView.swift */; };
+		CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0527ABA1A100F1540D /* UserInfoCardView.swift */; };
 		CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */; };
 		CB29DD0A27ABAA6100F1540D /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0927ABAA6100F1540D /* TestViewController.swift */; };
 		CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */; };
+		CB29DD1027ABB56400F1540D /* UserNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD0F27ABB56400F1540D /* UserNicknameView.swift */; };
+		CB29DD1227ABB56E00F1540D /* UserReputationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1127ABB56E00F1540D /* UserReputationView.swift */; };
+		CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1327ABB57500F1540D /* UserHobbyView.swift */; };
+		CB29DD1627ABB57C00F1540D /* UserReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1527ABB57C00F1540D /* UserReviewView.swift */; };
+		CB29DD1827ACAC6900F1540D /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1727ACAC6900F1540D /* UserDetailView.swift */; };
+		CB29DD1D27ACFCEB00F1540D /* GenderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1C27ACFCEB00F1540D /* GenderInfoView.swift */; };
+		CB29DD1F27AD041900F1540D /* HobbyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD1E27AD041800F1540D /* HobbyInfoView.swift */; };
+		CB29DD2127AD056300F1540D /* PhoneNumSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2027AD056300F1540D /* PhoneNumSearchView.swift */; };
+		CB29DD2327AD06B100F1540D /* FriendAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2227AD06B100F1540D /* FriendAgeView.swift */; };
+		CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = CB29DD2527AD090400F1540D /* MultiSlider */; };
+		CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */; };
+		CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2927AD134300F1540D /* WithDrawView.swift */; };
 		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
 		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
@@ -109,10 +121,21 @@
 		CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CB29DD0127AB943F00F1540D /* ManageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoView.swift; sourceTree = "<group>"; };
 		CB29DD0327AB944B00F1540D /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
-		CB29DD0527ABA1A100F1540D /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CB29DD0527ABA1A100F1540D /* UserInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCardView.swift; sourceTree = "<group>"; };
 		CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewProtocol.swift; sourceTree = "<group>"; };
 		CB29DD0927ABAA6100F1540D /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButton.swift; sourceTree = "<group>"; };
+		CB29DD0F27ABB56400F1540D /* UserNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNicknameView.swift; sourceTree = "<group>"; };
+		CB29DD1127ABB56E00F1540D /* UserReputationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReputationView.swift; sourceTree = "<group>"; };
+		CB29DD1327ABB57500F1540D /* UserHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHobbyView.swift; sourceTree = "<group>"; };
+		CB29DD1527ABB57C00F1540D /* UserReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewView.swift; sourceTree = "<group>"; };
+		CB29DD1727ACAC6900F1540D /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		CB29DD1C27ACFCEB00F1540D /* GenderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInfoView.swift; sourceTree = "<group>"; };
+		CB29DD1E27AD041800F1540D /* HobbyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyInfoView.swift; sourceTree = "<group>"; };
+		CB29DD2027AD056300F1540D /* PhoneNumSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumSearchView.swift; sourceTree = "<group>"; };
+		CB29DD2227AD06B100F1540D /* FriendAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAgeView.swift; sourceTree = "<group>"; };
+		CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
+		CB29DD2927AD134300F1540D /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
 		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6C582727992302003C0F1E /* Toast in Frameworks */,
+				CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */,
 				CB11F12E279AB5E000028234 /* Alamofire in Frameworks */,
 				CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */,
 				CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */,
@@ -337,9 +361,42 @@
 				CB29DD0B27ABAFFE00F1540D /* RequestButton.swift */,
 				CB936D3B279E4BD50047D4F5 /* MainTextField.swift */,
 				CBC671AB27A024C000722D78 /* MainTextFieldView.swift */,
-				CB29DD0527ABA1A100F1540D /* UserInfoView.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		CB29DD0D27ABB53A00F1540D /* UserInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				CB29DD0527ABA1A100F1540D /* UserInfoCardView.swift */,
+				CB29DD0E27ABB55200F1540D /* CardDetailView */,
+				CB29DD1727ACAC6900F1540D /* UserDetailView.swift */,
+				CB29DD1B27ACFCD500F1540D /* DetailStackView */,
+			);
+			path = UserInfoView;
+			sourceTree = "<group>";
+		};
+		CB29DD0E27ABB55200F1540D /* CardDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				CB29DD0F27ABB56400F1540D /* UserNicknameView.swift */,
+				CB29DD1127ABB56E00F1540D /* UserReputationView.swift */,
+				CB29DD1327ABB57500F1540D /* UserHobbyView.swift */,
+				CB29DD1527ABB57C00F1540D /* UserReviewView.swift */,
+			);
+			path = CardDetailView;
+			sourceTree = "<group>";
+		};
+		CB29DD1B27ACFCD500F1540D /* DetailStackView */ = {
+			isa = PBXGroup;
+			children = (
+				CB29DD1C27ACFCEB00F1540D /* GenderInfoView.swift */,
+				CB29DD1E27AD041800F1540D /* HobbyInfoView.swift */,
+				CB29DD2027AD056300F1540D /* PhoneNumSearchView.swift */,
+				CB29DD2227AD06B100F1540D /* FriendAgeView.swift */,
+				CB29DD2927AD134300F1540D /* WithDrawView.swift */,
+			);
+			path = DetailStackView;
 			sourceTree = "<group>";
 		};
 		CB6C58092797A689003C0F1E /* Enums */ = {
@@ -425,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				CB736F4627A3DDA8000E285D /* MyPageViewModel.swift */,
+				CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -434,6 +492,7 @@
 			children = (
 				CB736F4427A3DC25000E285D /* MyPageView.swift */,
 				CB29DD0127AB943F00F1540D /* ManageInfoView.swift */,
+				CB29DD0D27ABB53A00F1540D /* UserInfoView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -520,6 +579,7 @@
 				CB11F12D279AB5E000028234 /* Alamofire */,
 				CBC671A627A01D9A00722D78 /* FirebaseAuth */,
 				CBC671A827A01D9A00722D78 /* FirebaseMessaging */,
+				CB29DD2527AD090400F1540D /* MultiSlider */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -555,6 +615,7 @@
 				CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CB11F12C279AB5DF00028234 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -590,15 +651,20 @@
 			files = (
 				CB11F12B279AB4C300028234 /* APIService.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
+				CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
 				CBC671A427A0195F00722D78 /* Date+Extension.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
+				CB29DD1227ABB56E00F1540D /* UserReputationView.swift in Sources */,
 				CB11F130279AFD6200028234 /* APIError.swift in Sources */,
 				CB736F4527A3DC25000E285D /* MyPageView.swift in Sources */,
 				CB1C363327A17A5B00AF90DB /* MainTabBarController.swift in Sources */,
 				CB20988F279693D4005F6A73 /* UIFont+Extension.swift in Sources */,
+				CB29DD1627ABB57C00F1540D /* UserReviewView.swift in Sources */,
 				CB936D3C279E4BD50047D4F5 /* MainTextField.swift in Sources */,
 				CBC671A0279FE33300722D78 /* UserBirthView.swift in Sources */,
+				CB29DD1F27AD041900F1540D /* HobbyInfoView.swift in Sources */,
+				CB29DD1D27ACFCEB00F1540D /* GenderInfoView.swift in Sources */,
 				CB11F137279BAF2C00028234 /* SignUpViewModel.swift in Sources */,
 				CB11F13D279BB3C700028234 /* UserGenderViewController.swift in Sources */,
 				CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */,
@@ -612,30 +678,36 @@
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
-				CB29DD0627ABA1A100F1540D /* UserInfoView.swift in Sources */,
+				CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
+				CB29DD1827ACAC6900F1540D /* UserDetailView.swift in Sources */,
 				CB1C362F27A1798E00AF90DB /* FriendViewController.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
 				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
 				CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */,
+				CB29DD2127AD056300F1540D /* PhoneNumSearchView.swift in Sources */,
 				CB11F139279BB2A500028234 /* UserBirthViewController.swift in Sources */,
 				CB1C362327A1685C00AF90DB /* SignInUser.swift in Sources */,
 				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
 				CB11F129279AB49000028234 /* Endpoint.swift in Sources */,
+				CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */,
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
 				CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */,
+				CB29DD2327AD06B100F1540D /* FriendAgeView.swift in Sources */,
 				CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
 				CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
+				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 				CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
+				CB29DD1027ABB56400F1540D /* UserNicknameView.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,
 				CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */,
 				CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */,
@@ -872,6 +944,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -908,6 +988,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB2098932796A0E9005F6A73 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CB29DD2527AD090400F1540D /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
 		};
 		CB6C581F2799050D003C0F1E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

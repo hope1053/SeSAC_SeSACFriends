@@ -9,31 +9,28 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-    let testView = UserInfoView()
+    let manageView = ManageInfoView()
+    
+    override func loadView() {
+        self.view = manageView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+//        view.addSubview(cardView)
+//
+//        cardView.snp.makeConstraints {
+//            $0.width.equalToSuperview().multipliedBy(0.8)
+//            $0.center.equalToSuperview()
+//        }
     }
     
-    func configureView() {
-        view.addSubview(testView)
-        
-        testView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide).inset(10)
-        }
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    func configureView() {
+//        view.addSubview(manageView)
+//
+//        manageView.snp.makeConstraints {
+//            $0.edges.equalTo(view.safeAreaLayoutGuide)
+//        }
+//    }
 }

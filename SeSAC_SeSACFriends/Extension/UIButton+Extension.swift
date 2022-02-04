@@ -14,12 +14,14 @@ extension UIButton {
         self.setTitleColor(.customBlack, for: .normal)
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.gray4?.cgColor
+        self.titleLabel?.font = .Body3_R14
     }
     
     func fill() {
         self.backgroundColor = .brandGreen
         self.setTitleColor(.customWhite, for: .normal)
         self.layer.borderWidth = 0
+        self.titleLabel?.font = .Body3_R14
     }
     
     func outline() {
@@ -27,18 +29,33 @@ extension UIButton {
         self.setTitleColor(.brandGreen, for: .normal)
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.brandGreen?.cgColor
+        self.titleLabel?.font = .Body3_R14
     }
     
     func cancel() {
         self.backgroundColor = .gray2
         self.setTitleColor(.black, for: .normal)
         self.layer.borderWidth = 0
+        self.titleLabel?.font = .Body3_R14
     }
     
     func disable() {
         self.backgroundColor = .gray6
         self.setTitleColor(.gray3, for: .normal)
         self.layer.borderWidth = 0
+        self.titleLabel?.font = .Body3_R14
+    }
+    
+    func canRequest() {
+        self.backgroundColor = .systemError
+        self.setTitleColor(.customWhite, for: .normal)
+        self.titleLabel?.font = .Title3_M14
+    }
+    
+    func alreadyRequested() {
+        self.backgroundColor = .systemSuccess
+        self.setTitleColor(.customWhite, for: .normal)
+        self.titleLabel?.font = .Title3_M14
     }
     
     func alignTextBelow(spacing: CGFloat = 8.0) {

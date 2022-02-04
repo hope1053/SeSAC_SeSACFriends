@@ -13,4 +13,6 @@ enum ButtonStatus {
     case outline
     case cancel
     case disable
+    case canRequest
+    case alreadyRequested
 }

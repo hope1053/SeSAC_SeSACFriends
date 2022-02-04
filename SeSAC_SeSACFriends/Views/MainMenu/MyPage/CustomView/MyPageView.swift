@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 내 정보 TableView
 class MyPageView: UIView {
     
     let tableView = UITableView()
