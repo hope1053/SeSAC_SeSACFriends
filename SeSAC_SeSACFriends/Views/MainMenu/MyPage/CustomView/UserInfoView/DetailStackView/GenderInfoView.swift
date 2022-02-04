@@ -19,7 +19,7 @@ class GenderInfoView: UIView, BaseView {
     }()
     
     let manButton = MainButton(title: "남자", type: .inactive)
-    let womanButton = MainButton(title: "여자", type: .fill)
+    let womanButton = MainButton(title: "여자", type: .inactive)
     
     let totalStackView: UIStackView = {
         let stack = UIStackView()

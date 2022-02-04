@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class APIService {
+class UserAPI {
     
     static var header: HTTPHeaders = [
         "Content-Type": "application/x-www-form-urlencoded",
@@ -16,9 +16,10 @@ class APIService {
     ]
     
     // 로그인
-    static func signIn(completion: @escaping (APIStatus?) -> Void) {
+    static func signIn(completion: @escaping (SignInUser?, APIStatus?) -> Void) {
         AF.request(Endpoint.user.url, method: .get, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
+            print(statusCode)
             switch statusCode {
             case 200:
                 // 성공
@@ -28,20 +29,20 @@ class APIService {
                     print(result)
                     let uid = result.uid
                     UserDefaults.standard.set(uid, forKey: "uid")
+                    completion(result, APIStatus.success)
                 } catch {
                     print("error")
                 }
-                completion(APIStatus.success)
             case 406:
                 // 미가입 회원 -> 닉네임 입력창으로
-                completion(APIStatus.notMember)
+                completion(nil, APIStatus.notMember)
             case 401:
                 break
                 // firebase token error
             case 500:
-                completion(APIStatus.serverError)
+                completion(nil, APIStatus.serverError)
             default:
-                completion(APIStatus.serverError)
+                completion(nil, APIStatus.serverError)
             }
         }
     }

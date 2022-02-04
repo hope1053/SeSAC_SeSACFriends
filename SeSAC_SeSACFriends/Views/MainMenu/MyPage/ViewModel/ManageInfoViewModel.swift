@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxRelay
 
 class ManageInfoViewModel {
     
@@ -13,4 +14,21 @@ class ManageInfoViewModel {
     
     let minAge: CGFloat = 18
     let maxAge: CGFloat = 65
+    
+    let userInfo = PublishRelay<SignInUser>()
+    
+    func getUserInfo() {
+        UserAPI.signIn { data, status in
+            print("try login...")
+            guard let data = data else {return}
+            
+            switch status {
+            case .success:
+                print("login....yes")
+                self.userInfo.accept(data)
+            default:
+                break
+            }
+        }
+    }
 }

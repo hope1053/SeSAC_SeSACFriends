@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB11F129279AB49000028234 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F128279AB49000028234 /* Endpoint.swift */; };
-		CB11F12B279AB4C300028234 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F12A279AB4C300028234 /* APIService.swift */; };
+		CB11F12B279AB4C300028234 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F12A279AB4C300028234 /* UserAPI.swift */; };
 		CB11F12E279AB5E000028234 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB11F12D279AB5E000028234 /* Alamofire */; };
 		CB11F130279AFD6200028234 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F12F279AFD6200028234 /* APIError.swift */; };
 		CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11F133279B0D2300028234 /* HomeViewController.swift */; };
@@ -52,6 +52,7 @@
 		CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = CB29DD2527AD090400F1540D /* MultiSlider */; };
 		CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */; };
 		CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2927AD134300F1540D /* WithDrawView.swift */; };
+		CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */; };
 		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
 		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
@@ -93,7 +94,7 @@
 
 /* Begin PBXFileReference section */
 		CB11F128279AB49000028234 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		CB11F12A279AB4C300028234 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CB11F12A279AB4C300028234 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		CB11F12F279AFD6200028234 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		CB11F133279B0D2300028234 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB11F136279BAF2C00028234 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		CB29DD2227AD06B100F1540D /* FriendAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAgeView.swift; sourceTree = "<group>"; };
 		CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
 		CB29DD2927AD134300F1540D /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
+		CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAPI.swift; sourceTree = "<group>"; };
 		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				CB11F128279AB49000028234 /* Endpoint.swift */,
-				CB11F12A279AB4C300028234 /* APIService.swift */,
+				CB11F12A279AB4C300028234 /* UserAPI.swift */,
+				CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -649,7 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB11F12B279AB4C300028234 /* APIService.swift in Sources */,
+				CB11F12B279AB4C300028234 /* UserAPI.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
@@ -674,6 +677,7 @@
 				CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */,
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
 				CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */,
+				CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */,
 				CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */,
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,

@@ -92,10 +92,10 @@ class UserGenderViewController: BaseViewController {
         mainView.nextButton
             .rx.tap
             .bind {
-                APIService.signUp { error in
+                UserAPI.signUp { error in
                     switch error {
                     case .success:
-                        APIService.signIn { error in
+                        UserAPI.signIn { data, status in
                             switch error {
                             case .success:
                                 let tabBarController = MainTabBarController()

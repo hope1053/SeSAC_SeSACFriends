@@ -38,7 +38,7 @@ class HomeViewController: BaseViewController {
         button
             .rx.tap
             .bind {
-                APIService.withdraw { error in
+                UserAPI.withdraw { error in
                     switch error {
                     case .success:
                         let onboardingView = OnBoardingViewController()
