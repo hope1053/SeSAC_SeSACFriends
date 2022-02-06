@@ -17,6 +17,8 @@ class ManageInfoView: UIView, BaseView {
         return view
     }()
     
+    let contentView = UIView()
+    
     let cardView = UserInfoCardView(cardType: .user, reviewType: .moreThanOneReview)
     let userDetailView = UserDetailView()
 
@@ -33,9 +35,10 @@ class ManageInfoView: UIView, BaseView {
 
     func configureView() {
         self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
         
         [cardView, userDetailView].forEach { subView in
-            scrollView.addSubview(subView)
+            contentView.addSubview(subView)
         }
 
     }
@@ -44,7 +47,13 @@ class ManageInfoView: UIView, BaseView {
         let height = UIScreen.main.bounds.height * 0.45
         
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(20)
+            $0.trailing.leading.equalToSuperview().inset(20)
+            $0.top.bottom.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.top.centerX.bottom.equalToSuperview()
         }
         
         cardView.snp.makeConstraints {
@@ -52,7 +61,7 @@ class ManageInfoView: UIView, BaseView {
         }
         
         userDetailView.snp.makeConstraints {
-            $0.top.equalTo(cardView.snp.bottom).offset(20)
+            $0.top.equalTo(cardView.snp.bottom).offset(15)
             $0.width.centerX.equalToSuperview()
             $0.height.equalTo(height)
             $0.bottom.equalToSuperview()

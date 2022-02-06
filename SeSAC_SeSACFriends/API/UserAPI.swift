@@ -6,14 +6,39 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 import Alamofire
 
 class UserAPI {
     
-    static var header: HTTPHeaders = [
-        "Content-Type": "application/x-www-form-urlencoded",
-        "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
-    ]
+//    let apiState = PublishRelay<APIStatus>()
+//    let userResult = PublishRelay<SignInUser>()
+    
+//    static var header: HTTPHeaders = [
+//        "Content-Type": "application/x-www-form-urlencoded",
+//        "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
+//    ]
+    
+    static var header: HTTPHeaders {
+        [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
+        ]
+    }
+    
+//    fileprivate func basicAPIRequest(url: URL, method: HTTPMethod, headers: HTTPHeaders, parameters: Parameters?, completion: @escaping(Data?, APIStatus) -> Void) {
+//        if NetworkManager.shared.isReachable {
+//            AF.request(url, method: method, parameters: parameters, headers: headers).validate().response { response in
+//                guard let value = response.value else { return }
+//                let statusCode = APIStatus(rawValue: response.response?.statusCode ?? 500)!
+//
+//                completion(value, statusCode)
+//            }
+//        } else {
+//            completion(nil, .noConnection)
+//        }
+//    }
     
     // 로그인
     static func signIn(completion: @escaping (SignInUser?, APIStatus?) -> Void) {
@@ -37,8 +62,8 @@ class UserAPI {
                 // 미가입 회원 -> 닉네임 입력창으로
                 completion(nil, APIStatus.notMember)
             case 401:
-                break
                 // firebase token error
+                TokenAPI.updateIDToken()
             case 500:
                 completion(nil, APIStatus.serverError)
             default:
@@ -46,6 +71,11 @@ class UserAPI {
             }
         }
     }
+//    func signIn() {
+//        basicAPIRequest(url: .get, method: Endpoint.user.url, headers: header, parameters: nil) { data, status in
+//            <#code#>
+//        }
+//    }
     
     // 회원가입
     static func signUp(completion: @escaping (APIStatus?) -> Void) {
@@ -68,7 +98,7 @@ class UserAPI {
                 completion(APIStatus.success)
             case 401:
                 // firebase token error
-                break
+                TokenAPI.updateIDToken()
             case 406:
                 completion(APIStatus.alreadyWithdraw)
             case 500:
@@ -90,6 +120,7 @@ class UserAPI {
                 completion(APIStatus.success)
             case 401:
                 // firebase token error
+                TokenAPI.updateIDToken()
                 break
             case 406:
                 completion(APIStatus.alreadyWithdraw)
@@ -99,9 +130,5 @@ class UserAPI {
                 break
             }
         }
-    }
-    
-    static func updateFCMToken() {
-        
     }
 }

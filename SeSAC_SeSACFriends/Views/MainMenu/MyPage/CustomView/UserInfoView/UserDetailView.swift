@@ -44,7 +44,10 @@ class UserDetailView: UIView, BaseView {
     
     func setupConstraints() {
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.leading.equalToSuperview().inset(5)
         }
+        
+        
     }
 }

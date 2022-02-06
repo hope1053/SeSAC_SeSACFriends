@@ -37,8 +37,6 @@ class UserNickNameView: UIView, BaseView {
         [userNickNameLabel, arrowButton].forEach { subView in
             self.addSubview(subView)
         }
-        
-//        arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
     }
     
     func setupConstraints() {
@@ -52,9 +50,4 @@ class UserNickNameView: UIView, BaseView {
             $0.top.trailing.bottom.equalToSuperview()
         }
     }
-    
-//    @objc func arrowTapped(_ button: UIButton) {
-//        button.isSelected = !button.isSelected
-//    }
-    
 }

@@ -7,7 +7,12 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class WithDrawView: UIView, BaseView {
+    
+    let disposeBag = DisposeBag()
     
     let withdrawButton: UIButton = {
         let button = UIButton()
@@ -22,10 +27,21 @@ class WithDrawView: UIView, BaseView {
         
         configureView()
         setupConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func bind() {
+        withdrawButton
+            .rx.tap
+            .bind { _ in
+                print("tapped")
+                CustomAlertView.shared.showAlert(title: "정말 탈퇴하시겠습니까?", subTitle: "탈퇴하시면 새싹 프렌즈를 이용할 수 없어요ㅠ")
+            }
+            .disposed(by: disposeBag)
     }
     
     func configureView() {
@@ -35,7 +51,8 @@ class WithDrawView: UIView, BaseView {
     func setupConstraints() {
         withdrawButton.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.centerY.equalToSuperview()
+//            $0.centerY.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
         }
     }
 }

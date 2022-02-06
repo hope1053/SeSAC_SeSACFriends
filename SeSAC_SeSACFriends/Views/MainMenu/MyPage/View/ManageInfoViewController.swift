@@ -62,17 +62,3 @@ class ManageInfoViewController: BaseViewController {
         }
     }
 }
-
-//let id: String
-//let reputation: [Int]
-//let comment: [String]
-//let sesacCollection, backgroundCollection: [Int]
-//let purchaseToken, transactionID, reviewedBefore, reportedUser: [String]
-//let uid, phoneNumber, fcMtoken, nick: String
-//let birth, email: String
-//let gender, sesac: Int
-//let hobby: String
-//let dodgepenalty, background, ageMin, ageMax: Int
-//let dodgeNum, searchable, reportedNum: Int
-//let createdAt: String
-//let v: Int
