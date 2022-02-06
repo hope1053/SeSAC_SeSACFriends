@@ -81,6 +81,7 @@
 		CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D44279E7F090047D4F5 /* OnBoardingViewModel.swift */; };
 		CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */; };
 		CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */; };
+		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
 		CBC6718B279FC3E500722D78 /* UserGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6718A279FC3E500722D78 /* UserGenderView.swift */; };
 		CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6718D279FC49B00722D78 /* UserEmailView.swift */; };
@@ -169,6 +170,7 @@
 		CB936D44279E7F090047D4F5 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
 		CBC6718A279FC3E500722D78 /* UserGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderView.swift; sourceTree = "<group>"; };
 		CBC6718D279FC49B00722D78 /* UserEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				CBC6719D279FDF1A00722D78 /* String+Extension.swift */,
 				CBC671A327A0195F00722D78 /* Date+Extension.swift */,
 				CB29DCFF27AB865400F1540D /* UIViewController+Extension.swift */,
+				CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				CB29DD1027ABB56400F1540D /* UserNicknameView.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,
 				CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */,
+				CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */,
 				CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */,
 				CBC6718B279FC3E500722D78 /* UserGenderView.swift in Sources */,
 				CBC671A227A0133500722D78 /* Gender.swift in Sources */,

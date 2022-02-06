@@ -13,6 +13,9 @@ class FloatingGenderButton: UIView, BaseView {
         let button = MainButton(title: "전체", type: .inactive)
         button.layer.cornerRadius = 0
         button.layer.borderWidth = 0
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 8
+        button.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return button
     }()
     
@@ -27,6 +30,9 @@ class FloatingGenderButton: UIView, BaseView {
         let button = MainButton(title: "여자", type: .inactive)
         button.layer.cornerRadius = 0
         button.layer.borderWidth = 0
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 8
+        button.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         return button
     }()
     
@@ -35,24 +41,16 @@ class FloatingGenderButton: UIView, BaseView {
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
-        stack.layer.cornerRadius = 8
-        stack.clipsToBounds = true
-//        stack.layer.borderWidth = 1
-////        stack.layer.masksToBounds = false
-//        stack.layer.shadowColor = UIColor.black.cgColor
-//        stack.layer.shadowOffset = CGSize(width:0, height: 5)
+        stack.addShadow()
         return stack
     }()
     
     let updateLocationButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .customWhite
-        button.layer.cornerRadius = 8
-        button.layer.borderWidth = 1
-//        button.layer.masksToBounds = false
-//        button.layer.shadowColor = UIColor.customBlack?.cgColor
-//        button.layer.shadowOffset = CGSize(width:0, height: 5)
         button.setImage(UIImage(named: "place"), for: .normal)
+        button.layer.cornerRadius = 8
+        button.addShadow()
         return button
     }()
     
