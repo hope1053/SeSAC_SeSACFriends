@@ -10,12 +10,13 @@ import UIKit
 class FloatingGenderButton: UIView, BaseView {
     
     let totalButton: MainButton = {
-        let button = MainButton(title: "전체", type: .inactive)
+        let button = MainButton(title: "전체", type: .fill)
+        button.isSelected = true
         button.layer.cornerRadius = 0
         button.layer.borderWidth = 0
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 8
-        button.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        button.cornerRadiusToSpecificCorner(corners: [.layerMaxXMinYCorner, .layerMinXMinYCorner])
+        
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -23,6 +24,8 @@ class FloatingGenderButton: UIView, BaseView {
         let button = MainButton(title: "남자", type: .inactive)
         button.layer.cornerRadius = 0
         button.layer.borderWidth = 0
+        
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -30,9 +33,9 @@ class FloatingGenderButton: UIView, BaseView {
         let button = MainButton(title: "여자", type: .inactive)
         button.layer.cornerRadius = 0
         button.layer.borderWidth = 0
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 8
-        button.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        button.cornerRadiusToSpecificCorner(corners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
+        
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -86,5 +89,21 @@ class FloatingGenderButton: UIView, BaseView {
             $0.height.equalTo(updateLocationButton.snp.width)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    @objc func genderButtonTapped(_ tappedButton: UIButton) {
+        if !tappedButton.isSelected {
+            [totalButton, manButton, womanButton].forEach { button in
+                if button != tappedButton {
+                    button.inactive()
+                    button.isSelected = false
+                } else {
+                    button.fill()
+                    button.isSelected = true
+                }
+                button.layer.borderWidth = 0
+            }
+        }
+        
     }
 }

@@ -15,4 +15,10 @@ extension UIView {
         layer.shadowOffset = offset
         layer.shadowRadius = radius
     }
+    
+    func cornerRadiusToSpecificCorner(radius: CGFloat = 8, corners: CACornerMask) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = corners
+    }
 }
