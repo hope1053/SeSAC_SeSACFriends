@@ -7,14 +7,18 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class CustomAlertView: UIView, BaseView {
+    
+    let disposeBag = DisposeBag()
     
     static let shared = CustomAlertView()
     
     let bgView: UIView = {
         let view = UIView()
-        view.backgroundColor = .customBlack
-        view.alpha = 0.5
+        view.backgroundColor = .customBlack!.withAlphaComponent(0.5)
         return view
     }()
     
@@ -58,6 +62,7 @@ class CustomAlertView: UIView, BaseView {
         
         configureView()
         setupConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -78,18 +83,24 @@ class CustomAlertView: UIView, BaseView {
     }
     
     func setupConstraints() {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        
         bgView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.width.equalTo(screenWidth)
+            $0.height.equalTo(screenHeight)
+            $0.leading.top.equalToSuperview()
         }
         
         messageView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.height.equalToSuperview().multipliedBy(0.2)
+            $0.height.equalToSuperview().multipliedBy(0.18)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.leading.trailing.top.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.top.equalToSuperview().inset(15)
         }
         
         subTitleLabel.snp.makeConstraints {
@@ -99,8 +110,9 @@ class CustomAlertView: UIView, BaseView {
         
         buttonStackView.snp.makeConstraints {
             $0.leading.trailing.equalTo(subTitleLabel)
-            $0.top.equalTo(subTitleLabel.snp.bottom).offset(10)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(15)
+            $0.height.equalTo(messageView.snp.height).multipliedBy(0.3)
+            $0.bottom.equalToSuperview().inset(15)
         }
     }
     
@@ -111,19 +123,12 @@ class CustomAlertView: UIView, BaseView {
         UIApplication.shared.keyWindow?.addSubview(bgView)
     }
     
-//    func showAlert(title: String, message: String, alertType: AlertType) {
-//           self.titleLbl.text = title
-//           self.messageLbl.text = message
-//
-//           switch alertType {
-//           case .success:
-//               img.image = UIImage(named: "Success")
-//               doneBtn.backgroundColor =  colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-//           case .failure:
-//               img.image = UIImage(named: "Failure")
-//               doneBtn.backgroundColor =  colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-//           }
-//
-//           UIApplication.shared.keyWindow?.addSubview(parentView)
-//    }
+    func bind() {
+        cancelButton
+            .rx.tap
+            .bind { _ in
+                self.bgView.removeFromSuperview()
+            }
+            .disposed(by: disposeBag)
+    }
 }

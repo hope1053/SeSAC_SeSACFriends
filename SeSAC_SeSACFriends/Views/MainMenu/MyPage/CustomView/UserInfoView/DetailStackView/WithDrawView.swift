@@ -38,8 +38,27 @@ class WithDrawView: UIView, BaseView {
         withdrawButton
             .rx.tap
             .bind { _ in
-                print("tapped")
                 CustomAlertView.shared.showAlert(title: "정말 탈퇴하시겠습니까?", subTitle: "탈퇴하시면 새싹 프렌즈를 이용할 수 없어요ㅠ")
+            }
+            .disposed(by: disposeBag)
+        
+        CustomAlertView.shared.okButton
+            .rx.tap
+            .bind { _ in
+                UserAPI.withdraw { error in
+                    switch error {
+                    case .success:
+                        let onboardingView = OnBoardingViewController()
+                        let sd = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                        sd?.window?.rootViewController = onboardingView
+                    case .alreadyWithdraw:
+                        self.makeToast("이미 탈퇴된 회원", duration: 1.0, position: .bottom)
+                    case .serverError:
+                        self.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                    default:
+                        self.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                    }
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -51,7 +70,6 @@ class WithDrawView: UIView, BaseView {
     func setupConstraints() {
         withdrawButton.snp.makeConstraints {
             $0.leading.equalToSuperview()
-//            $0.centerY.equalToSuperview()
             $0.top.bottom.equalToSuperview()
         }
     }
