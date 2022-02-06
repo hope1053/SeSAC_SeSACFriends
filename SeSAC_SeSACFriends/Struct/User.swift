@@ -18,6 +18,11 @@ struct User {
     let birth = BehaviorRelay<Date>(value: Date())
     let email = BehaviorRelay<String>(value: "")
     let gender = BehaviorRelay<Gender>(value: .unknown)
+    
+    let searchable = BehaviorRelay<Int>(value: 0)
+    let ageMin = BehaviorRelay<Int>(value: 0)
+    let ageMax = BehaviorRelay<Int>(value: 0)
+    let hobby = BehaviorRelay<String>(value: "")
 }
 
 class UserInfo {

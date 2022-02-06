@@ -39,6 +39,7 @@ class MyPageViewController: BaseViewController {
         
         mainView.tableView
             .rx.itemSelected
+            .filter { $0.row == 0 }
             .subscribe { [weak self] indexPath in
                 self?.navigationController?.pushViewController(ManageInfoViewController(), animated: true)
             }

@@ -131,4 +131,21 @@ class UserAPI {
             }
         }
     }
+    
+    static func updateInfo(completion: @escaping (APIstatus) -> Void) {
+        let user = User.shared
+        
+        let parameter: [String: Any] = [
+            "searchable": user.searchable.value,
+            "ageMin": user.ageMin.value,
+            "ageMax": user.ageMax.value,
+            "gender": user.gender.value.rawValue,
+            "hobby": user.hobby.value,
+        ]
+        
+        AF.request(Endpoint.update.url, method: .post, parameters: parameter, headers: header).validate().response { response in
+            let APIStatus = APIstatus(rawValue: response.response?.statusCode ?? 500) ?? APIstatus.serverError
+            completion(APIStatus)
+        }
+    }
 }

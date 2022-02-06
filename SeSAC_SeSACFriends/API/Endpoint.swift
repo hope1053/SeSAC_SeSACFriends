@@ -11,6 +11,7 @@ import Alamofire
 enum Endpoint {
     case user
     case withdraw
+    case update
 }
 
 extension Endpoint {
@@ -20,6 +21,8 @@ extension Endpoint {
             return .makeEndpoint("user")
         case .withdraw:
             return .makeEndpoint("user/withdraw")
+        case .update:
+            return .makeEndpoint("user/update/mypage")
         }
     }
 }

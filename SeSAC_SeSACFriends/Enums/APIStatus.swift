@@ -23,18 +23,9 @@ enum APIStatus: String {
 //    case invalidToken
 }
 
-//enum APIStatus: Int {
-//    case noConnection = 0
-//    case success = 200
-//    case notMember = 406
-//    case serverError = 500
-//    case forbiddenName = 202
-//    case alreadyMember = 201
-//    case firebaseTokenError = 401
-////    case alreadyWithdraw =
-////    case invalidResponse
-////    case noData
-////    case failed
-////    case invalidData
-////    case invalidToken
-//}
+enum APIstatus: Int {
+    case success = 200
+    case firebaseTokenError = 401
+    case notMember = 406
+    case serverError = 500
+}

@@ -26,7 +26,7 @@ class MyPageView: UIView {
         self.addSubview(tableView)
         
         tableView.isScrollEnabled = false
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func setupConstraints() {

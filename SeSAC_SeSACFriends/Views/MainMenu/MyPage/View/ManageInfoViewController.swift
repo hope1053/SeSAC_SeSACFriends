@@ -6,7 +6,9 @@
 //
 
 import UIKit
+
 import RxSwift
+import RxCocoa
 
 class ManageInfoViewController: BaseViewController {
     
@@ -24,6 +26,34 @@ class ManageInfoViewController: BaseViewController {
     }
     
     func bind() {
+        manageInfoView.userDetailView.phoneSearch.isAllowedSwitch
+            .rx.isOn
+            .map { $0 ? 1 : 0 }
+            .bind(to: viewModel.user.searchable)
+            .disposed(by: disposeBag)
+        
+//        manageInfoView.userDetailView.hobby.hobbyTextField.textField
+//            .rx.text
+//            .bind(to: viewModel.user.hobby)
+//            .disposed(by: disposeBag)
+        manageInfoView.userDetailView.hobby.hobbyTextField.textField
+            .rx.text
+            .orEmpty
+            .bind(to: viewModel.user.hobby)
+            .disposed(by: disposeBag)
+        
+        manageInfoView.userDetailView.gender.womanButton
+            .rx.tap
+            .map { Gender.woman }
+            .bind(to: viewModel.user.gender)
+            .disposed(by: disposeBag)
+        
+        manageInfoView.userDetailView.gender.manButton
+            .rx.tap
+            .map { Gender.man }
+            .bind(to: viewModel.user.gender)
+            .disposed(by: disposeBag)
+        
         viewModel.userInfo
             .bind { info in
                 self.manageInfoView.cardView.nameView.userNickNameLabel.text = info.nick
@@ -48,17 +78,39 @@ class ManageInfoViewController: BaseViewController {
                 userDetailView.friendAgeView.ageSlider.value = [CGFloat(info.ageMin), CGFloat(info.ageMax)]
             }
             .disposed(by: disposeBag)
+        
+        
     }
     
     override func configureView() {
         super.configureView()
+        
         title = "정보 관리"
+        
         view.addSubview(manageInfoView)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
     }
     
     override func setupConstraints() {
         manageInfoView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func saveButtonTapped() {
+        print("성별!!!!!!!", viewModel.user.gender.value)
+        UserAPI.updateInfo() { status in
+            switch status {
+            case .success:
+                self.view.makeToast("저장이 완료되었습니다.", duration: 1.0, position: .bottom)
+            case .firebaseTokenError:
+                self.view.makeToast("파베에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+                TokenAPI.updateIDToken()
+            case .notMember:
+                self.view.makeToast("미가입 회원입니다.", duration: 1.0, position: .bottom)
+            case .serverError:
+                self.view.makeToast("서버에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+            }
         }
     }
 }
