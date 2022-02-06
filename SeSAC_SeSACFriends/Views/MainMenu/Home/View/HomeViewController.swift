@@ -14,46 +14,34 @@ import RxSwift
 
 class HomeViewController: BaseViewController {
     
+    let mapView = HomeMapView()
+    
+    let floatingButton = FloatingGenderButton()
+    
     let disposeBag = DisposeBag()
-    let button = MainButton(title: "탈퇴버튼", type: .fill)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(button)
-        
-        button.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.width.equalTo(48)
-        }
-        
-        bind()
     }
     
     override func configureView() {
         super.configureView()
+        self.navigationController?.isNavigationBarHidden = true
+        view.addSubview(mapView)
+        view.addSubview(floatingButton)
     }
     
-    func bind() {
-        button
-            .rx.tap
-            .bind {
-                CustomAlertView.shared.showAlert(title: "정말 탈퇴하시겠습니까?", subTitle: "탈퇴하시면 새싹 프렌즈를 이용할 수 없어요ㅠ")
-//                UserAPI.withdraw { error in
-//                    switch error {
-//                    case .success:
-//                        let onboardingView = OnBoardingViewController()
-//                        let sd = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-//                        sd?.window?.rootViewController = onboardingView
-//                    case .alreadyWithdraw:
-//                        self.view.makeToast("이미 탈퇴된 회원", duration: 1.0, position: .bottom)
-//                    case .serverError:
-//                        self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
-//                    default:
-//                        self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
-//                    }
-//                }
-            }
-            .disposed(by: disposeBag)
+    override func setupConstraints() {
+        mapView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        floatingButton.snp.makeConstraints {
+            $0.width.equalTo(48)
+            $0.height.equalTo(212)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.equalToSuperview().inset(10)
+        }
     }
 }

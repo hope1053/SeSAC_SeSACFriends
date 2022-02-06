@@ -55,6 +55,8 @@
 		CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */; };
 		CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1527AD88030097D2B5 /* NetworkManager.swift */; };
 		CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */; };
+		CB51ED1B27AF76F90097D2B5 /* HomeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1A27AF76F80097D2B5 /* HomeMapView.swift */; };
+		CB51ED1D27AF7F7F0097D2B5 /* FloatingGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */; };
 		CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */; };
 		CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580A2797A695003C0F1E /* ButtonStatus.swift */; };
 		CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */; };
@@ -142,6 +144,8 @@
 		CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAPI.swift; sourceTree = "<group>"; };
 		CB51ED1527AD88030097D2B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		CB51ED1A27AF76F80097D2B5 /* HomeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapView.swift; sourceTree = "<group>"; };
+		CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingGenderButton.swift; sourceTree = "<group>"; };
 		CB6C58072797A3C2003C0F1E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CB6C580A2797A695003C0F1E /* ButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatus.swift; sourceTree = "<group>"; };
 		CB6C580F2797A740003C0F1E /* PhoneNumInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumInputViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CB11F132279B0D1B00028234 /* View */,
+				CB51ED1927AF76E70097D2B5 /* CustomView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -406,6 +411,15 @@
 				CB29DD2927AD134300F1540D /* WithDrawView.swift */,
 			);
 			path = DetailStackView;
+			sourceTree = "<group>";
+		};
+		CB51ED1927AF76E70097D2B5 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CB51ED1A27AF76F80097D2B5 /* HomeMapView.swift */,
+				CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		CB6C58092797A689003C0F1E /* Enums */ = {
@@ -694,6 +708,7 @@
 				CB29DD1827ACAC6900F1540D /* UserDetailView.swift in Sources */,
 				CB1C362F27A1798E00AF90DB /* FriendViewController.swift in Sources */,
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
+				CB51ED1B27AF76F90097D2B5 /* HomeMapView.swift in Sources */,
 				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
 				CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */,
 				CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */,
@@ -719,6 +734,7 @@
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 				CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
+				CB51ED1D27AF7F7F0097D2B5 /* FloatingGenderButton.swift in Sources */,
 				CB29DD1027ABB56400F1540D /* UserNicknameView.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,
 				CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */,
