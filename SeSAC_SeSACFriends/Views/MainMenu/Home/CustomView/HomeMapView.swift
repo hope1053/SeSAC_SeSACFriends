@@ -10,7 +10,17 @@ import MapKit
 
 class HomeMapView: UIView, BaseView {
     
-    let mapView = MKMapView()
+    let mapView: MKMapView = {
+        let view = MKMapView()
+        view.setCameraZoomRange(MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50, maxCenterCoordinateDistance: 3000), animated: true)
+        return view
+    }()
+    
+    let markerView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "map_marker")
+        return view
+    }()
     
     let statusButton: UIButton = {
         let button = UIButton()
@@ -30,7 +40,7 @@ class HomeMapView: UIView, BaseView {
     }
     
     func configureView() {
-        [mapView, statusButton].forEach { subView in
+        [mapView, markerView, statusButton].forEach { subView in
             self.addSubview(subView)
         }
     }
@@ -38,6 +48,12 @@ class HomeMapView: UIView, BaseView {
     func setupConstraints() {
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        markerView.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.13)
+            $0.height.equalTo(markerView.snp.width)
+            $0.center.equalToSuperview()
         }
         
         statusButton.snp.makeConstraints {

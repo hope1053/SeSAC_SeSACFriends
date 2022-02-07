@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 class QueueViewModel {
     
     let user = User.shared
+    
+    var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 }
