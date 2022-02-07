@@ -49,6 +49,8 @@ class HomeViewController: BaseViewController {
         [mapView, floatingButton].forEach { subView in
             view.addSubview(subView)
         }
+        
+        mapView.mapView.delegate = self
     }
     
     override func setupConstraints() {
@@ -89,7 +91,13 @@ class HomeViewController: BaseViewController {
     func bind() {
         floatingButton.updateLocationButton
             .rx.tap
-            .bind { self.updateRegion(coordinate: self.viewModel.currentCoordinate) }
+            .bind { self.backToCurrentLocation() }
+            .disposed(by: disposeBag)
+        
+        viewModel.user.long
+            .subscribe { long in
+                print(long)
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -183,7 +191,10 @@ extension HomeViewController: CLLocationManagerDelegate {
             viewModel.currentCoordinate = coordinate
             locationManager!.stopUpdatingLocation()
             if isFirstUpdate {
-                updateRegion(coordinate: coordinate)
+                viewModel.user.lat.accept(coordinate.latitude)
+                viewModel.user.long.accept(coordinate.longitude)
+                
+                backToCurrentLocation()
                 isFirstUpdate = false
             }
         }
@@ -195,9 +206,21 @@ extension HomeViewController: CLLocationManagerDelegate {
         print(#function)
     }
     
-    func updateRegion(coordinate: CLLocationCoordinate2D) {
+    func backToCurrentLocation() {
+        let coordinate = viewModel.currentCoordinate
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 700, longitudinalMeters: 700)
         mapView.mapView.setRegion(region, animated: true)
+        
+        viewModel.user.lat.accept(coordinate.latitude)
+        viewModel.user.long.accept(coordinate.longitude)
     }
+}
 
+extension HomeViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let centerCoordinate = mapView.centerCoordinate
+        
+        viewModel.user.lat.accept(centerCoordinate.latitude)
+        viewModel.user.long.accept(centerCoordinate.longitude)
+    }
 }
