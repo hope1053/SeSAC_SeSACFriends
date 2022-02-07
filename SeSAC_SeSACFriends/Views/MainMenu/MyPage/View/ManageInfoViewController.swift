@@ -9,6 +9,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import MultiSlider
 
 class ManageInfoViewController: BaseViewController {
     
@@ -79,7 +80,7 @@ class ManageInfoViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
+        manageInfoView.userDetailView.friendAgeView.ageSlider.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
     }
     
     override func configureView() {
@@ -98,7 +99,6 @@ class ManageInfoViewController: BaseViewController {
     }
     
     @objc func saveButtonTapped() {
-        print("성별!!!!!!!", viewModel.user.gender.value)
         UserAPI.updateInfo() { status in
             switch status {
             case .success:
@@ -112,5 +112,15 @@ class ManageInfoViewController: BaseViewController {
                 self.view.makeToast("서버에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
             }
         }
+    }
+    
+    @objc func sliderChanged(_ slider: MultiSlider) {
+        let value = slider.value
+        let minAge = Int(value[0])
+        let maxAge = Int(value[1])
+        
+        manageInfoView.userDetailView.friendAgeView.AgeLabel.text = "\(minAge) - \(maxAge)"
+        viewModel.user.ageMin.accept(minAge)
+        viewModel.user.ageMax.accept(maxAge)
     }
 }

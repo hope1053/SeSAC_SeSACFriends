@@ -52,6 +52,8 @@ class FriendAgeView: UIView, BaseView {
         slider.showsThumbImageShadow = false // wide tracks look better without thumb shadow
         // Thumb끼리 겹칠 수 있도록 설정 (allow thumbs to overlap)
         slider.keepsDistanceBetweenThumbs = true
+        // interval 설정
+        slider.snapStepSize = 1
         return slider
     }()
     
