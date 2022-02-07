@@ -44,14 +44,13 @@ class UserAPI {
     static func signIn(completion: @escaping (SignInUser?, APIStatus?) -> Void) {
         AF.request(Endpoint.user.url, method: .get, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
-            print(statusCode)
+            
             switch statusCode {
             case 200:
                 // 성공
                 guard let value = response.value else {return}
                 do {
                     let result = try JSONDecoder().decode(SignInUser.self, from: value!)
-                    print(result)
                     let uid = result.uid
                     UserDefaults.standard.set(uid, forKey: "uid")
                     completion(result, APIStatus.success)

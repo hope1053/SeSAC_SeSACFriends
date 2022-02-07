@@ -13,7 +13,7 @@ class UserHobbyView: UIView, BaseView {
     }
     
     func setupConstraints() {
-        print("")
+        
     }
     
     

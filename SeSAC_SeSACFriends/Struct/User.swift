@@ -23,6 +23,10 @@ struct User {
     let ageMin = BehaviorRelay<Int>(value: 0)
     let ageMax = BehaviorRelay<Int>(value: 0)
     let hobby = BehaviorRelay<String>(value: "")
+    
+    let region = BehaviorRelay<Int>(value: 0)
+    let lat = BehaviorRelay<Double>(value: 0)
+    let long = BehaviorRelay<Double>(value: 0)
 }
 
 class UserInfo {

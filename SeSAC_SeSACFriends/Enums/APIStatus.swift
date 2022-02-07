@@ -28,4 +28,5 @@ enum APIstatus: Int {
     case firebaseTokenError = 401
     case notMember = 406
     case serverError = 500
+    case clientError = 501
 }

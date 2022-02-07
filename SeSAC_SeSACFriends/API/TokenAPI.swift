@@ -12,7 +12,6 @@ class TokenAPI {
     static func updateIDToken() {
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { token, error in
             if let error = error {
-                print(error)
                 return;
             }
             print("ID token: \(token!)")

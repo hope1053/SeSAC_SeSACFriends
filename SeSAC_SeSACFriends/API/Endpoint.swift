@@ -12,6 +12,7 @@ enum Endpoint {
     case user
     case withdraw
     case update
+    case onQueue
 }
 
 extension Endpoint {
@@ -23,6 +24,8 @@ extension Endpoint {
             return .makeEndpoint("user/withdraw")
         case .update:
             return .makeEndpoint("user/update/mypage")
+        case .onQueue:
+            return .makeEndpoint("queue/onqueue")
         }
     }
 }

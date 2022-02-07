@@ -24,7 +24,7 @@
 		CB1C363327A17A5B00AF90DB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1C363227A17A5B00AF90DB /* MainTabBarController.swift */; };
 		CB20987027968952005F6A73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20986F27968952005F6A73 /* AppDelegate.swift */; };
 		CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20987127968952005F6A73 /* SceneDelegate.swift */; };
-		CB20987927968955005F6A73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB20987827968955005F6A73 /* Assets.xcassets */; };
+		CB20987927968955005F6A73 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB20987827968955005F6A73 /* Image.xcassets */; };
 		CB20987C27968955005F6A73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB20987A27968955005F6A73 /* LaunchScreen.storyboard */; };
 		CB20988427968BAE005F6A73 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB20988327968BAE005F6A73 /* Colors.xcassets */; };
 		CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20988627968E87005F6A73 /* UIColor+Extension.swift */; };
@@ -52,6 +52,9 @@
 		CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = CB29DD2527AD090400F1540D /* MultiSlider */; };
 		CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */; };
 		CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2927AD134300F1540D /* WithDrawView.swift */; };
+		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
+		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
+		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
 		CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */; };
 		CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1527AD88030097D2B5 /* NetworkManager.swift */; };
 		CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */; };
@@ -116,7 +119,7 @@
 		CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB20986F27968952005F6A73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB20987127968952005F6A73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB20987827968955005F6A73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB20987827968955005F6A73 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		CB20987B27968955005F6A73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB20987D27968955005F6A73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB20988327968BAE005F6A73 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -143,6 +146,9 @@
 		CB29DD2227AD06B100F1540D /* FriendAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAgeView.swift; sourceTree = "<group>"; };
 		CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
 		CB29DD2927AD134300F1540D /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
+		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
+		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
+		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
 		CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAPI.swift; sourceTree = "<group>"; };
 		CB51ED1527AD88030097D2B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				CB11F128279AB49000028234 /* Endpoint.swift */,
 				CB11F12A279AB4C300028234 /* UserAPI.swift */,
 				CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */,
+				CB4902D927B1043800878ED2 /* QueueAPI.swift */,
 				CB51ED1527AD88030097D2B5 /* NetworkManager.swift */,
 			);
 			path = API;
@@ -219,6 +226,7 @@
 		CB11F131279B0D1700028234 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CB4902DD27B109F400878ED2 /* ViewModel */,
 				CB11F132279B0D1B00028234 /* View */,
 				CB51ED1927AF76E70097D2B5 /* CustomView */,
 			);
@@ -256,6 +264,7 @@
 			children = (
 				CB1C362027A0499100AF90DB /* User.swift */,
 				CB1C362227A1685C00AF90DB /* SignInUser.swift */,
+				CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -357,7 +366,7 @@
 			children = (
 				CB20988D279692B4005F6A73 /* Fonts */,
 				CB20988327968BAE005F6A73 /* Colors.xcassets */,
-				CB20987827968955005F6A73 /* Assets.xcassets */,
+				CB20987827968955005F6A73 /* Image.xcassets */,
 				CB736F4027A3BBE8000E285D /* TabBarIcon.xcassets */,
 				CB736F4827A3DEB6000E285D /* Icon.xcassets */,
 			);
@@ -417,6 +426,14 @@
 				CB29DD2927AD134300F1540D /* WithDrawView.swift */,
 			);
 			path = DetailStackView;
+			sourceTree = "<group>";
+		};
+		CB4902DD27B109F400878ED2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CB51ED1927AF76E70097D2B5 /* CustomView */ = {
@@ -672,7 +689,7 @@
 				CB20987C27968955005F6A73 /* LaunchScreen.storyboard in Resources */,
 				CB736F4927A3DEB6000E285D /* Icon.xcassets in Resources */,
 				CB20988427968BAE005F6A73 /* Colors.xcassets in Resources */,
-				CB20987927968955005F6A73 /* Assets.xcassets in Resources */,
+				CB20987927968955005F6A73 /* Image.xcassets in Resources */,
 				CB20989B2796A26C005F6A73 /* NotoSansKR-Regular.otf in Resources */,
 				CB736F4127A3BBE9000E285D /* TabBarIcon.xcassets in Resources */,
 				CB6C581B27990467003C0F1E /* GoogleService-Info.plist in Resources */,
@@ -686,12 +703,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */,
 				CB11F12B279AB4C300028234 /* UserAPI.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */,
 				CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
 				CBC671A427A0195F00722D78 /* Date+Extension.swift in Sources */,
+				CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
 				CB29DD1227ABB56E00F1540D /* UserReputationView.swift in Sources */,
 				CB11F130279AFD6200028234 /* APIStatus.swift in Sources */,
@@ -744,6 +763,7 @@
 				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
 				CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
+				CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,

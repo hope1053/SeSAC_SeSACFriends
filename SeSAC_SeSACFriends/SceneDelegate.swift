@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isFirstLaunch = UserDefaults.standard.string(forKey: "isFirstLaunch")
         let idToken = UserDefaults.standard.string(forKey: "idToken")
         let uid = UserDefaults.standard.string(forKey: "uid")
+        print(idToken)
 
         if isFirstLaunch != "no" {
             window?.rootViewController = OnBoardingViewController()
