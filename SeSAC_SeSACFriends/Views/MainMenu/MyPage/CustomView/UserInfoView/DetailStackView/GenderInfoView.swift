@@ -18,8 +18,17 @@ class GenderInfoView: UIView, BaseView {
         return label
     }()
     
-    let manButton = MainButton(title: "남자", type: .inactive)
-    let womanButton = MainButton(title: "여자", type: .inactive)
+    let manButton: MainButton = {
+        let button = MainButton(title: "남자", type: .inactive)
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    let womanButton: MainButton = {
+        let button = MainButton(title: "여자", type: .inactive)
+        button.addTarget(self, action: #selector(genderButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     let totalStackView: UIStackView = {
         let stack = UIStackView()
@@ -71,4 +80,17 @@ class GenderInfoView: UIView, BaseView {
         }
     }
     
+    @objc func genderButtonTapped(_ tappedButton: UIButton) {
+        if !tappedButton.isSelected {
+            [manButton, womanButton].forEach { button in
+                if button == tappedButton {
+                    button.fill()
+                    button.isSelected = true
+                } else {
+                    button.inactive()
+                    button.isSelected = false
+                }
+            }
+        }
+    }
 }

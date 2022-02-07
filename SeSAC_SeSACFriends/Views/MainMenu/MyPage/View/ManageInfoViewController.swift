@@ -32,10 +32,6 @@ class ManageInfoViewController: BaseViewController {
             .bind(to: viewModel.user.searchable)
             .disposed(by: disposeBag)
         
-//        manageInfoView.userDetailView.hobby.hobbyTextField.textField
-//            .rx.text
-//            .bind(to: viewModel.user.hobby)
-//            .disposed(by: disposeBag)
         manageInfoView.userDetailView.hobby.hobbyTextField.textField
             .rx.text
             .orEmpty
@@ -60,9 +56,13 @@ class ManageInfoViewController: BaseViewController {
                 
                 let userDetailView = self.manageInfoView.userDetailView
                 
+                self.viewModel.user.gender.accept(Gender(rawValue: info.gender)!)
+                
                 if info.gender == 0 {
+                    userDetailView.gender.womanButton.isSelected = true
                     userDetailView.gender.womanButton.fill()
                 } else if info.gender == 1 {
+                    userDetailView.gender.manButton.isSelected = true
                     userDetailView.gender.manButton.fill()
                 }
                 

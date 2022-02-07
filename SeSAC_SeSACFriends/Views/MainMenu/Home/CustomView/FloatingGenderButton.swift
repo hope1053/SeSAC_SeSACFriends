@@ -104,6 +104,5 @@ class FloatingGenderButton: UIView, BaseView {
                 button.layer.borderWidth = 0
             }
         }
-        
     }
 }
