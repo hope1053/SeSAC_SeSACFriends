@@ -12,7 +12,10 @@ class HomeMapView: UIView, BaseView {
     
     let mapView: MKMapView = {
         let view = MKMapView()
-        view.setCameraZoomRange(MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50, maxCenterCoordinateDistance: 3000), animated: true)
+        // 확대축소 배율 설정
+        view.setCameraZoomRange(MKMapView.CameraZoomRange(minCenterCoordinateDistance: 100, maxCenterCoordinateDistance: 6000), animated: true)
+        // 지도 회전 안되게 설정
+        view.isRotateEnabled = false
         return view
     }()
     

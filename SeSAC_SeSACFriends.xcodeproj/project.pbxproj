@@ -55,6 +55,7 @@
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
+		CB4902E327B176CC00878ED2 /* SeSACFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902E227B176CC00878ED2 /* SeSACFace.swift */; };
 		CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */; };
 		CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1527AD88030097D2B5 /* NetworkManager.swift */; };
 		CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */; };
@@ -149,6 +150,7 @@
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
+		CB4902E227B176CC00878ED2 /* SeSACFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFace.swift; sourceTree = "<group>"; };
 		CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAPI.swift; sourceTree = "<group>"; };
 		CB51ED1527AD88030097D2B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				CB6C582F2799B8A7003C0F1E /* RequestStatus.swift */,
 				CB11F12F279AFD6200028234 /* APIStatus.swift */,
 				CBC671A127A0133500722D78 /* Gender.swift */,
+				CB4902E227B176CC00878ED2 /* SeSACFace.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */,
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
 				CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */,
+				CB4902E327B176CC00878ED2 /* SeSACFace.swift in Sources */,
 				CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */,
 				CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */,
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,

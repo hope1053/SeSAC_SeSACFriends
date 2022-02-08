@@ -67,27 +67,6 @@ class HomeViewController: BaseViewController {
         }
     }
     
-//    func test() {
-//        viewModel.user.region.accept(1275130688)
-//        viewModel.user.lat.accept(37.517819364682694)
-//        viewModel.user.long.accept(126.88647317074734)
-//
-//        QueueAPI.onQueue { data, status in
-//            switch status {
-//            case .success:
-//                print(data)
-//            case .firebaseTokenError:
-//                print("firebaseTokenError")
-//            case .notMember:
-//                self.view.makeToast("회원이 아님", duration: 1.0, position: .bottom)
-//            case .serverError:
-//                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
-//            case .clientError:
-//                print("잘못보내셨음..확인하세용^^")
-//            }
-//        }
-//    }
-    
     func bind() {
         floatingButton.updateLocationButton
             .rx.tap
@@ -97,8 +76,23 @@ class HomeViewController: BaseViewController {
         viewModel.user.long
             .subscribe { long in
                 print(long)
+                self.callFriendData()
             }
             .disposed(by: disposeBag)
+    }
+    
+    func callFriendData() {
+        viewModel.updateRegion()
+        viewModel.callFriendData { status in
+            switch status {
+            case .notMember:
+                self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
+            case .serverError:
+                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -152,7 +146,6 @@ extension HomeViewController {
             break
         }
     }
-    
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -214,9 +207,34 @@ extension HomeViewController: CLLocationManagerDelegate {
         viewModel.user.lat.accept(coordinate.latitude)
         viewModel.user.long.accept(coordinate.longitude)
     }
+    
+    func addAnnotation() {
+        let annotations = mapView.mapView.annotations
+        mapView.mapView.removeAnnotations(annotations)
+        
+//        for 
+    }
+    
+    //func setTheaterAnnotations(_ theaterType: String) {
+    //    let annotations = mapView.annotations
+    //    mapView.removeAnnotations(annotations)
+    //
+    //    for location in theaterCoordinates.mapAnnotations {
+    //        if location.type == theaterType {
+    //            let theaterCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+    //            let theaterAnnotation = MKPointAnnotation()
+    //            theaterAnnotation.title = location.location
+    //            theaterAnnotation.coordinate = theaterCoordinate
+    //
+    //            mapView.addAnnotation(theaterAnnotation)
+    //        }
+    //    }
+    //}
+
 }
 
 extension HomeViewController: MKMapViewDelegate {
+    // 지도 인터랙션 생길 때 마다 중심 위치 viewModel에 업데이트
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinate = mapView.centerCoordinate
         

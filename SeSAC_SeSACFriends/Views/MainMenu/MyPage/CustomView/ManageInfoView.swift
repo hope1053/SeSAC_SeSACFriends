@@ -19,7 +19,7 @@ class ManageInfoView: UIView, BaseView {
     
     let contentView = UIView()
     
-    let cardView = UserInfoCardView(cardType: .user, reviewType: .moreThanOneReview)
+    let cardView = UserInfoCardView(cardType: .user, reviewType: .noReview)
     let userDetailView = UserDetailView()
 
     override init(frame: CGRect) {

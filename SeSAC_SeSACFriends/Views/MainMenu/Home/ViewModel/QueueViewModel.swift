@@ -7,15 +7,18 @@
 
 import Foundation
 import CoreLocation
+import RxRelay
 
 class QueueViewModel {
     
     let user = User.shared
     
+    let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
+    
     var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     // user의 lat, long으로 region 계산해서 user.region에 넣어주는 메서드
-    func getRegion() {
+    func updateRegion() {
         let lat = user.lat.value + 90
         let long = user.long.value + 180
         
@@ -40,5 +43,25 @@ class QueueViewModel {
         let firstFiveCharacters = String(stringNum.prefix(5))
         
         return firstFiveCharacters
+    }
+    
+    func callFriendData(completion: @escaping (APIstatus) -> Void) {
+        QueueAPI.onQueue { data, status in
+            switch status {
+            case .success:
+                guard let data = data else { return }
+                print(data)
+                self.friendData.accept(data)
+            case .firebaseTokenError:
+                print("여기서 파이어베이스 토큰 에러가 발생했음.........")
+                TokenAPI.updateIDToken()
+                QueueAPI.onQueue { data, status in
+                    guard let data = data else { return }
+                    self.friendData.accept(data)
+                }
+            default:
+                completion(status)
+            }
+        }
     }
 }

@@ -10,7 +10,8 @@ import Foundation
 // MARK: - FriendSESAC
 struct FriendSESAC: Codable {
     // fromQueueDB: 다른 사용자 목록, fromQueueDBRequested: 나에게 요청한 다른 사용자의 목록
-    let fromQueueDB, fromQueueDBRequested: [FromQueueDB]
+    let fromQueueDB: [FromQueueDB]
+    let fromQueueDBRequested: [FromQueueDB]
     // fromRecommend: 서비스에서 추천하는 취미 배열
     let fromRecommend: [String]
 }

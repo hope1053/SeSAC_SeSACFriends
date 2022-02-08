@@ -18,7 +18,7 @@ class QueueAPI {
         ]
     }
     
-    static func onQueue(completion: ((FriendSESAC?, APIstatus) -> Void)?) {
+    static func onQueue(completion: @escaping (FriendSESAC?, APIstatus) -> Void) {
         let user = User.shared
         
         let parameter: [String: Any] = [
@@ -35,19 +35,12 @@ class QueueAPI {
                 guard let data = response.value else {return}
                 do {
                     let result = try JSONDecoder().decode(FriendSESAC.self, from: data!)
-                    completion!(result, APIstatus.success)
+                    completion(result, APIstatus.success)
                 } catch {
-                    completion!(nil, APIstatus.serverError)
+                    completion(nil, APIstatus.serverError)
                 }
-            case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                QueueAPI.onQueue(completion: nil)
-            case .notMember:
-                completion!(nil, APIstatus.notMember)
-            case .serverError:
-                completion!(nil, APIstatus.serverError)
-            case .clientError:
-                completion!(nil, APIstatus.clientError)
+            default:
+                completion(nil, APIStatus)
             }
         }
     }
