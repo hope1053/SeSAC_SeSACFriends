@@ -14,15 +14,15 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class HomeViewController: BaseViewController {
-    
-    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+final class HomeViewController: BaseViewController {
     
     let viewModel = QueueViewModel()
     
     var locationManager: CLLocationManager?
     
     var isFirstUpdate: Bool = true
+    
+    var currentGender: Gender = .unknown
     
     let mapView = HomeMapView()
     
@@ -37,8 +37,6 @@ class HomeViewController: BaseViewController {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        callFriendData()
-//        addCustomPin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +53,10 @@ class HomeViewController: BaseViewController {
         }
         
         mapView.mapView.delegate = self
+        
+        [floatingButton.totalButton, floatingButton.manButton, floatingButton.womanButton].forEach { button in
+            button.addTarget(self, action: #selector(filterAnnotation), for: .touchUpInside)
+        }
     }
     
     override func setupConstraints() {
@@ -77,22 +79,20 @@ class HomeViewController: BaseViewController {
             .bind { self.backToCurrentLocation() }
             .disposed(by: disposeBag)
         
-        viewModel.user.long
-            .subscribe { long in
-                print(long)
-                self.callFriendData()
+        viewModel.friendData
+            .bind { friendData in
+                self.addAnnotation(self.viewModel.filterFriendData(gender: self.currentGender))
             }
             .disposed(by: disposeBag)
         
-        viewModel.friendData
-            .bind { friendData in
-                self.addAnnotation(self.viewModel.filterFriendData(data: friendData))
+        viewModel.user.region
+            .subscribe { region in
+                self.callFriendData()
             }
             .disposed(by: disposeBag)
     }
     
     func callFriendData() {
-        viewModel.updateRegion()
         viewModel.callFriendData { status in
             switch status {
             case .notMember:
@@ -107,15 +107,6 @@ class HomeViewController: BaseViewController {
 }
 
 extension HomeViewController {
-    
-    private func addCustomPin() {
-        let pin = MKPointAnnotation()
-        //포인트 어노테이션은 뭔가요?
-        pin.coordinate = sesacCoordinate
-        pin.title = "새싹 영등포캠퍼스"
-        pin.subtitle = "전체 3층짜리 건물"
-        mapView.mapView.addAnnotation(pin)
-    }
     
     // 위치 서비스가 켜져있는지 확인
     func checkUserLocationServicesAuthorization() {
@@ -143,11 +134,8 @@ extension HomeViewController {
         switch authorizationStatus {
         // 사용자가 아직 위치 권한 허용 여부를 선택하지 않은 경우
         case .notDetermined:
-            // 앱이 받고 싶어하는 위치 데이터의 정확도 설정
             locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-            // 위치 권한 요청
             locationManager!.requestWhenInUseAuthorization()
-            // 위치 접근 시작하는 method, 초기 위치 수정 사항에 대해 가져오고 didUpdateLocations 메서드를 통해 delegate에게 알려줌
             locationManager!.startUpdatingLocation()
         // 위치권한이 없는 경우
         case .restricted, .denied:
@@ -182,23 +170,6 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     // 사용자가 위치 허용을 한 경우 현재 위치로 mapView 변경하기
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-//        if let coordinate = locations.last?.coordinate {
-////            let annotation = MKPointAnnotation()
-////            annotation.title = "현재 위치"
-////            annotation.coordinate = coordinate
-////            mapView.mapView.addAnnotation(annotation)
-//
-//            // 지도의 중심 바꾸기
-//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//            let region = MKCoordinateRegion(center: coordinate, span: span)
-//            mapView.mapView.setRegion(region, animated: true)
-//
-//            // 업데이트가 너무 많이 되는 경우, 비효율적 -> 업데이트 멈춰달라고 요청 (비슷한 반경에서)
-//            locationManager!.stopUpdatingLocation()
-//        } else {
-//            // 위치 찾을 수 없는 경우
-//        }
         if let coordinate = locations.last?.coordinate {
             viewModel.currentCoordinate = coordinate
             locationManager!.stopUpdatingLocation()
@@ -249,6 +220,8 @@ extension HomeViewController: MKMapViewDelegate {
         
         viewModel.user.lat.accept(centerCoordinate.latitude)
         viewModel.user.long.accept(centerCoordinate.longitude)
+        
+        viewModel.updateRegion(lat: centerCoordinate.latitude, long: centerCoordinate.longitude)
     }
     
     // Custom annotation 생성
@@ -269,5 +242,17 @@ extension HomeViewController: MKMapViewDelegate {
         annotationView?.image = UIImage(named: "sesac_face_5")
         
         return annotationView
+    }
+    
+    @objc func filterAnnotation(_ sender: UIButton) {
+        if sender.currentTitle == "전체" {
+            currentGender = .unknown
+        } else if sender.currentTitle == "남자" {
+            currentGender = .man
+        } else {
+            currentGender = .woman
+        }
+        
+        addAnnotation(viewModel.filterFriendData(gender: self.currentGender))
     }
 }
