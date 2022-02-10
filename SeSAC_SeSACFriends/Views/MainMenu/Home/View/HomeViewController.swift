@@ -76,7 +76,14 @@ final class HomeViewController: BaseViewController {
     func bind() {
         floatingButton.updateLocationButton
             .rx.tap
-            .bind { self.backToCurrentLocation() }
+            .bind { _ in
+                if CLLocationManager.locationServicesEnabled() {
+                    self.backToCurrentLocation()
+                } else {
+                    self.showFakeRegion()
+                    CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+                }
+            }
             .disposed(by: disposeBag)
         
         viewModel.friendData
@@ -88,6 +95,16 @@ final class HomeViewController: BaseViewController {
         viewModel.user.region
             .subscribe { region in
                 self.callFriendData()
+            }
+            .disposed(by: disposeBag)
+        
+        CustomAlertView.shared.okButton
+            .rx.tap
+            .bind { _ in
+                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -104,9 +121,15 @@ final class HomeViewController: BaseViewController {
             }
         }
     }
+    
+    func showFakeRegion() {
+        viewModel.currentCoordinate = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
+        backToCurrentLocation()
+    }
 }
 
-extension HomeViewController {
+// MARK: 사용자 위치 권한 관련 메서드
+extension HomeViewController: CLLocationManagerDelegate {
     
     // 위치 서비스가 켜져있는지 확인
     func checkUserLocationServicesAuthorization() {
@@ -123,8 +146,9 @@ extension HomeViewController {
         if CLLocationManager.locationServicesEnabled() {
             checkCurrentLocationAuthorization(authorizationStatus)
         } else {
-            // iOS 위치 권한을 허락해달라는 alert 띄우기
-            print("iOS 위치 서비스 켜주세요")
+            // iOS 위치 서비스를 활성화해달라는 alert 띄우기
+            showFakeRegion()
+            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
         }
     }
     
@@ -140,22 +164,14 @@ extension HomeViewController {
         // 위치권한이 없는 경우
         case .restricted, .denied:
             // alert 창을 통해 설정으로 이동하는 코드
-            break
-        case .authorizedAlways:
-            // 언제든지 위치 서비스를 사용할 수 있도록 승인한 상태(백그라운드 포함)
-            print(authorizationStatus)
-        case .authorizedWhenInUse:
-            // 앱을 사용하는 동안만 위치 서비스를 사용할 수 있도록 승인한 상태 => didUpdateLocations 실행
+            showFakeRegion()
+            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+        case .authorizedAlways, .authorizedWhenInUse:
             locationManager!.startUpdatingLocation()
-        case .authorized:
-            print(authorizationStatus)
         @unknown default:
             break
         }
     }
-}
-
-extension HomeViewController: CLLocationManagerDelegate {
     
     // 사용자가 권한 상태를 변경할 때 마다 실행되는 메서드 두 개
     // 1. iOS14 미만
@@ -180,6 +196,9 @@ extension HomeViewController: CLLocationManagerDelegate {
                 backToCurrentLocation()
                 isFirstUpdate = false
             }
+        } else {
+            // 위치를 파악할 수 없어서? 여기서 처리를 해줘야되나?
+            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
         }
         
     }
@@ -189,6 +208,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         print(#function)
     }
     
+    // 현재 위치로 돌아가는 메서드
     func backToCurrentLocation() {
         let coordinate = viewModel.currentCoordinate
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 700, longitudinalMeters: 700)
@@ -197,6 +217,10 @@ extension HomeViewController: CLLocationManagerDelegate {
         viewModel.user.lat.accept(coordinate.latitude)
         viewModel.user.long.accept(coordinate.longitude)
     }
+}
+
+// MARK: Annotation 및 MapViewDelegate 관련 메서드
+extension HomeViewController: MKMapViewDelegate {
     
     func addAnnotation(_ dataArray: [FromQueueDB]) {
         print(dataArray)
@@ -211,9 +235,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             mapView.mapView.addAnnotation(annotation)
         }
     }
-}
-
-extension HomeViewController: MKMapViewDelegate {
+    
     // 지도 인터랙션 생길 때 마다 중심 위치 viewModel에 업데이트
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinate = mapView.centerCoordinate
@@ -244,6 +266,7 @@ extension HomeViewController: MKMapViewDelegate {
         return annotationView
     }
     
+    // 성별 필터링 버튼 탭 될 때 마다 성별 변경 및 annotation 새로 추가
     @objc func filterAnnotation(_ sender: UIButton) {
         if sender.currentTitle == "전체" {
             currentGender = .unknown

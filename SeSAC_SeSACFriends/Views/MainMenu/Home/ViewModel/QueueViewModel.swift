@@ -15,6 +15,7 @@ class QueueViewModel {
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
     
+    // 사용자의 진짜 현재 위치
     var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     // user의 lat, long으로 region 계산해서 user.region에 넣어주는 메서드
@@ -25,8 +26,7 @@ class QueueViewModel {
         let stringLat = deleteDecimal(num: lat)
         let stringLong = deleteDecimal(num: long)
         let region = Int(stringLat + stringLong) ?? 0
-        
-        print(stringLat, stringLong, region)
+    
         user.region.accept(region)
     }
     
@@ -57,7 +57,6 @@ class QueueViewModel {
     }
     
     func filterFriendData(gender: Gender) -> [FromQueueDB] {
-//        return data.fromQueueDB
         var friendList = friendData.value.fromQueueDB
         
         if gender != .unknown {

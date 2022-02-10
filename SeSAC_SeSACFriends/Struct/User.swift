@@ -24,6 +24,7 @@ struct User {
     let ageMax = BehaviorRelay<Int>(value: 0)
     let hobby = BehaviorRelay<String>(value: "")
     
+    // API에 request 넣을 지도상 위치
     let region = BehaviorRelay<Int>(value: 0)
     let lat = BehaviorRelay<Double>(value: 0)
     let long = BehaviorRelay<Double>(value: 0)
