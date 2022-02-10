@@ -50,7 +50,6 @@ class QueueViewModel {
             switch status {
             case .success:
                 guard let data = data else { return }
-                print(data)
                 self.friendData.accept(data)
             case .firebaseTokenError:
                 print("여기서 파이어베이스 토큰 에러가 발생했음.........")
@@ -63,5 +62,9 @@ class QueueViewModel {
                 completion(status)
             }
         }
+    }
+    
+    func filterFriendData(data: FriendSESAC) -> [FromQueueDB] {
+        return data.fromQueueDB
     }
 }

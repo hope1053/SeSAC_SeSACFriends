@@ -16,6 +16,8 @@ import RxSwift
 
 class HomeViewController: BaseViewController {
     
+    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+    
     let viewModel = QueueViewModel()
     
     var locationManager: CLLocationManager?
@@ -35,6 +37,8 @@ class HomeViewController: BaseViewController {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
+        callFriendData()
+//        addCustomPin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +83,12 @@ class HomeViewController: BaseViewController {
                 self.callFriendData()
             }
             .disposed(by: disposeBag)
+        
+        viewModel.friendData
+            .bind { friendData in
+                self.addAnnotation(self.viewModel.filterFriendData(data: friendData))
+            }
+            .disposed(by: disposeBag)
     }
     
     func callFriendData() {
@@ -97,6 +107,15 @@ class HomeViewController: BaseViewController {
 }
 
 extension HomeViewController {
+    
+    private func addCustomPin() {
+        let pin = MKPointAnnotation()
+        //포인트 어노테이션은 뭔가요?
+        pin.coordinate = sesacCoordinate
+        pin.title = "새싹 영등포캠퍼스"
+        pin.subtitle = "전체 3층짜리 건물"
+        mapView.mapView.addAnnotation(pin)
+    }
     
     // 위치 서비스가 켜져있는지 확인
     func checkUserLocationServicesAuthorization() {
@@ -208,29 +227,19 @@ extension HomeViewController: CLLocationManagerDelegate {
         viewModel.user.long.accept(coordinate.longitude)
     }
     
-    func addAnnotation() {
+    func addAnnotation(_ dataArray: [FromQueueDB]) {
+        print(dataArray)
         let annotations = mapView.mapView.annotations
         mapView.mapView.removeAnnotations(annotations)
         
-//        for 
+        for data in dataArray {
+            let coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.long)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            
+            mapView.mapView.addAnnotation(annotation)
+        }
     }
-    
-    //func setTheaterAnnotations(_ theaterType: String) {
-    //    let annotations = mapView.annotations
-    //    mapView.removeAnnotations(annotations)
-    //
-    //    for location in theaterCoordinates.mapAnnotations {
-    //        if location.type == theaterType {
-    //            let theaterCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-    //            let theaterAnnotation = MKPointAnnotation()
-    //            theaterAnnotation.title = location.location
-    //            theaterAnnotation.coordinate = theaterCoordinate
-    //
-    //            mapView.addAnnotation(theaterAnnotation)
-    //        }
-    //    }
-    //}
-
 }
 
 extension HomeViewController: MKMapViewDelegate {
@@ -240,5 +249,25 @@ extension HomeViewController: MKMapViewDelegate {
         
         viewModel.user.lat.accept(centerCoordinate.latitude)
         viewModel.user.long.accept(centerCoordinate.longitude)
+    }
+    
+    // Custom annotation 생성
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+
+        var annotationView = self.mapView.mapView.dequeueReusableAnnotationView(withIdentifier: "Custom")
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Custom")
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        annotationView?.image = UIImage(named: "sesac_face_5")
+        
+        return annotationView
     }
 }
