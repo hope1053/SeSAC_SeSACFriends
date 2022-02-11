@@ -100,6 +100,7 @@
 		CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CBC671A627A01D9A00722D78 /* FirebaseAuth */; };
 		CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CBC671A827A01D9A00722D78 /* FirebaseMessaging */; };
 		CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC671AB27A024C000722D78 /* MainTextFieldView.swift */; };
+		CBEF8AFA27B55AC70040F905 /* FriendSearchingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF8AF927B55AC70040F905 /* FriendSearchingStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +193,7 @@
 		CBC671A127A0133500722D78 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		CBC671A327A0195F00722D78 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CBC671AB27A024C000722D78 /* MainTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextFieldView.swift; sourceTree = "<group>"; };
+		CBEF8AF927B55AC70040F905 /* FriendSearchingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchingStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +459,7 @@
 				CB11F12F279AFD6200028234 /* APIStatus.swift */,
 				CBC671A127A0133500722D78 /* Gender.swift */,
 				CB4902E227B176CC00878ED2 /* SeSACFace.swift */,
+				CBEF8AF927B55AC70040F905 /* FriendSearchingStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
+				CBEF8AFA27B55AC70040F905 /* FriendSearchingStatus.swift in Sources */,
 				CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
 				CB29DD1827ACAC6900F1540D /* UserDetailView.swift in Sources */,

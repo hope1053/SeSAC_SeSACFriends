@@ -42,4 +42,13 @@ class UserInfo {
             UserDefaults.standard.set(newValue, forKey: "userName")
         }
     }
+    
+    var friendSearchingStatus: FriendSearchingStatus {
+        get {
+            FriendSearchingStatus(rawValue: UserDefaults.standard.string(forKey: "friendSearchingStatus") ?? "") ?? .none
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "friendSearchingStatus")
+        }
+    }
 }

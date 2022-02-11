@@ -107,6 +107,15 @@ final class HomeViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        mapView.statusButton
+            .rx.tap
+            .bind { _ in
+                if self.viewModel.user.gender.value == .unknown {
+                    CustomAlertView.shared.showAlert(title: "새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", subTitle: "성별을 설정해주세요")
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     func callFriendData() {
