@@ -111,7 +111,7 @@ class ManageInfoViewController: BaseViewController {
             case .serverError:
                 self.view.makeToast("서버에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
             case .clientError:
-                print("")
+                break
             }
         }
     }

@@ -45,6 +45,7 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
         checkStatus()
         isFirstUpdate = true
     }
@@ -131,9 +132,22 @@ final class HomeViewController: BaseViewController {
         mapView.statusButton
             .rx.tap
             .bind { _ in
-                print(self.viewModel.user.gender.value)
                 if self.viewModel.user.gender.value == .unknown {
                     self.noGenderView.showAlert(title: "새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", subTitle: "성별을 설정해주세요")
+                } else {
+                    let queueStatus = UserInfo.shared.currentQueueState
+                    print(queueStatus)
+                    var vc = UIViewController()
+                    switch queueStatus {
+                    case .status_default:
+                        vc = AddHobbyViewController()
+                    case .status_matching:
+                        vc = SearchFriendViewController()
+                    case .status_matched:
+                        vc = ChatViewController()
+                    }
+                    print(vc)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -160,7 +174,6 @@ final class HomeViewController: BaseViewController {
     func checkStatus() {
         viewModel.checkMyStatus { state, status in
             let currentStatus = UserInfo.shared.currentQueueState
-            print(currentStatus)
             self.mapView.statusButton.setImage(UIImage(named: currentStatus.rawValue), for: .normal)
         }
     }
@@ -243,7 +256,7 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     // 위치 접근이 실패했을 경우
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function)
+        
     }
     
     // 현재 위치로 돌아가는 메서드

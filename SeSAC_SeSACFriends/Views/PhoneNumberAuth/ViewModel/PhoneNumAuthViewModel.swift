@@ -73,7 +73,6 @@ class PhoneNumAuthViewModel {
                 completion(RequestStatus.error, nil)
             } else {
                 // IDToken 잘 받아온 경우 -> APIService signin으로 사용자 정보 확인 요청
-                print(idToken)
                 UserDefaults.standard.setValue(idToken ?? "", forKey: "idToken")
                 UserAPI.signIn { data, status in
                     completion(RequestStatus.success, status)

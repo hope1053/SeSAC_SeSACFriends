@@ -74,7 +74,7 @@ class UserAPI {
                     user.gender.accept(Gender(rawValue: result.gender)!)
                     completion(result, APIStatus.success)
                 } catch {
-                    print("error")
+                    completion(nil, APIStatus.serverError)
                 }
             case 406:
                 // 미가입 회원 -> 닉네임 입력창으로

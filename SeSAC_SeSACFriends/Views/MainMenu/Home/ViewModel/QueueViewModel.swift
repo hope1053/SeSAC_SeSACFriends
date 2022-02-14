@@ -75,6 +75,7 @@ class QueueViewModel {
                 TokenAPI.updateIDToken()
                 QueueAPI.myQueueState { queueState, status in
                     guard let queueState = queueState else {
+                        completion(nil, .serverError)
                         return
                     }
                     completion(queueState, .success)

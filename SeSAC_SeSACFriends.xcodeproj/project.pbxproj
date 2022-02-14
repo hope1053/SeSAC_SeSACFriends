@@ -86,6 +86,9 @@
 		CB936D47279E7F550047D4F5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */; };
 		CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */; };
 		CBBB274C27BAB4260036ADDC /* QueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB274B27BAB4260036ADDC /* QueueState.swift */; };
+		CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */; };
+		CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */; };
+		CBBB275227BABF7B0036ADDC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275127BABF7B0036ADDC /* ChatViewController.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -182,6 +185,9 @@
 		CB936D46279E7F550047D4F5 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		CB936D4A279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBBB274B27BAB4260036ADDC /* QueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueState.swift; sourceTree = "<group>"; };
+		CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHobbyViewController.swift; sourceTree = "<group>"; };
+		CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
+		CBBB275127BABF7B0036ADDC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -243,6 +249,9 @@
 			isa = PBXGroup;
 			children = (
 				CB11F133279B0D2300028234 /* HomeViewController.swift */,
+				CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */,
+				CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */,
+				CBBB275127BABF7B0036ADDC /* ChatViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -763,6 +772,7 @@
 				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
 				CB11F129279AB49000028234 /* Endpoint.swift in Sources */,
+				CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */,
 				CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */,
 				CBBB274C27BAB4260036ADDC /* QueueState.swift in Sources */,
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
@@ -778,6 +788,7 @@
 				CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
 				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
+				CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
 				CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
@@ -788,6 +799,7 @@
 				CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */,
 				CBC6719C279FC9F600722D78 /* PhoneNumAuthView.swift in Sources */,
 				CBC6718B279FC3E500722D78 /* UserGenderView.swift in Sources */,
+				CBBB275227BABF7B0036ADDC /* ChatViewController.swift in Sources */,
 				CBC671A227A0133500722D78 /* Gender.swift in Sources */,
 				CB936D38279E4B210047D4F5 /* BirthSubView.swift in Sources */,
 				CB736F4727A3DDA8000E285D /* MyPageViewModel.swift in Sources */,
