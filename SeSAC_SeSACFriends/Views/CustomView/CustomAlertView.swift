@@ -14,8 +14,6 @@ class CustomAlertView: UIView, BaseView {
     
     let disposeBag = DisposeBag()
     
-    static let shared = CustomAlertView()
-    
     let bgView: UIView = {
         let view = UIView()
         view.backgroundColor = .customBlack!.withAlphaComponent(0.5)
@@ -34,6 +32,7 @@ class CustomAlertView: UIView, BaseView {
         label.font = .Body1_M16
         label.textColor = .customBlack
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     
@@ -95,7 +94,7 @@ class CustomAlertView: UIView, BaseView {
         messageView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.9)
-            $0.height.equalToSuperview().multipliedBy(0.18)
+            $0.height.equalToSuperview().multipliedBy(0.2)
         }
         
         titleLabel.snp.makeConstraints {
@@ -124,6 +123,13 @@ class CustomAlertView: UIView, BaseView {
     }
     
     func bind() {
+        okButton
+            .rx.tap
+            .bind { _ in
+                self.bgView.removeFromSuperview()
+            }
+            .disposed(by: disposeBag)
+        
         cancelButton
             .rx.tap
             .bind { _ in

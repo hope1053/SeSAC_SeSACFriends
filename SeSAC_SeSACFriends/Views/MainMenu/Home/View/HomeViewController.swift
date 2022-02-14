@@ -30,6 +30,9 @@ final class HomeViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
+    let noLocationServiceView = CustomAlertView()
+    let noGenderView = CustomAlertView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,7 +84,7 @@ final class HomeViewController: BaseViewController {
                     self.backToCurrentLocation()
                 } else {
                     self.showFakeRegion()
-                    CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+                    self.noLocationServiceView.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
                 }
             }
             .disposed(by: disposeBag)
@@ -93,12 +96,12 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         viewModel.user.region
-            .subscribe { region in
+            .subscribe { _ in
                 self.callFriendData()
             }
             .disposed(by: disposeBag)
         
-        CustomAlertView.shared.okButton
+        noLocationServiceView.okButton
             .rx.tap
             .bind { _ in
                 guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -108,11 +111,27 @@ final class HomeViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        noGenderView.okButton
+            .rx.tap
+            .bind { _ in
+                let navVC = self.tabBarController?.viewControllers![3] as! UINavigationController
+                let myPageViewController: MyPageViewController = navVC.topVC as! MyPageViewController
+
+                myPageViewController.setGenderCompletion = {
+                    let manageView = ManageInfoViewController()
+                    myPageViewController.navigationController?.pushViewController(manageView, animated: true)
+                }
+
+                self.tabBarController?.selectedIndex = 3
+            }
+            .disposed(by: disposeBag)
+        
         mapView.statusButton
             .rx.tap
             .bind { _ in
+                print(self.viewModel.user.gender.value)
                 if self.viewModel.user.gender.value == .unknown {
-                    CustomAlertView.shared.showAlert(title: "새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", subTitle: "성별을 설정해주세요")
+                    self.noGenderView.showAlert(title: "새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", subTitle: "성별을 설정해주세요")
                 }
             }
             .disposed(by: disposeBag)
@@ -157,7 +176,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         } else {
             // iOS 위치 서비스를 활성화해달라는 alert 띄우기
             showFakeRegion()
-            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+            self.noLocationServiceView.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
         }
     }
     
@@ -174,7 +193,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         case .restricted, .denied:
             // alert 창을 통해 설정으로 이동하는 코드
             showFakeRegion()
-            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+            self.noLocationServiceView.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager!.startUpdatingLocation()
         @unknown default:
@@ -207,7 +226,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             }
         } else {
             // 위치를 파악할 수 없어서? 여기서 처리를 해줘야되나?
-            CustomAlertView.shared.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
+            self.noLocationServiceView.showAlert(title: "위치 서비스를 사용할 수 없습니다", subTitle: "설정에서 위치 서비스를 활성화시켜주세요")
         }
         
     }

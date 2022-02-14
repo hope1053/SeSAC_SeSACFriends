@@ -41,10 +41,28 @@ class UserAPI {
 //    }
     
     // 로그인
-    static func signIn(completion: @escaping (SignInUser?, APIStatus?) -> Void) {
+    static func signIn(completion: @escaping (SignInUser?, APIStatus) -> Void) {
+        let user = User.shared
+
         AF.request(Endpoint.user.url, method: .get, headers: header).validate().response { response in
-            let statusCode = response.response?.statusCode ?? 500
+//            let APIStatus = APIstatus(rawValue: response.response?.statusCode ?? 500) ?? APIstatus.serverError
+//
+//            switch APIStatus {
+//            case .success:
+//                guard let data = response.value else { return }
+//                do {
+//                    let result = try JSONDecoder().decode(SignInUser.self, from: data!)
+//                    UserDefaults.standard.set(result.uid, forKey: "uid")
+//                    user.gender.accept(Gender(rawValue: result.gender)!)
+//                    completion(result, APIstatus.success)
+//                } catch {
+//                    completion(nil, APIstatus.serverError)
+//                }
+//            default:
+//                completion(nil, APIStatus)
+//            }
             
+            let statusCode = response.response?.statusCode ?? 500
             switch statusCode {
             case 200:
                 // 성공
@@ -53,6 +71,7 @@ class UserAPI {
                     let result = try JSONDecoder().decode(SignInUser.self, from: value!)
                     let uid = result.uid
                     UserDefaults.standard.set(uid, forKey: "uid")
+                    user.gender.accept(Gender(rawValue: result.gender)!)
                     completion(result, APIStatus.success)
                 } catch {
                     print("error")

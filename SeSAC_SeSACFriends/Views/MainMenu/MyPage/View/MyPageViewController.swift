@@ -18,6 +18,8 @@ class MyPageViewController: BaseViewController {
     
     let viewModel = MyPageViewModel()
     
+    var setGenderCompletion: (() -> Void)?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -51,16 +53,9 @@ class MyPageViewController: BaseViewController {
         title = "내 정보"
         mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         mainView.tableView.rowHeight = 75
+        
+        if let setGenderCompletion = setGenderCompletion {
+            setGenderCompletion()
+        }
     }
 }
-
-//extension MyPageViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let height = UIScreen.main.bounds.height
-//        if indexPath.row == 0 {
-//            return height * 0.1
-//        } else {
-//            return height * 0.05
-//        }
-//    }
-//}

@@ -9,20 +9,20 @@ import UIKit
 
 extension UIViewController {
     
-    var topViewController: UIViewController? {
-        return self.topViewController(currentViewController: self)
+    var topVC: UIViewController? {
+        return self.topVC(currentViewController: self)
     }
     
     // currentViewController: TabBarController
-    func topViewController(currentViewController: UIViewController) -> UIViewController {
+    func topVC(currentViewController: UIViewController) -> UIViewController {
         if let tabBarController = currentViewController as? UITabBarController,
            let selectedViewController = tabBarController.selectedViewController {
-            return self.topViewController(currentViewController: selectedViewController)
+            return self.topVC(currentViewController: selectedViewController)
         } else if let navigationController = currentViewController as? UINavigationController,
            let visibleViewController = navigationController.visibleViewController {
-               return self.topViewController(currentViewController: visibleViewController)
+               return self.topVC(currentViewController: visibleViewController)
         } else if let presentedViewController = currentViewController.presentedViewController {
-            return self.topViewController(currentViewController: presentedViewController)
+            return self.topVC(currentViewController: presentedViewController)
         } else {
             return currentViewController
         }

@@ -14,6 +14,8 @@ class WithDrawView: UIView, BaseView {
     
     let disposeBag = DisposeBag()
     
+    let withDrawView = CustomAlertView()
+    
     let withdrawButton: UIButton = {
         let button = UIButton()
         button.setTitle("회원탈퇴", for: .normal)
@@ -38,11 +40,11 @@ class WithDrawView: UIView, BaseView {
         withdrawButton
             .rx.tap
             .bind { _ in
-                CustomAlertView.shared.showAlert(title: "정말 탈퇴하시겠습니까?", subTitle: "탈퇴하시면 새싹 프렌즈를 이용할 수 없어요ㅠ")
+                self.withDrawView.showAlert(title: "정말 탈퇴하시겠습니까?", subTitle: "탈퇴하시면 새싹 프렌즈를 이용할 수 없어요ㅠ")
             }
             .disposed(by: disposeBag)
         
-        CustomAlertView.shared.okButton
+        withDrawView.okButton
             .rx.tap
             .bind { _ in
                 UserAPI.withdraw { error in

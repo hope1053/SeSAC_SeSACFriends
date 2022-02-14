@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           }
         }
         
+        UserAPI.signIn { user, status in
+            print(user, status)
+        }
+        
         sleep(2)
 
         return true
