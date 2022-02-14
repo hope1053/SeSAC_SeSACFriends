@@ -89,6 +89,8 @@
 		CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */; };
 		CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */; };
 		CBBB275227BABF7B0036ADDC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275127BABF7B0036ADDC /* ChatViewController.swift */; };
+		CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275327BAC3560036ADDC /* HobbyView.swift */; };
+		CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -188,6 +190,8 @@
 		CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHobbyViewController.swift; sourceTree = "<group>"; };
 		CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		CBBB275127BABF7B0036ADDC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CBBB275327BAC3560036ADDC /* HobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyView.swift; sourceTree = "<group>"; };
+		CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyHeaderView.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -457,6 +461,8 @@
 			children = (
 				CB51ED1A27AF76F80097D2B5 /* HomeMapView.swift */,
 				CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */,
+				CBBB275327BAC3560036ADDC /* HobbyView.swift */,
+				CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -755,6 +761,7 @@
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
+				CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */,
 				CBEF8AFA27B55AC70040F905 /* queueState.swift in Sources */,
 				CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
@@ -772,6 +779,7 @@
 				CB6C580B2797A695003C0F1E /* ButtonStatus.swift in Sources */,
 				CB20989227969902005F6A73 /* MainButton.swift in Sources */,
 				CB11F129279AB49000028234 /* Endpoint.swift in Sources */,
+				CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */,
 				CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */,
 				CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */,
 				CBBB274C27BAB4260036ADDC /* QueueState.swift in Sources */,
