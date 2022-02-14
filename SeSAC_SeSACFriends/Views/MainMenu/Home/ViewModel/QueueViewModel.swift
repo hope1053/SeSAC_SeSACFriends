@@ -65,4 +65,23 @@ class QueueViewModel {
         
         return friendList
     }
+    
+    func checkMyStatus(completion: @escaping (QueueState?, QueueAPIStatus) -> Void) {
+        QueueAPI.myQueueState { queueState, status in
+            switch status {
+            case .success:
+                completion(queueState, .success)
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken()
+                QueueAPI.myQueueState { queueState, status in
+                    guard let queueState = queueState else {
+                        return
+                    }
+                    completion(queueState, .success)
+                }
+            default:
+                completion(nil, status)
+            }
+        }
+    }
 }

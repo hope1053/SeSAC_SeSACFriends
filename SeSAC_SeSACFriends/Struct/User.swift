@@ -43,12 +43,12 @@ class UserInfo {
         }
     }
     
-    var friendSearchingStatus: FriendSearchingStatus {
+    var currentQueueState: queueState {
         get {
-            FriendSearchingStatus(rawValue: UserDefaults.standard.string(forKey: "friendSearchingStatus") ?? "") ?? .none
+            queueState(rawValue: UserDefaults.standard.string(forKey: "currentQueueState") ?? "") ?? .status_default
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: "friendSearchingStatus")
+            UserDefaults.standard.set(newValue.rawValue, forKey: "currentQueueState")
         }
     }
 }

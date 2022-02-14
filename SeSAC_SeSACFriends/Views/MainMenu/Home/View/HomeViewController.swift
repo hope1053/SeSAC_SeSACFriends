@@ -44,6 +44,8 @@ final class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        checkStatus()
         isFirstUpdate = true
     }
     
@@ -153,6 +155,14 @@ final class HomeViewController: BaseViewController {
     func showFakeRegion() {
         viewModel.currentCoordinate = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
         backToCurrentLocation()
+    }
+    
+    func checkStatus() {
+        viewModel.checkMyStatus { state, status in
+            let currentStatus = UserInfo.shared.currentQueueState
+            print(currentStatus)
+            self.mapView.statusButton.setImage(UIImage(named: currentStatus.rawValue), for: .normal)
+        }
     }
 }
 
