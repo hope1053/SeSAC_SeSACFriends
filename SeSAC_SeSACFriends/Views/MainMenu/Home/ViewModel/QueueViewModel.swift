@@ -15,8 +15,7 @@ class QueueViewModel {
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
     let hobbyFromServer = BehaviorRelay<([String], [String])>(value: ([], []))
-    
-    
+    let myHobby = BehaviorRelay<[String]>(value: [])
     
     // 사용자의 진짜 현재 위치
     var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)

@@ -62,6 +62,7 @@ class AddHobbyViewController: BaseViewController {
         viewModel.hobbyFromServer
             .subscribe { serverList, friendList in
                 print(serverList, friendList)
+                self.hobbyView.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
     }
@@ -86,7 +87,12 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        if section == 0 {
+            let (server, friend) : ([String], [String]) = viewModel.hobbyFromServer.value
+            return (server + friend).count
+        } else {
+            return viewModel.myHobby.value.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,12 +100,19 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        let array = ["안녕","안녕하세요","안녕하세요 저는 포마입니다.","안녕하세요 만나서 정말 반갑습니다."]
-        cell.button.setTitle(array[indexPath.item], for: .normal)
+//        let array = ["안녕","안녕하세요","안녕하세요 저는 포마입니다.","안녕하세요 만나서 정말 반갑습니다."]
+//        cell.button.setTitle(array[indexPath.item], for: .normal)
         
         if indexPath.section == 0 {
-            cell.button.serverRecommended()
+            let (server, friend) : ([String], [String]) = viewModel.hobbyFromServer.value
+            let totalHobby = server + friend
+            cell.button.setTitle(totalHobby[indexPath.item], for: .normal)
+            if indexPath.item < server.count {
+                cell.button.serverRecommended()
+            }
         } else {
+            let myHobby = viewModel.myHobby.value
+            cell.button.setTitle(myHobby[indexPath.item], for: .normal)
             cell.button.outline()
             let buttonImage = UIImage(named: "close_small")?.withRenderingMode(.alwaysTemplate)
             cell.button.setImage(buttonImage, for: .normal)
