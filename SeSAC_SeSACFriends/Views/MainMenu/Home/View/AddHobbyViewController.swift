@@ -57,6 +57,7 @@ class AddHobbyViewController: BaseViewController {
             .subscribe { _ in
                 self.viewModel.hobbyListFromServer()
             }
+            .disposed(by: disposeBag)
         
         viewModel.hobbyFromServer
             .subscribe { serverList, friendList in

@@ -72,9 +72,10 @@ class QueueViewModel {
     func hobbyListFromServer() {
         let recommendedHobby = friendData.value.fromRecommend
         let friendList = friendData.value.fromQueueDB
+        let requestList = friendData.value.fromQueueDBRequested
         var nearFriendHobby: [String] = []
         
-        for friendData in friendList {
+        for friendData in friendList + requestList {
             nearFriendHobby.append(contentsOf: friendData.hf)
         }
         
