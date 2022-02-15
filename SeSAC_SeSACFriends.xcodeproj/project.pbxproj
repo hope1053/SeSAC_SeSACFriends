@@ -91,6 +91,7 @@
 		CBBB275227BABF7B0036ADDC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275127BABF7B0036ADDC /* ChatViewController.swift */; };
 		CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275327BAC3560036ADDC /* HobbyView.swift */; };
 		CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */; };
+		CBBB275827BB35380036ADDC /* HobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -192,6 +193,7 @@
 		CBBB275127BABF7B0036ADDC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CBBB275327BAC3560036ADDC /* HobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyView.swift; sourceTree = "<group>"; };
 		CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyHeaderView.swift; sourceTree = "<group>"; };
+		CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */,
 				CBBB275327BAC3560036ADDC /* HobbyView.swift */,
 				CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */,
+				CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				CBC67191279FC56600722D78 /* OnBoardingView.swift in Sources */,
 				CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */,
 				CB29DD0A27ABAA6100F1540D /* TestViewController.swift in Sources */,
+				CBBB275827BB35380036ADDC /* HobbyCollectionViewCell.swift in Sources */,
 				CB936D3E279E4D690047D4F5 /* UITextField+Extension.swift in Sources */,
 				CB11F134279B0D2400028234 /* HomeViewController.swift in Sources */,
 				CBC6719A279FC98400722D78 /* PhoneNumInputView.swift in Sources */,

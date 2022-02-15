@@ -21,6 +21,7 @@ class HobbyHeaderView: UICollectionReusableView, BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     
+        self.backgroundColor = .green
         configureView()
         setupConstraints()
     }

@@ -29,12 +29,25 @@ class MyPageViewController: BaseViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        title = "내 정보"
+        
+        if let setGenderCompletion = setGenderCompletion {
+            print("completion 전달 완료!")
+            setGenderCompletion()
+        }
+        setGenderCompletion = nil
+    }
+    
     func bind() {
         viewModel.data.title
             .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
                 cell.textLabel?.text = "\(element)"
                 cell.imageView?.image = self.viewModel.data.image[row]
+                cell.selectionStyle = .none
                 return cell
             }
             .disposed(by: disposeBag)
@@ -50,12 +63,8 @@ class MyPageViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        title = "내 정보"
+        
         mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         mainView.tableView.rowHeight = 75
-        
-        if let setGenderCompletion = setGenderCompletion {
-            setGenderCompletion()
-        }
     }
 }

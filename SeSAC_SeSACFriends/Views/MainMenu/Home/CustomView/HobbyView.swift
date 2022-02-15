@@ -10,11 +10,12 @@ import UIKit
 class HobbyView: UIView, BaseView {
     
     let collectionView: UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 60, height: 60)
+        let layout = CollectionViewLeftAlignFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         return view
     }()
     
@@ -35,6 +36,9 @@ class HobbyView: UIView, BaseView {
         [collectionView, searchButton].forEach { subView in
             self.addSubview(subView)
         }
+        
+        collectionView.register(HobbyHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HobbyHeaderView.identifier)
+        collectionView.register(HobbyCollectionViewCell.self, forCellWithReuseIdentifier: HobbyCollectionViewCell.identifier)
     }
     
     func setupConstraints() {
@@ -45,8 +49,31 @@ class HobbyView: UIView, BaseView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(searchButton.snp.top)
         }
+    }
+}
+
+class CollectionViewLeftAlignFlowLayout: UICollectionViewFlowLayout {
+    let cellSpacing: CGFloat = 8
+ 
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        self.minimumLineSpacing = 8
+        self.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        let attributes = super.layoutAttributesForElements(in: rect)
+ 
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            layoutAttribute.frame.origin.x = leftMargin
+            leftMargin += layoutAttribute.frame.width + cellSpacing
+            maxY = max(layoutAttribute.frame.maxY, maxY)
+        }
+        return attributes
     }
 }

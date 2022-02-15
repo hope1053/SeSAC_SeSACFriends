@@ -58,6 +58,12 @@ extension UIButton {
         self.titleLabel?.font = .Title3_M14
     }
     
+    func serverRecommended() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.systemError?.cgColor
+        self.setTitleColor(UIColor.systemError, for: .normal)
+    }
+    
     func alignTextBelow(spacing: CGFloat = 8.0) {
         guard let image = self.imageView?.image else {
             return

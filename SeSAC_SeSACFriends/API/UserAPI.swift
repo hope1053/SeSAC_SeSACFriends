@@ -69,6 +69,8 @@ class UserAPI {
                 guard let value = response.value else {return}
                 do {
                     let result = try JSONDecoder().decode(SignInUser.self, from: value!)
+                    print(result.uid)
+                    print(result.fcMtoken)
                     let uid = result.uid
                     UserDefaults.standard.set(uid, forKey: "uid")
                     user.gender.accept(Gender(rawValue: result.gender)!)

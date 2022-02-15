@@ -25,9 +25,6 @@ class AddHobbyViewController: BaseViewController {
         hobbyView.collectionView.delegate = self
         hobbyView.collectionView.dataSource = self
         
-        hobbyView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Custom")
-        hobbyView.collectionView.register(HobbyHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HobbyHeaderView.identifier)
-        
         setupSearchBar()
     }
     
@@ -53,16 +50,25 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Custom", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HobbyCollectionViewCell.identifier, for: indexPath) as? HobbyCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let array = ["안녕","안녕하세요","안녕하세요 저는 포마입니다.","안녕하세요 만나서 정말 반갑습니다."]
+        cell.button.setTitle(array[indexPath.item], for: .normal)
         
         if indexPath.section == 0 {
-            cell.backgroundColor = .red
+            cell.button.serverRecommended()
         } else {
-            cell.backgroundColor = .blue
+            cell.button.outline()
+            let buttonImage = UIImage(named: "close_small")?.withRenderingMode(.alwaysTemplate)
+            cell.button.setImage(buttonImage, for: .normal)
+            cell.button.tintColor = UIColor.brandGreen
+            cell.button.semanticContentAttribute = .forceRightToLeft
         }
         
         return cell
@@ -94,7 +100,6 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
                          referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 18) // you can change sizing here
     }
-    
 }
 
 extension AddHobbyViewController: UISearchBarDelegate {
@@ -103,3 +108,5 @@ extension AddHobbyViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }
+
+
