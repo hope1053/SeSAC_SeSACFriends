@@ -14,6 +14,9 @@ class QueueViewModel {
     let user = User.shared
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
+    let hobbyFromServer = BehaviorRelay<([String], [String])>(value: ([], []))
+    
+    
     
     // 사용자의 진짜 현재 위치
     var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -64,6 +67,18 @@ class QueueViewModel {
         }
         
         return friendList
+    }
+    
+    func hobbyListFromServer() {
+        let recommendedHobby = friendData.value.fromRecommend
+        let friendList = friendData.value.fromQueueDB
+        var nearFriendHobby: [String] = []
+        
+        for friendData in friendList {
+            nearFriendHobby.append(contentsOf: friendData.hf)
+        }
+        
+        hobbyFromServer.accept((recommendedHobby, nearFriendHobby))
     }
     
     func checkMyStatus(completion: @escaping (QueueState?, QueueAPIStatus) -> Void) {

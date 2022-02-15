@@ -7,12 +7,21 @@
 
 import UIKit
 
+import RxSwift
+
 class AddHobbyViewController: BaseViewController {
+    
+    let disposeBag = DisposeBag()
+    
+    let viewModel = QueueViewModel()
     
     let hobbyView = HobbyView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bind()
+        callFriendData()
     }
     
     override func configureView() {
@@ -41,6 +50,32 @@ class AddHobbyViewController: BaseViewController {
         self.navigationItem.titleView = searchBar
         
         searchBar.delegate = self
+    }
+    
+    func bind() {
+        viewModel.friendData
+            .subscribe { _ in
+                self.viewModel.hobbyListFromServer()
+            }
+        
+        viewModel.hobbyFromServer
+            .subscribe { serverList, friendList in
+                print(serverList, friendList)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func callFriendData() {
+        viewModel.callFriendData { status in
+            switch status {
+            case .notMember:
+                self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
+            case .serverError:
+                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+            default:
+                break
+            }
+        }
     }
 }
 
