@@ -56,6 +56,26 @@ class HobbyView: UIView, BaseView {
             $0.bottom.equalTo(searchButton.snp.top)
         }
     }
+    
+    func updateConstraint(_ height: CGFloat) {
+        if height == 0 {
+            searchButton.layer.cornerRadius = 8
+            searchButton.snp.updateConstraints {
+                $0.bottom.equalToSuperview()
+                $0.leading.trailing.equalToSuperview().inset(16)
+            }
+        } else {
+            searchButton.layer.cornerRadius = 0
+            searchButton.snp.updateConstraints {
+                let window = UIApplication.shared.windows[0]
+                let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+                let bottomSafeAreaHeight = window.frame.maxY - safeFrame.maxY
+                
+                $0.bottom.equalToSuperview().inset(height - bottomSafeAreaHeight)
+                $0.leading.trailing.equalToSuperview()
+            }
+        }
+    }
 }
 
 final class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {

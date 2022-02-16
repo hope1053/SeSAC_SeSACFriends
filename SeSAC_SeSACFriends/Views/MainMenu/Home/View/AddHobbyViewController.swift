@@ -8,6 +8,7 @@
 import UIKit
 
 import RxSwift
+import RxKeyboard
 
 class AddHobbyViewController: BaseViewController {
     
@@ -72,6 +73,13 @@ class AddHobbyViewController: BaseViewController {
                 self.hobbyView.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.visibleHeight
+            .drive { keyboardHeight in
+                self.hobbyView.updateConstraint(keyboardHeight)
+            }
+            .disposed(by: disposeBag)
+
     }
     
     func callFriendData() {

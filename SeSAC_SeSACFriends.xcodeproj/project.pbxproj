@@ -92,6 +92,7 @@
 		CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275327BAC3560036ADDC /* HobbyView.swift */; };
 		CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */; };
 		CBBB275827BB35380036ADDC /* HobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */; };
+		CBBB275B27BCC02A0036ADDC /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = CBBB275A27BCC02A0036ADDC /* RxKeyboard */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -216,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6C582727992302003C0F1E /* Toast in Frameworks */,
+				CBBB275B27BCC02A0036ADDC /* RxKeyboard in Frameworks */,
 				CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */,
 				CB11F12E279AB5E000028234 /* Alamofire in Frameworks */,
 				CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */,
@@ -661,6 +663,7 @@
 				CBC671A627A01D9A00722D78 /* FirebaseAuth */,
 				CBC671A827A01D9A00722D78 /* FirebaseMessaging */,
 				CB29DD2527AD090400F1540D /* MultiSlider */,
+				CBBB275A27BCC02A0036ADDC /* RxKeyboard */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -697,6 +700,7 @@
 				CB11F12C279AB5DF00028234 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -1068,6 +1072,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1108,6 +1120,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6C582527992302003C0F1E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		CBBB275A27BCC02A0036ADDC /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
 		};
 		CBC671A627A01D9A00722D78 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
