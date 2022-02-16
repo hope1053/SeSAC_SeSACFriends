@@ -46,12 +46,12 @@ class QueueAPI {
         }
     }
     
-    static func myQueueState(completion: @escaping(QueueState?, QueueAPIStatus) -> Void) {
+    static func myQueueState(completion: @escaping(QueueState?, MyQueueStatus) -> Void) {
         let userInfo = UserInfo.shared
         
         AF.request(Endpoint.myQueueState.url, method: .get, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
-            let queueAPIStatus = QueueAPIStatus(rawValue: statusCode)!
+            let queueAPIStatus = MyQueueStatus(rawValue: statusCode)!
             
             switch queueAPIStatus {
             case .success:
@@ -72,6 +72,50 @@ class QueueAPI {
                 completion(nil, .matchingStopped)
             default:
                 completion(nil, queueAPIStatus)
+            }
+        }
+    }
+    
+    static func queue(completion: @escaping (QueueStatus) -> Void) {
+        let user = User.shared
+        
+        let parameter: [String: Any] = [
+            "type": user.preferGender,
+            "region": user.region.value,
+            "long": user.long.value,
+            "lat": user.lat.value,
+            "hf": user.hobbyList.value
+        ]
+        
+        AF.request(Endpoint.queue.url, method: .post, parameters: parameter, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: header).validate().response { response in
+            let statusCode = response.response?.statusCode ?? 500
+            let queueStatus = QueueStatus(rawValue: statusCode)!
+            
+            switch queueStatus {
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken()
+                queue { status in
+                    completion(queueStatus)
+                }
+            default:
+                completion(queueStatus)
+            }
+        }
+    }
+    
+    static func dequeue(completion: @escaping (DequeueStatus) -> Void) {
+        AF.request(Endpoint.queue.url, method: .delete, headers: header).validate().response { response in
+            let statusCode = response.response?.statusCode ?? 500
+            let dequeueStatus = DequeueStatus(rawValue: statusCode)!
+            
+            switch dequeueStatus {
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken()
+                dequeue { status in
+                    completion(dequeueStatus)
+                }
+            default:
+                completion(dequeueStatus)
             }
         }
     }

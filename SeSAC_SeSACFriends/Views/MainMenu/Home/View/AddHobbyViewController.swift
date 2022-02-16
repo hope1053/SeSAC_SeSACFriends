@@ -68,9 +68,16 @@ class AddHobbyViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.myHobby
+        viewModel.user.hobbyList
             .bind { _ in
                 self.hobbyView.collectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        hobbyView.searchButton
+            .rx.tap
+            .bind { _ in
+                self.sendQueue()
             }
             .disposed(by: disposeBag)
         
@@ -94,6 +101,18 @@ class AddHobbyViewController: BaseViewController {
             }
         }
     }
+    
+    func sendQueue() {
+        viewModel.sendQueue { message, status in
+            if status == nil {
+                self.view.makeToast(message, duration: 1.0, position: .bottom)
+            } else if status == .success {
+                print("성공!")
+            } else {
+                print(message)
+            }
+        }
+    }
 }
 
 extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -106,7 +125,7 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
             let totalHobby = viewModel.totalHobby.value
             return totalHobby.count
         } else {
-            return viewModel.myHobby.value.count
+            return viewModel.user.hobbyList.value.count
         }
     }
     
@@ -132,7 +151,7 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
             return cell
         } else {
             
-            let myHobby = viewModel.myHobby.value
+            let myHobby = viewModel.user.hobbyList.value
             
             cell.button.setTitle(myHobby[indexPath.item], for: .normal)
             cell.button.outline()

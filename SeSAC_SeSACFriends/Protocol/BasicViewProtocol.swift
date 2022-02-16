@@ -11,9 +11,3 @@ protocol BaseView {
     func configureView()
     func setupConstraints()
 }
-
-//extension BaseView {
-//    func configureView() {
-//        
-//    }
-//}

@@ -139,7 +139,7 @@ final class HomeViewController: BaseViewController {
                     self.noGenderView.showAlert(title: "새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", subTitle: "성별을 설정해주세요")
                 } else {
                     let queueStatus = UserInfo.shared.currentQueueState
-                    print(queueStatus)
+                    
                     var vc = UIViewController()
                     switch queueStatus {
                     case .status_default:
@@ -149,7 +149,7 @@ final class HomeViewController: BaseViewController {
                     case .status_matched:
                         vc = ChatViewController()
                     }
-                    print(vc)
+                    
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }

@@ -28,6 +28,9 @@ struct User {
     let region = BehaviorRelay<Int>(value: 0)
     let lat = BehaviorRelay<Double>(value: 0)
     let long = BehaviorRelay<Double>(value: 0)
+    
+    let hobbyList = BehaviorRelay<[String]>(value: [])
+    let preferGender = 2
 }
 
 class UserInfo {

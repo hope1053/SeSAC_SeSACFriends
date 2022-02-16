@@ -16,7 +16,7 @@ class QueueViewModel {
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
     let hobbyFromServer = BehaviorRelay<([String], [String])>(value: ([], []))
     let totalHobby = BehaviorRelay<[String]>(value: [])
-    let myHobby = BehaviorRelay<[String]>(value: [])
+//    let myHobby = BehaviorRelay<[String]>(value: [])
     
     // 사용자의 진짜 현재 위치
     var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -87,7 +87,7 @@ class QueueViewModel {
         totalHobby.accept(recommendedHobby + nearFriendHobby)
     }
     
-    func checkMyStatus(completion: @escaping (QueueState?, QueueAPIStatus) -> Void) {
+    func checkMyStatus(completion: @escaping (QueueState?, MyQueueStatus) -> Void) {
         QueueAPI.myQueueState { queueState, status in
             switch status {
             case .success:
@@ -108,17 +108,17 @@ class QueueViewModel {
     }
     
     func deleteMyHobby(_ index: Int) {
-        var currentMyHobby = myHobby.value
+        var currentMyHobby = user.hobbyList.value
         currentMyHobby.remove(at: index)
         
-        myHobby.accept(currentMyHobby)
+        user.hobbyList.accept(currentMyHobby)
     }
     
     // collectionView Section1에서 클릭해서 추가하는 경우
     func addMyHobbyFromTotalHobby(_ index: Int, completion: @escaping (String) -> Void) {
         let totalHobby = totalHobby.value
         
-        var currentMyHobby = myHobby.value
+        var currentMyHobby = user.hobbyList.value
         let selectedHobby = totalHobby[index]
         // 클릭한 Hobby가 이미 myHobby list에 있는 경우 -> 중복된거 안된다고 toast 띄우기
         if currentMyHobby.contains(selectedHobby) {
@@ -128,7 +128,7 @@ class QueueViewModel {
             completion("취미를 더 이상 추가할 수 없습니다")
         } else {
             currentMyHobby.append(selectedHobby)
-            myHobby.accept(currentMyHobby)
+            user.hobbyList.accept(currentMyHobby)
         }
     }
     
@@ -138,7 +138,7 @@ class QueueViewModel {
         var isOverEight = false
         var isSuitable = true
         
-        var currentHobby = self.myHobby.value
+        var currentHobby = user.hobbyList.value
         // 중복, 8개 이상
         
         for input in inputTextArray {
@@ -154,7 +154,7 @@ class QueueViewModel {
             }
         }
         
-        self.myHobby.accept(currentHobby)
+        user.hobbyList.accept(currentHobby)
         
         // 중복만 된 경우, 8개만 넘은 경우, 중복되고 8개를 넘은 경우
         if !isSuitable {
@@ -165,6 +165,48 @@ class QueueViewModel {
             completion("이미 등록된 취미입니다")
         } else if isOverEight && !isOverlapped {
              completion("취미를 더 이상 추가할 수 없습니다")
+        }
+    }
+    
+    func sendQueue(completion: @escaping (String?, QueueStatus?) -> Void) {
+        QueueAPI.queue { status in
+            switch status {
+            case .success:
+                completion(nil, .success)
+            case .reportMoreThenThreeTimes:
+                completion("신고가 누적되어 이용하실 수 없습니다.", nil)
+            case .penaltyLevel1:
+                completion("약속 취소 패널티로, 1분동안 이용하실 수 없습니다", nil)
+            case .penaltyLevel2:
+                completion("약속 취소 패널티로, 2분동안 이용하실 수 없습니다", nil)
+            case .penaltyLevel3:
+                completion("연속으로 약속을 취소하셔서 3분동안 이용하실 수 없습니다", nil)
+            case .genderNotSelected:
+                completion("새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!", .genderNotSelected)
+            case .notMember:
+                completion("회원이 아닙니다", nil)
+            case .serverError:
+                completion("오류가 발생했습니다. 잠시 후에 다시 시도해주세요", nil)
+            default:
+                break
+            }
+        }
+    }
+    
+    func deque(completion: @escaping (String?, DequeueStatus?) -> Void) {
+        QueueAPI.dequeue { status in
+            switch status {
+            case .success:
+                completion("새싹 찾기가 중단되었습니다", .success)
+            case .alreadyMatched:
+                completion("누군가와 취미를 함께하기로 약속하셨어요!", .alreadyMatched)
+            case .notMember:
+                completion("회원이 아닙니다", nil)
+            case .serverError:
+                completion("오류가 발생했습니다. 잠시 후에 다시 시도해주세요", nil)
+            default:
+                break
+            }
         }
     }
 }
