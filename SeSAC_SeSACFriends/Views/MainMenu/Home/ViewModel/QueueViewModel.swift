@@ -79,6 +79,10 @@ class QueueViewModel {
             nearFriendHobby.append(contentsOf: friendData.hf)
         }
         
+        // 중복 제거 -> 취미의 순서가 크게 중요하지 않다고 생각해서 Set 사용 -> View 진입할 때 마다 보여주는 취미의 순서가 달라짐
+        let removedDuplicate: Set = Set(nearFriendHobby)
+        nearFriendHobby = Array(removedDuplicate)
+        
         hobbyFromServer.accept((recommendedHobby, nearFriendHobby))
         totalHobby.accept(recommendedHobby + nearFriendHobby)
     }
