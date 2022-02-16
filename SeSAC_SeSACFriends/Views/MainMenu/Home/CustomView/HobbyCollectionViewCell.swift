@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HobbyCollectionViewCell: UICollectionViewCell, BaseView {
+final class HobbyCollectionViewCell: UICollectionViewCell, BaseView {
     
     static let identifier = "HobbyCollectionViewCell"
 

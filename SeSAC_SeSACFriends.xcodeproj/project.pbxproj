@@ -93,6 +93,12 @@
 		CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */; };
 		CBBB275827BB35380036ADDC /* HobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */; };
 		CBBB275B27BCC02A0036ADDC /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = CBBB275A27BCC02A0036ADDC /* RxKeyboard */; };
+		CBBB275E27BD0CBC0036ADDC /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = CBBB275D27BD0CBC0036ADDC /* Tabman */; };
+		CBBB276027BD0CFC0036ADDC /* SeSACFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB275F27BD0CFC0036ADDC /* SeSACFriendView.swift */; };
+		CBBB276627BD1FB10036ADDC /* NearFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276527BD1FB10036ADDC /* NearFriendViewController.swift */; };
+		CBBB276827BD1FEF0036ADDC /* RequestedFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276727BD1FEF0036ADDC /* RequestedFriendViewController.swift */; };
+		CBBB276A27BD22EA0036ADDC /* ChangeHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */; };
+		CBBB276C27BD2A950036ADDC /* SearchingFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -195,6 +201,11 @@
 		CBBB275327BAC3560036ADDC /* HobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyView.swift; sourceTree = "<group>"; };
 		CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyHeaderView.swift; sourceTree = "<group>"; };
 		CBBB275727BB35380036ADDC /* HobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBBB275F27BD0CFC0036ADDC /* SeSACFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendView.swift; sourceTree = "<group>"; };
+		CBBB276527BD1FB10036ADDC /* NearFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFriendViewController.swift; sourceTree = "<group>"; };
+		CBBB276727BD1FEF0036ADDC /* RequestedFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedFriendViewController.swift; sourceTree = "<group>"; };
+		CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeHobbyView.swift; sourceTree = "<group>"; };
+		CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingFriendViewModel.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -221,6 +232,7 @@
 				CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */,
 				CB11F12E279AB5E000028234 /* Alamofire in Frameworks */,
 				CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */,
+				CBBB275E27BD0CBC0036ADDC /* Tabman in Frameworks */,
 				CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
@@ -246,6 +258,7 @@
 		CB11F131279B0D1700028234 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CBBB276127BD0DC30036ADDC /* SearchSeSACFriend */,
 				CB4902DD27B109F400878ED2 /* ViewModel */,
 				CB11F132279B0D1B00028234 /* View */,
 				CB51ED1927AF76E70097D2B5 /* CustomView */,
@@ -258,7 +271,6 @@
 			children = (
 				CB11F133279B0D2300028234 /* HomeViewController.swift */,
 				CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */,
-				CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */,
 				CBBB275127BABF7B0036ADDC /* ChatViewController.swift */,
 			);
 			path = View;
@@ -588,6 +600,43 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CBBB276127BD0DC30036ADDC /* SearchSeSACFriend */ = {
+			isa = PBXGroup;
+			children = (
+				CBBB276327BD0DE10036ADDC /* ViewModel */,
+				CBBB276227BD0DDD0036ADDC /* View */,
+				CBBB276427BD0DE60036ADDC /* CustomView */,
+			);
+			path = SearchSeSACFriend;
+			sourceTree = "<group>";
+		};
+		CBBB276227BD0DDD0036ADDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBBB274F27BABF5D0036ADDC /* SearchFriendViewController.swift */,
+				CBBB276527BD1FB10036ADDC /* NearFriendViewController.swift */,
+				CBBB276727BD1FEF0036ADDC /* RequestedFriendViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBBB276327BD0DE10036ADDC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CBBB276427BD0DE60036ADDC /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CBBB275F27BD0CFC0036ADDC /* SeSACFriendView.swift */,
+				CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		CBBE82A827B02985000B1CE5 /* Struct */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +713,7 @@
 				CBC671A827A01D9A00722D78 /* FirebaseMessaging */,
 				CB29DD2527AD090400F1540D /* MultiSlider */,
 				CBBB275A27BCC02A0036ADDC /* RxKeyboard */,
+				CBBB275D27BD0CBC0036ADDC /* Tabman */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -701,6 +751,7 @@
 				CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				CBBB275C27BD0CBB0036ADDC /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -736,10 +787,12 @@
 			files = (
 				CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */,
 				CB11F12B279AB4C300028234 /* UserAPI.swift in Sources */,
+				CBBB276627BD1FB10036ADDC /* NearFriendViewController.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,
 				CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */,
 				CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */,
 				CB1C363127A1799500AF90DB /* ShopViewController.swift in Sources */,
+				CBBB276827BD1FEF0036ADDC /* RequestedFriendViewController.swift in Sources */,
 				CBC671A427A0195F00722D78 /* Date+Extension.swift in Sources */,
 				CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */,
 				CB20987227968952005F6A73 /* SceneDelegate.swift in Sources */,
@@ -790,15 +843,18 @@
 				CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */,
 				CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */,
 				CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */,
+				CBBB276027BD0CFC0036ADDC /* SeSACFriendView.swift in Sources */,
 				CBBB274C27BAB4260036ADDC /* QueueState.swift in Sources */,
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
 				CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */,
 				CB29DD2327AD06B100F1540D /* FriendAgeView.swift in Sources */,
+				CBBB276A27BD22EA0036ADDC /* ChangeHobbyView.swift in Sources */,
 				CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
+				CBBB276C27BD2A950036ADDC /* SearchingFriendViewModel.swift in Sources */,
 				CBC6719E279FDF1A00722D78 /* String+Extension.swift in Sources */,
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */,
@@ -1080,6 +1136,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		CBBB275C27BD0CBB0036ADDC /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CBC671A527A01D9A00722D78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1125,6 +1189,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
+		};
+		CBBB275D27BD0CBC0036ADDC /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBBB275C27BD0CBB0036ADDC /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
 		};
 		CBC671A627A01D9A00722D78 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class HomeMapView: UIView, BaseView {
+final class HomeMapView: UIView, BaseView {
     
     let mapView: MKMapView = {
         let view = MKMapView()

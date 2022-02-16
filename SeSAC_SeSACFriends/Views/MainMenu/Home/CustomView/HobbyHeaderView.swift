@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HobbyHeaderView: UICollectionReusableView, BaseView {
+final class HobbyHeaderView: UICollectionReusableView, BaseView {
     
     static let identifier = "HobbyHeaderView"
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FloatingGenderButton: UIView, BaseView {
+final class FloatingGenderButton: UIView, BaseView {
     
     let totalButton: MainButton = {
         let button = MainButton(title: "전체", type: .fill)

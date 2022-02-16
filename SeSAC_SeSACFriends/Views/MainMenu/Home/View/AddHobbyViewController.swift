@@ -107,7 +107,11 @@ class AddHobbyViewController: BaseViewController {
             if status == nil {
                 self.view.makeToast(message, duration: 1.0, position: .bottom)
             } else if status == .success {
-                print("성공!")
+                let vc = SearchFriendViewController()
+                vc.completion = {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 print(message)
             }
@@ -215,6 +219,12 @@ extension AddHobbyViewController: UISearchBarDelegate {
         
         searchBar.text = ""
         searchBar.resignFirstResponder()
+    }
+}
+
+extension AddHobbyViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollView.resignFirstResponder()
     }
 }
 

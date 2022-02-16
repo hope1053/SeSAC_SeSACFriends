@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HobbyView: UIView, BaseView {
+final class HobbyView: UIView, BaseView {
     
     let collectionView: UICollectionView = {
         let layout = LeftAlignedCollectionViewFlowLayout()

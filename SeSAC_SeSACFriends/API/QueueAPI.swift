@@ -79,12 +79,18 @@ class QueueAPI {
     static func queue(completion: @escaping (QueueStatus) -> Void) {
         let user = User.shared
         
+        var hobbyList = user.hobbyList.value
+        
+        if hobbyList.isEmpty {
+            hobbyList.append("Anything")
+        }
+        
         let parameter: [String: Any] = [
             "type": user.preferGender,
             "region": user.region.value,
             "long": user.long.value,
             "lat": user.lat.value,
-            "hf": user.hobbyList.value
+            "hf": hobbyList
         ]
         
         AF.request(Endpoint.queue.url, method: .post, parameters: parameter, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: header).validate().response { response in
