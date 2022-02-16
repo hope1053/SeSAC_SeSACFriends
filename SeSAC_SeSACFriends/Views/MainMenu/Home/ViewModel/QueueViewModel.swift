@@ -15,6 +15,7 @@ class QueueViewModel {
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
     let hobbyFromServer = BehaviorRelay<([String], [String])>(value: ([], []))
+    let totalHobby = BehaviorRelay<[String]>(value: [])
     let myHobby = BehaviorRelay<[String]>(value: [])
     
     // 사용자의 진짜 현재 위치
@@ -79,6 +80,7 @@ class QueueViewModel {
         }
         
         hobbyFromServer.accept((recommendedHobby, nearFriendHobby))
+        totalHobby.accept(recommendedHobby + nearFriendHobby)
     }
     
     func checkMyStatus(completion: @escaping (QueueState?, QueueAPIStatus) -> Void) {
@@ -98,6 +100,49 @@ class QueueViewModel {
             default:
                 completion(nil, status)
             }
+        }
+    }
+    
+    func deleteMyHobby(_ index: Int) {
+        var currentMyHobby = myHobby.value
+        currentMyHobby.remove(at: index)
+        
+        myHobby.accept(currentMyHobby)
+    }
+    
+    // collectionView Section1에서 클릭해서 추가하는 경우
+    func addMyHobbyFromTotalHobby(_ index: Int, completion: @escaping () -> Void) {
+        let totalHobby = totalHobby.value
+        
+        var currentMyHobby = myHobby.value
+        let selectedHobby = totalHobby[index]
+        // 클릭한 Hobby가 이미 myHobby list에 있는 경우 -> 중복된거 안된다고 toast 띄우기
+        if currentMyHobby.contains(selectedHobby) {
+            completion()
+        } else {
+            currentMyHobby.append(selectedHobby)
+            myHobby.accept(currentMyHobby)
+        }
+    }
+    
+    func addMyHobbyFromInputText(_ inputText: String, completion: @escaping () -> Void) {
+        let inputTextArray = inputText.components(separatedBy: " ")
+        var isOverlapped = false
+        
+        var currentHobby = self.myHobby.value
+        
+        for input in inputTextArray {
+            if currentHobby.contains(input) {
+                isOverlapped = true
+            } else {
+                currentHobby.append(input)
+            }
+        }
+        
+        self.myHobby.accept(currentHobby)
+        
+        if isOverlapped {
+            completion()
         }
     }
 }

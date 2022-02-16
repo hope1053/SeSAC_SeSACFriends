@@ -39,7 +39,8 @@ class AddHobbyViewController: BaseViewController {
     
     override func setupConstraints() {
         hobbyView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -60,8 +61,14 @@ class AddHobbyViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         viewModel.hobbyFromServer
-            .subscribe { serverList, friendList in
-                print(serverList, friendList)
+            .bind { hobby in
+                print(hobby)
+                self.hobbyView.collectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.myHobby
+            .bind { _ in
                 self.hobbyView.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -88,39 +95,47 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            let (server, friend) : ([String], [String]) = viewModel.hobbyFromServer.value
-            return (server + friend).count
+            let totalHobby = viewModel.totalHobby.value
+            return totalHobby.count
         } else {
             return viewModel.myHobby.value.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HobbyCollectionViewCell.identifier, for: indexPath) as? HobbyCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-//        let array = ["안녕","안녕하세요","안녕하세요 저는 포마입니다.","안녕하세요 만나서 정말 반갑습니다."]
-//        cell.button.setTitle(array[indexPath.item], for: .normal)
-        
+
         if indexPath.section == 0 {
-            let (server, friend) : ([String], [String]) = viewModel.hobbyFromServer.value
-            let totalHobby = server + friend
+            let (server, _) : ([String], [String]) = viewModel.hobbyFromServer.value
+            let totalHobby = viewModel.totalHobby.value
+            
             cell.button.setTitle(totalHobby[indexPath.item], for: .normal)
+            cell.button.setImage(nil, for: .normal)
+            
             if indexPath.item < server.count {
                 cell.button.serverRecommended()
+            } else {
+                cell.button.inactive()
             }
+            
+            return cell
         } else {
+            
             let myHobby = viewModel.myHobby.value
+            
             cell.button.setTitle(myHobby[indexPath.item], for: .normal)
             cell.button.outline()
+            
             let buttonImage = UIImage(named: "close_small")?.withRenderingMode(.alwaysTemplate)
             cell.button.setImage(buttonImage, for: .normal)
             cell.button.tintColor = UIColor.brandGreen
             cell.button.semanticContentAttribute = .forceRightToLeft
+            
+            return cell
         }
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -149,11 +164,29 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
                          referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 18) // you can change sizing here
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            viewModel.addMyHobbyFromTotalHobby(indexPath.item) {
+                self.view.makeToast("중복된 취미입니다", duration: 1.0, position: .bottom)
+            }
+        } else {
+            // 선택한 item index의 원소를 viewModel에서 삭제
+            viewModel.deleteMyHobby(indexPath.item)
+        }
+    }
 }
 
 extension AddHobbyViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // 입력한 데이터 추가하고 collection view reload하는 로직
+        // 입력한 데이터 viewModel에 추가하기
+        guard let inputText = searchBar.text else { return }
+        
+        viewModel.addMyHobbyFromInputText(inputText) {
+            self.view.makeToast("중복된 취미는 입력되지 않았습니다", duration: 1.0, position: .bottom)
+        }
+        
+        searchBar.text = ""
         searchBar.resignFirstResponder()
     }
 }

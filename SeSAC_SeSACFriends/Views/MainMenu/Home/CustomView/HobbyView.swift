@@ -12,7 +12,7 @@ class HobbyView: UIView, BaseView {
     let collectionView: UICollectionView = {
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         

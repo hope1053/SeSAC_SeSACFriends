@@ -14,6 +14,7 @@ class HobbyCollectionViewCell: UICollectionViewCell, BaseView {
     let button: MainButton = {
         let button = MainButton(title: "버튼", type: .inactive)
         button.titleLabel?.font = .Title4_R14
+        button.isUserInteractionEnabled = false
         return button
     }()
 
@@ -30,13 +31,15 @@ class HobbyCollectionViewCell: UICollectionViewCell, BaseView {
 
     func configureView() {
         self.addSubview(button)
-        
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
     }
 
     func setupConstraints() {
-        button.snp.makeConstraints {
+        self.snp.makeConstraints {
             $0.height.equalTo(32)
+        }
+        
+        button.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
