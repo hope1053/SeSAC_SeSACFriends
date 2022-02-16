@@ -167,8 +167,8 @@ extension AddHobbyViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            viewModel.addMyHobbyFromTotalHobby(indexPath.item) {
-                self.view.makeToast("중복된 취미입니다", duration: 1.0, position: .bottom)
+            viewModel.addMyHobbyFromTotalHobby(indexPath.item) { message in
+                self.view.makeToast(message, duration: 1.0, position: .bottom)
             }
         } else {
             // 선택한 item index의 원소를 viewModel에서 삭제
@@ -182,8 +182,8 @@ extension AddHobbyViewController: UISearchBarDelegate {
         // 입력한 데이터 viewModel에 추가하기
         guard let inputText = searchBar.text else { return }
         
-        viewModel.addMyHobbyFromInputText(inputText) {
-            self.view.makeToast("중복된 취미는 입력되지 않았습니다", duration: 1.0, position: .bottom)
+        viewModel.addMyHobbyFromInputText(inputText) { message in
+            self.view.makeToast(message, duration: 1.0, position: .bottom)
         }
         
         searchBar.text = ""

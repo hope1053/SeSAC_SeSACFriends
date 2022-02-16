@@ -115,29 +115,40 @@ class QueueViewModel {
     }
     
     // collectionView Section1에서 클릭해서 추가하는 경우
-    func addMyHobbyFromTotalHobby(_ index: Int, completion: @escaping () -> Void) {
+    func addMyHobbyFromTotalHobby(_ index: Int, completion: @escaping (String) -> Void) {
         let totalHobby = totalHobby.value
         
         var currentMyHobby = myHobby.value
         let selectedHobby = totalHobby[index]
         // 클릭한 Hobby가 이미 myHobby list에 있는 경우 -> 중복된거 안된다고 toast 띄우기
         if currentMyHobby.contains(selectedHobby) {
-            completion()
+            completion("이미 등록된 취미입니다")
+        } else if currentMyHobby.count == 8 {
+            // 이미 추가된 취미가 8개인 경우
+            completion("취미를 더 이상 추가할 수 없습니다")
         } else {
             currentMyHobby.append(selectedHobby)
             myHobby.accept(currentMyHobby)
         }
     }
     
-    func addMyHobbyFromInputText(_ inputText: String, completion: @escaping () -> Void) {
+    func addMyHobbyFromInputText(_ inputText: String, completion: @escaping (String) -> Void) {
         let inputTextArray = inputText.components(separatedBy: " ")
         var isOverlapped = false
+        var isOverEight = false
+        var isSuitable = true
         
         var currentHobby = self.myHobby.value
+        // 중복, 8개 이상
         
         for input in inputTextArray {
-            if currentHobby.contains(input) {
+            if input.count < 1 || input.count > 8 {
+                isSuitable = false
+            } else if currentHobby.contains(input) {
                 isOverlapped = true
+            } else if currentHobby.count == 8 {
+                isOverEight = true
+                break
             } else {
                 currentHobby.append(input)
             }
@@ -145,8 +156,15 @@ class QueueViewModel {
         
         self.myHobby.accept(currentHobby)
         
-        if isOverlapped {
-            completion()
+        // 중복만 된 경우, 8개만 넘은 경우, 중복되고 8개를 넘은 경우
+        if !isSuitable {
+            completion("최소 한 자 이상, 최대 8글자까지 작성 가능합니다")
+        } else if isOverlapped && isOverEight {
+            completion("중복되지 않은 취미에 한해 8개까지 추가할 수 있습니다.")
+        } else if isOverlapped && !isOverEight {
+            completion("이미 등록된 취미입니다")
+        } else if isOverEight && !isOverlapped {
+             completion("취미를 더 이상 추가할 수 없습니다")
         }
     }
 }
