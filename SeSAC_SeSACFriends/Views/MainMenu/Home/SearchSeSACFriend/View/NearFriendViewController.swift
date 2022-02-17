@@ -87,9 +87,8 @@ extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cardView.nameView.userNickNameLabel.text = data.nick
         cell.updateUI(viewModel.cellIsSelected[indexPath.row])
         
-        cell.arrowButtonTapHandler = { isSelected in
+        cell.cardView.arrowButtonTapHandler = { isSelected in
             self.viewModel.cellIsSelected[indexPath.row] = isSelected
-            print(self.viewModel.cellIsSelected)
             
             self.mainView.tableView.reloadData()
         }

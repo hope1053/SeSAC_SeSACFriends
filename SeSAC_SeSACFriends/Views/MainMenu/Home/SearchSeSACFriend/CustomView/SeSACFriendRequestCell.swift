@@ -11,7 +11,7 @@ class SeSACFriendRequestCell: UITableViewCell {
     
     var cardView = UserInfoCardView(cardType: .friendRequest, reviewType: .noReview)
     
-    var arrowButtonTapHandler: ((Bool) -> Void)?
+//    var arrowButtonTapHandler: ((Bool) -> Void)?
 
     static let identifier = "SeSACFriendRequestCell"
 
@@ -33,7 +33,7 @@ class SeSACFriendRequestCell: UITableViewCell {
         cardView.hobbyView.collectionView.delegate = self
         cardView.hobbyView.collectionView.dataSource = self
         
-        cardView.nameView.arrowButton.addTarget(self, action: #selector(arrowButtonClicked), for: .touchUpInside)
+//        cardView.nameView.arrowButton.addTarget(self, action: #selector(arrowButtonClicked), for: .touchUpInside)
     }
     
     func setupConstraints() {
@@ -43,17 +43,17 @@ class SeSACFriendRequestCell: UITableViewCell {
         }
     }
     
-    @objc func arrowButtonClicked(_ button: UIButton) {
-        button.isSelected.toggle()
-        
-        let isSelected = button.isSelected
-        
-        [cardView.reputationView, cardView.hobbyView, cardView.reviewView].forEach { subView in
-            subView.isHidden = !isSelected
-        }
-        
-        arrowButtonTapHandler!(isSelected)
-    }
+//    @objc func arrowButtonClicked(_ button: UIButton) {
+//        button.isSelected.toggle()
+//        
+//        let isSelected = button.isSelected
+//        
+//        [cardView.reputationView, cardView.hobbyView, cardView.reviewView].forEach { subView in
+//            subView.isHidden = !isSelected
+//        }
+//        
+//        arrowButtonTapHandler!(isSelected)
+//    }
     
     func updateUI(_ isSelected: Bool) {
         cardView.nameView.arrowButton.isSelected = isSelected
