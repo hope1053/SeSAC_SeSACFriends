@@ -277,14 +277,13 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: MKMapViewDelegate {
     
     func addAnnotation(_ dataArray: [FromQueueDB]) {
-        print(dataArray)
         let annotations = mapView.mapView.annotations
         mapView.mapView.removeAnnotations(annotations)
         
         for data in dataArray {
             let coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.long)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
+            let sesacImage = SeSACFace(rawValue: data.sesac)!
+            let annotation = HomeCustomAnnotation(image: "\(sesacImage)", coordinate: coordinate)
             
             mapView.mapView.addAnnotation(annotation)
         }
@@ -302,20 +301,26 @@ extension HomeViewController: MKMapViewDelegate {
     
     // Custom annotation 생성
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self) else {
+        guard let annotation = annotation as? HomeCustomAnnotation else {
             return nil
         }
 
-        var annotationView = self.mapView.mapView.dequeueReusableAnnotationView(withIdentifier: "Custom")
+        var annotationView = self.mapView.mapView.dequeueReusableAnnotationView(withIdentifier: HomeAnnotationView.identifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Custom")
-            annotationView?.canShowCallout = true
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: HomeAnnotationView.identifier)
+            annotationView?.contentMode = .scaleAspectFit
         } else {
             annotationView?.annotation = annotation
         }
         
-        annotationView?.image = UIImage(named: "sesac_face_5")
+        let sesacImage = UIImage(named: annotation.sesacImageName)
+        let size = CGSize(width: 90, height: 90)
+        UIGraphicsBeginImageContext(size)
+        sesacImage!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        annotationView?.image = resizedImage
         
         return annotationView
     }

@@ -101,6 +101,7 @@
 		CBBB276C27BD2A950036ADDC /* SearchingFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */; };
 		CBBB276E27BD47EF0036ADDC /* SeSACFriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276D27BD47EF0036ADDC /* SeSACFriendRequestCell.swift */; };
 		CBBB277027BE24150036ADDC /* SeSACFriendAcceptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276F27BE24150036ADDC /* SeSACFriendAcceptCell.swift */; };
+		CBBB277227BE4C1D0036ADDC /* HomeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB277127BE4C1C0036ADDC /* HomeAnnotationView.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -210,6 +211,7 @@
 		CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingFriendViewModel.swift; sourceTree = "<group>"; };
 		CBBB276D27BD47EF0036ADDC /* SeSACFriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendRequestCell.swift; sourceTree = "<group>"; };
 		CBBB276F27BE24150036ADDC /* SeSACFriendAcceptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendAcceptCell.swift; sourceTree = "<group>"; };
+		CBBB277127BE4C1C0036ADDC /* HomeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAnnotationView.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				CB51ED1A27AF76F80097D2B5 /* HomeMapView.swift */,
+				CBBB277127BE4C1C0036ADDC /* HomeAnnotationView.swift */,
 				CB51ED1C27AF7F7F0097D2B5 /* FloatingGenderButton.swift */,
 				CBBB275327BAC3560036ADDC /* HobbyView.swift */,
 				CBBB275527BACBA20036ADDC /* HobbyHeaderView.swift */,
@@ -829,6 +832,7 @@
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
 				CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */,
+				CBBB277227BE4C1D0036ADDC /* HomeAnnotationView.swift in Sources */,
 				CBEF8AFA27B55AC70040F905 /* queueState.swift in Sources */,
 				CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
