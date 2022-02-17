@@ -43,8 +43,8 @@ class MainButton: UIButton {
             self.disable()
         case .canRequest:
             self.canRequest()
-        case .alreadyRequested:
-            self.alreadyRequested()
+        case .acceptRequest:
+            self.acceptRequest()
         }
     }
 }

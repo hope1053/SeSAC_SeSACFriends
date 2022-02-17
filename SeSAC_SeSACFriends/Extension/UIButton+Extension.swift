@@ -52,7 +52,7 @@ extension UIButton {
         self.titleLabel?.font = .Title3_M14
     }
     
-    func alreadyRequested() {
+    func acceptRequest() {
         self.backgroundColor = .systemSuccess
         self.setTitleColor(.customWhite, for: .normal)
         self.titleLabel?.font = .Title3_M14

@@ -9,7 +9,8 @@ import UIKit
 
 enum CardViewType: String {
     case user
-    case friend
+    case friendRequest
+    case friendAccept
 }
 
 // 사용자 카드뷰
@@ -30,6 +31,7 @@ class UserInfoCardView: UIView {
     }()
     
     let requestButton = MainButton(title: "요청하기", type: .canRequest)
+    let acceptButton = MainButton(title: "수락하기", type: .acceptRequest)
     
     let stackView: UIStackView = {
         let stack = UIStackView()
@@ -80,8 +82,15 @@ class UserInfoCardView: UIView {
                 stackView.addArrangedSubview(subView)
             }
         // 새싹 찾기 화면에서 사용할 때 (요청하기 버튼, 하고싶은 취미 있는 UI)
-        case .friend:
+        case .friendRequest:
             [backgroundImageView, sesacImageView, requestButton, stackView].forEach { subView in
+                self.addSubview(subView)
+            }
+            [nameView, reputationView, hobbyView, reviewView].forEach { subView in
+                stackView.addArrangedSubview(subView)
+            }
+        case .friendAccept:
+            [backgroundImageView, sesacImageView, acceptButton, stackView].forEach { subView in
                 self.addSubview(subView)
             }
             [nameView, reputationView, hobbyView, reviewView].forEach { subView in
@@ -127,8 +136,15 @@ class UserInfoCardView: UIView {
         switch type {
         case .user:
             break
-        case .friend:
+        case .friendRequest:
             requestButton.snp.makeConstraints {
+                $0.width.equalToSuperview().multipliedBy(0.2)
+                $0.height.equalTo(backgroundImageView.snp.height).multipliedBy(0.2)
+                $0.top.equalTo(backgroundImageView.snp.top).offset(12)
+                $0.trailing.equalTo(backgroundImageView.snp.trailing).inset(12)
+            }
+        case .friendAccept:
+            acceptButton.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.2)
                 $0.height.equalTo(backgroundImageView.snp.height).multipliedBy(0.2)
                 $0.top.equalTo(backgroundImageView.snp.top).offset(12)

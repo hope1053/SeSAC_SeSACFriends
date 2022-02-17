@@ -54,7 +54,6 @@ class SearchFriendViewController: TabmanViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "찾기중단", style: .plain, target: self, action: #selector(stopSearchingTapped))
         
         view.addSubview(changeHobbyView)
-        changeHobbyView.backgroundColor = .brandGreen
     }
     
     func setupConstraints() {

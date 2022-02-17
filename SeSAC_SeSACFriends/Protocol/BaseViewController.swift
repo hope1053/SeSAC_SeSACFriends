@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.customBlack
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "arrow")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "arrow")
-        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.backButtonTitle = ""
     }
     
     func setupConstraints() {

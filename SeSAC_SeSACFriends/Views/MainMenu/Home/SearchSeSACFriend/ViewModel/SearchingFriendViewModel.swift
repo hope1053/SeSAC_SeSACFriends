@@ -14,6 +14,8 @@ class SearchingFriendViewModel {
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
     
+    var cellIsSelected: [Bool] = []
+    
     func callFriendData(completion: @escaping (APIstatus) -> Void) {
         QueueAPI.onQueue { data, status in
             switch status {
@@ -29,6 +31,14 @@ class SearchingFriendViewModel {
             default:
                 completion(status)
             }
+        }
+    }
+    
+    func updateArray(_ type: String) {
+        if type == "near" {
+            cellIsSelected = Array(repeating: false, count: friendData.value.fromQueueDB.count)
+        } else {
+            cellIsSelected = Array(repeating: false, count: friendData.value.fromQueueDBRequested.count)
         }
     }
 }
