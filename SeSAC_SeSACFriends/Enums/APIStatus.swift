@@ -53,3 +53,24 @@ enum DequeueStatus: Int {
     case notMember = 406
     case serverError = 500
 }
+
+enum HobbyRequestStatus: Int {
+    case success = 200
+    case alreadyRequested = 201
+    case friendStoppedRequest = 202
+    case firebaseTokenError = 401
+    case notMember = 406
+    case serverError = 500
+    case clientError = 501  
+}
+
+enum HobbyAcceptStatus: Int {
+    case success = 200
+    case friendAlreadyMatched = 201
+    case friendStoppedRequest = 202
+    case alreadyMatched = 203
+    case firebaseTokenError = 401
+    case notMember = 406
+    case serverError = 500
+    case clientError = 501
+}

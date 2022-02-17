@@ -125,4 +125,52 @@ class QueueAPI {
             }
         }
     }
+    
+    static func hobbyRequest(completion: @escaping (HobbyRequestStatus) -> Void) {
+        
+        let user = User.shared
+        
+        let parameter: [String: Any] = [
+            "idtoken": user.friendUID
+        ]
+        
+        AF.request(Endpoint.hobbyRequest.url, method: .post, parameters: parameter, headers: header).validate().response { response in
+            let statusCode = response.response?.statusCode ?? 500
+            let hobbyRequestStatus = HobbyRequestStatus(rawValue: statusCode)!
+            
+            switch hobbyRequestStatus {
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken()
+                hobbyRequest { status in
+                    completion(status)
+                }
+            default:
+                completion(hobbyRequestStatus)
+            }
+        }
+    }
+    
+    static func hobbyAccept(completion: @escaping (HobbyAcceptStatus) -> Void) {
+        
+        let user = User.shared
+        
+        let parameter: [String: Any] = [
+            "idtoken": user.friendUID
+        ]
+        
+        AF.request(Endpoint.hobbyAccept.url, method: .post, parameters: parameter, headers: header).validate().response { response in
+            let statusCode = response.response?.statusCode ?? 500
+            let hobbyAcceptStatus = HobbyAcceptStatus(rawValue: statusCode)!
+            
+            switch hobbyAcceptStatus {
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken()
+                hobbyAccept { status in
+                    completion(status)
+                }
+            default:
+                completion(hobbyAcceptStatus)
+            }
+        }
+    }
 }

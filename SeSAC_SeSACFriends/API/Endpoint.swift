@@ -13,8 +13,10 @@ enum Endpoint {
     case withdraw
     case update
     case onQueue
-    case myQueueState
     case queue
+    case myQueueState
+    case hobbyRequest
+    case hobbyAccept
 }
 
 extension Endpoint {
@@ -32,6 +34,10 @@ extension Endpoint {
             return .makeEndpoint("queue/myQueueState")
         case .queue:
             return .makeEndpoint("queue")
+        case .hobbyRequest:
+            return .makeEndpoint("queue/hobbyrequest")
+        case .hobbyAccept:
+            return .makeEndpoint("queue/hobbyaccept")
         }
     }
 }
