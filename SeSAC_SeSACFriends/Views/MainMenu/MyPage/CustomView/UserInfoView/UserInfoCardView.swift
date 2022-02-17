@@ -47,12 +47,19 @@ class UserInfoCardView: UIView {
     }()
     
     let nameView = UserNickNameView()
+    
     let reputationView: UserReputationView = {
         let view = UserReputationView()
         view.isHidden = true
         return view
     }()
-    let hobbyView = UserHobbyView()
+    
+    let hobbyView: UserHobbyView = {
+        let view = UserHobbyView()
+        view.isHidden = true
+        return view
+    }()
+    
     var reviewView = UserReviewView()
     
     required init(cardType: CardViewType, reviewType: ReviewViewType) {
@@ -72,6 +79,7 @@ class UserInfoCardView: UIView {
     func configureView(cardType: CardViewType, reviewType: ReviewViewType) {
         reviewView = UserReviewView(type: reviewType)
         reviewView.isHidden = true
+        
         switch cardType {
         // 내정보 화면에서 사용할 때 (요청하기 버튼, 하고싶은 취미 없는 UI)
         case .user:
@@ -102,9 +110,12 @@ class UserInfoCardView: UIView {
     }
     
     @objc func arrowTapped(_ button: UIButton) {
-        button.isSelected = !button.isSelected
-        reputationView.isHidden = !reputationView.isHidden
-        reviewView.isHidden = !reviewView.isHidden
+        print(#function)
+        button.isSelected.toggle()
+        
+        [reputationView, hobbyView, reviewView].forEach { subView in
+            subView.isHidden = !subView.isHidden
+        }
     }
     
     func setupConstraints(type: CardViewType) {
@@ -126,7 +137,6 @@ class UserInfoCardView: UIView {
         
         nameView.snp.makeConstraints {
             $0.height.equalTo(backgroundImageView).multipliedBy(0.25)
-//            $0.bottom.equalToSuperview()
         }
         
         reputationView.snp.makeConstraints {
@@ -137,6 +147,10 @@ class UserInfoCardView: UIView {
         case .user:
             break
         case .friendRequest:
+            hobbyView.snp.makeConstraints {
+                $0.height.equalTo(backgroundImageView).multipliedBy(0.4)
+            }
+            
             requestButton.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.2)
                 $0.height.equalTo(backgroundImageView.snp.height).multipliedBy(0.2)
@@ -144,6 +158,10 @@ class UserInfoCardView: UIView {
                 $0.trailing.equalTo(backgroundImageView.snp.trailing).inset(12)
             }
         case .friendAccept:
+            hobbyView.snp.makeConstraints {
+                $0.height.equalTo(backgroundImageView).multipliedBy(0.4)
+            }
+            
             acceptButton.snp.makeConstraints {
                 $0.width.equalToSuperview().multipliedBy(0.2)
                 $0.height.equalTo(backgroundImageView.snp.height).multipliedBy(0.2)

@@ -99,7 +99,8 @@
 		CBBB276827BD1FEF0036ADDC /* RequestedFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276727BD1FEF0036ADDC /* RequestedFriendViewController.swift */; };
 		CBBB276A27BD22EA0036ADDC /* ChangeHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */; };
 		CBBB276C27BD2A950036ADDC /* SearchingFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */; };
-		CBBB276E27BD47EF0036ADDC /* SeSACFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276D27BD47EF0036ADDC /* SeSACFriendTableViewCell.swift */; };
+		CBBB276E27BD47EF0036ADDC /* SeSACFriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276D27BD47EF0036ADDC /* SeSACFriendRequestCell.swift */; };
+		CBBB277027BE24150036ADDC /* SeSACFriendAcceptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB276F27BE24150036ADDC /* SeSACFriendAcceptCell.swift */; };
 		CBBE82A727B022F6000B1CE5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */; };
 		CBBE82AA27B0298D000B1CE5 /* UpdateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */; };
 		CBC67189279FC20B00722D78 /* UserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC67188279FC20B00722D78 /* UserNameView.swift */; };
@@ -207,7 +208,8 @@
 		CBBB276727BD1FEF0036ADDC /* RequestedFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedFriendViewController.swift; sourceTree = "<group>"; };
 		CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeHobbyView.swift; sourceTree = "<group>"; };
 		CBBB276B27BD2A950036ADDC /* SearchingFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingFriendViewModel.swift; sourceTree = "<group>"; };
-		CBBB276D27BD47EF0036ADDC /* SeSACFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendTableViewCell.swift; sourceTree = "<group>"; };
+		CBBB276D27BD47EF0036ADDC /* SeSACFriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendRequestCell.swift; sourceTree = "<group>"; };
+		CBBB276F27BE24150036ADDC /* SeSACFriendAcceptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendAcceptCell.swift; sourceTree = "<group>"; };
 		CBBE82A627B022F6000B1CE5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CBBE82A927B0298D000B1CE5 /* UpdateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfo.swift; sourceTree = "<group>"; };
 		CBC67188279FC20B00722D78 /* UserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameView.swift; sourceTree = "<group>"; };
@@ -634,7 +636,8 @@
 			isa = PBXGroup;
 			children = (
 				CBBB275F27BD0CFC0036ADDC /* SeSACFriendView.swift */,
-				CBBB276D27BD47EF0036ADDC /* SeSACFriendTableViewCell.swift */,
+				CBBB276D27BD47EF0036ADDC /* SeSACFriendRequestCell.swift */,
+				CBBB276F27BE24150036ADDC /* SeSACFriendAcceptCell.swift */,
 				CBBB276927BD22EA0036ADDC /* ChangeHobbyView.swift */,
 			);
 			path = CustomView;
@@ -865,9 +868,10 @@
 				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
 				CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,
-				CBBB276E27BD47EF0036ADDC /* SeSACFriendTableViewCell.swift in Sources */,
+				CBBB276E27BD47EF0036ADDC /* SeSACFriendRequestCell.swift in Sources */,
 				CB29DD0427AB944B00F1540D /* ManageInfoViewController.swift in Sources */,
 				CB11F13B279BB3B100028234 /* UserEmailViewController.swift in Sources */,
+				CBBB277027BE24150036ADDC /* SeSACFriendAcceptCell.swift in Sources */,
 				CB51ED1D27AF7F7F0097D2B5 /* FloatingGenderButton.swift in Sources */,
 				CB29DD1027ABB56400F1540D /* UserNicknameView.swift in Sources */,
 				CB1C362D27A1798600AF90DB /* MyPageViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class SearchFriendViewController: TabmanViewController {
     private var viewControllers = [NearFriendViewController(), RequestedFriendViewController()]
     private let buttonTitles = ["주변 새싹", "받은 요청"]
     
-    let viewModel = QueueViewModel()
+    let viewModel = SearchingFriendViewModel()
     
     let changeHobbyView = ChangeHobbyView()
     

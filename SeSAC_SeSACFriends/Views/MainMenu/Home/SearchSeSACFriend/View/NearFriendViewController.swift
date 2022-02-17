@@ -18,12 +18,13 @@ class NearFriendViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         callFriendData()
-        mainView.updateUI()
     }
     
     override func configureView() {
@@ -45,8 +46,12 @@ class NearFriendViewController: BaseViewController {
     
     func bind() {
         viewModel.friendData
-            .bind { _ in
+            .bind { data in
+                print("FriendData!!!!!!!", data)
+                let nearDataArray = data.fromQueueDB
+                
                 self.viewModel.updateArray("near")
+                self.mainView.updateUI(!nearDataArray.isEmpty)
                 self.mainView.tableView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -68,20 +73,25 @@ class NearFriendViewController: BaseViewController {
 
 extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print(viewModel.nearFriendCount)
+        return viewModel.nearFriendCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeSACFriendTableViewCell.identifier, for: indexPath) as? SeSACFriendTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeSACFriendRequestCell.identifier, for: indexPath) as? SeSACFriendRequestCell else {
             return UITableViewCell()
+        }
+        
+        let data = viewModel.nearFriendData[indexPath.row]
+        
+        cell.cardView.nameView.userNickNameLabel.text = data.nick
+        cell.arrowButtonTapHandler = {
+            print("arrowButtonTapHandler")
+            self.mainView.tableView.reloadRows(at: [IndexPath(item: indexPath.item, section: indexPath.section)], with: .fade)
         }
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
-    }
-    
-    
 }
+
+
