@@ -15,6 +15,8 @@ enum CardViewType: String {
 
 // 사용자 카드뷰
 class UserInfoCardView: UIView {
+    
+//    var arrowButtonTapHandler: ((Bool) -> Void)?
 
     let backgroundImageView: UIImageView = {
         let image = UIImageView()
@@ -106,17 +108,20 @@ class UserInfoCardView: UIView {
             }
         }
         
-        nameView.arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
+//        nameView.arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
     }
     
-    @objc func arrowTapped(_ button: UIButton) {
-        print(#function)
-        button.isSelected.toggle()
-        
-        [reputationView, hobbyView, reviewView].forEach { subView in
-            subView.isHidden = !subView.isHidden
-        }
-    }
+//    @objc func arrowTapped(_ button: UIButton) {
+//        button.isSelected.toggle()
+//        
+//        [reputationView, hobbyView, reviewView].forEach { subView in
+//            subView.isHidden.toggle()
+//        }
+//        
+//        let isDone = button.isSelected
+//        print(isDone)
+//        arrowButtonTapHandler!(isDone)
+//    }
     
     func setupConstraints(type: CardViewType) {
         backgroundImageView.snp.makeConstraints {
