@@ -38,11 +38,13 @@ class SearchingFriendViewModel {
             case .success:
                 guard let data = data else { return }
                 self.friendData.accept(data)
+                completion(.success)
             case .firebaseTokenError:
                 TokenAPI.updateIDToken()
                 QueueAPI.onQueue { data, status in
                     guard let data = data else { return }
                     self.friendData.accept(data)
+                    completion(.success)
                 }
             default:
                 completion(status)

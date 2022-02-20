@@ -9,11 +9,15 @@ import UIKit
 
 import Tabman
 import Pageboy
+import RxSwift
+import RxCocoa
 
 class SearchFriendViewController: TabmanViewController {
     
     private var viewControllers = [NearFriendViewController(), RequestedFriendViewController()]
     private let buttonTitles = ["주변 새싹", "받은 요청"]
+    
+    let disposeBag = DisposeBag()
     
     let viewModel = SearchingFriendViewModel()
     
@@ -28,6 +32,7 @@ class SearchFriendViewController: TabmanViewController {
         
         configureView()
         setupConstraints()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +66,30 @@ class SearchFriendViewController: TabmanViewController {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(48)
+        }
+    }
+    
+    func bind() {
+        changeHobbyView.resetButton
+            .rx.tap
+            .bind { _ in
+                self.callFriendData()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func callFriendData() {
+        viewModel.callFriendData { status in
+            switch status {
+            case .success:
+                self.view.makeToast("새로고침 완료", duration: 1.0, position: .bottom)
+            case .notMember:
+                self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
+            case .serverError:
+                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+            default:
+                break
+            }
         }
     }
     
