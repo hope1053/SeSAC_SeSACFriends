@@ -18,8 +18,16 @@ class SearchingFriendViewModel {
         friendData.value.fromQueueDB.count
     }
     
+    var requestedFriendCount: Int {
+        friendData.value.fromQueueDBRequested.count
+    }
+    
     var nearFriendData: [FromQueueDB] {
         friendData.value.fromQueueDB
+    }
+    
+    var requestedFriendData: [FromQueueDB] {
+        friendData.value.fromQueueDBRequested
     }
     
     var cellIsSelected: [Bool] = []

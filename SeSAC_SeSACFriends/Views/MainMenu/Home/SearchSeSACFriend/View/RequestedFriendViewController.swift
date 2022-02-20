@@ -35,6 +35,9 @@ class RequestedFriendViewController: BaseViewController {
         view.addSubview(mainView)
         mainView.noSeSACLabel.text = "아직 받은 요청이 없어요ㅠ"
         mainView.noSeSACSubLabel.text = "취미를 변경하거나 조금만 더 기다려주세요!"
+        
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
     }
     
     override func setupConstraints() {
@@ -45,8 +48,11 @@ class RequestedFriendViewController: BaseViewController {
     
     func bind() {
         viewModel.friendData
-            .bind { _ in
-                self.viewModel.updateArray("near")
+            .bind { data in
+                let requestedDataArray = data.fromQueueDBRequested
+                
+                self.viewModel.updateArray("requested")
+                self.mainView.updateUI(!requestedDataArray.isEmpty)
                 self.mainView.tableView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -65,3 +71,29 @@ class RequestedFriendViewController: BaseViewController {
         }
     }
 }
+
+extension RequestedFriendViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.requestedFriendCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeSACFriendRequestCell.identifier, for: indexPath) as? SeSACFriendRequestCell else {
+            return UITableViewCell()
+        }
+        
+        let data = viewModel.requestedFriendData[indexPath.row]
+        
+        cell.cardView.nameView.userNickNameLabel.text = data.nick
+        cell.updateUI(viewModel.cellIsSelected[indexPath.row])
+        
+        cell.cardView.arrowButtonTapHandler = { isSelected in
+            self.viewModel.cellIsSelected[indexPath.row] = isSelected
+            self.mainView.tableView.reloadData()
+        }
+        
+        return cell
+    }
+}
+
