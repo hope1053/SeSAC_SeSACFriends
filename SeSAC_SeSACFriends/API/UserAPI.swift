@@ -69,8 +69,8 @@ class UserAPI {
                 guard let value = response.value else {return}
                 do {
                     let result = try JSONDecoder().decode(SignInUser.self, from: value!)
-                    print(result.uid)
-                    print(result.fcMtoken)
+                    print("uid!!!!!!!!!", result.uid)
+                    print("fcm!!!!!!!!!", result.fcMtoken)
                     let uid = result.uid
                     UserDefaults.standard.set(uid, forKey: "uid")
                     user.gender.accept(Gender(rawValue: result.gender)!)
@@ -83,7 +83,9 @@ class UserAPI {
                 completion(nil, APIStatus.notMember)
             case 401:
                 // firebase token error
-                TokenAPI.updateIDToken()
+                TokenAPI.updateIDToken {
+                    print("updated")
+                }
             case 500:
                 completion(nil, APIStatus.serverError)
             default:
@@ -118,7 +120,9 @@ class UserAPI {
                 completion(APIStatus.success)
             case 401:
                 // firebase token error
-                TokenAPI.updateIDToken()
+                TokenAPI.updateIDToken {
+                    print("updated")
+                }
             case 406:
                 completion(APIStatus.alreadyWithdraw)
             case 500:
@@ -140,7 +144,11 @@ class UserAPI {
                 completion(APIStatus.success)
             case 401:
                 // firebase token error
-                TokenAPI.updateIDToken()
+                TokenAPI.updateIDToken{
+                    withdraw { status in
+                        completion(status)
+                    }
+                }
                 break
             case 406:
                 completion(APIStatus.alreadyWithdraw)

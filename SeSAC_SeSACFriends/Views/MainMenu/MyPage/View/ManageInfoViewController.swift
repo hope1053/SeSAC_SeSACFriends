@@ -105,7 +105,8 @@ class ManageInfoViewController: BaseViewController {
                 self.view.makeToast("저장이 완료되었습니다.", duration: 1.0, position: .bottom)
             case .firebaseTokenError:
                 self.view.makeToast("파베에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
-                TokenAPI.updateIDToken()
+                TokenAPI.updateIDToken{
+                }
             case .notMember:
                 self.view.makeToast("미가입 회원입니다.", duration: 1.0, position: .bottom)
             case .serverError:

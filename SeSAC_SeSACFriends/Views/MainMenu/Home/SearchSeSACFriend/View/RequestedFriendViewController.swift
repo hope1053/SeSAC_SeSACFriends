@@ -61,6 +61,8 @@ class RequestedFriendViewController: BaseViewController {
     func callFriendData() {
         viewModel.callFriendData { status in
             switch status {
+//            case .success:
+//                SearchFriendViewController().updateButtonUI(self.viewModel.nearFriendData.isEmpty)
             case .notMember:
                 self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
             case .serverError:

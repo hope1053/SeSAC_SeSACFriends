@@ -73,24 +73,9 @@ class SearchFriendViewController: TabmanViewController {
         changeHobbyView.resetButton
             .rx.tap
             .bind { _ in
-                self.callFriendData()
+                // 현재 ViewController에게 새로고침하라고 알려주기
             }
             .disposed(by: disposeBag)
-    }
-    
-    func callFriendData() {
-        viewModel.callFriendData { status in
-            switch status {
-            case .success:
-                self.view.makeToast("새로고침 완료", duration: 1.0, position: .bottom)
-            case .notMember:
-                self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
-            case .serverError:
-                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
-            default:
-                break
-            }
-        }
     }
     
     @objc func stopSearchingTapped() {
@@ -135,6 +120,16 @@ extension SearchFriendViewController {
         addBar(bar, dataSource: self, at: .top)
     }
 }
+
+//extension SearchFriendViewController: RefreshUI{
+//    // 현재 뷰컨의 data가 비어있는지 아닌지 여부 받아서 버튼 show 업데이트해주기
+//    func updateButtonUI(_ isEmpty: Bool) {
+//        print("실행됨!!!!!!!!!!!!!!!!!!!")
+////        changeHobbyView.resetButton.backgroundColor = .red
+//        changeHobbyView.isHidden = !isEmpty
+//        self.view.layoutIfNeeded()
+//    }
+//}
 
 extension SearchFriendViewController: PageboyViewControllerDataSource, TMBarDataSource {
     

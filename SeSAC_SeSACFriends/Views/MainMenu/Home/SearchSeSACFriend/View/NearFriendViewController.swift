@@ -8,7 +8,13 @@
 import RxSwift
 import UIKit
 
+protocol RefreshUI {
+    func updateButtonUI(_ isEmpty: Bool)
+}
+
 class NearFriendViewController: BaseViewController {
+    
+    var delegate: RefreshUI?
     
     let disposeBag = DisposeBag()
     
@@ -47,7 +53,6 @@ class NearFriendViewController: BaseViewController {
     func bind() {
         viewModel.friendData
             .bind { data in
-                print("FriendData!!!!!!!", data)
                 let nearDataArray = data.fromQueueDB
                 
                 self.viewModel.updateArray("near")
@@ -60,6 +65,8 @@ class NearFriendViewController: BaseViewController {
     func callFriendData() {
         viewModel.callFriendData { status in
             switch status {
+            case .success:
+                self.delegate?.updateButtonUI(self.viewModel.nearFriendData.isEmpty)
             case .notMember:
                 self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
             case .serverError:
@@ -73,7 +80,6 @@ class NearFriendViewController: BaseViewController {
 
 extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.nearFriendCount)
         return viewModel.nearFriendCount
     }
     
@@ -89,7 +95,6 @@ extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.cardView.arrowButtonTapHandler = { isSelected in
             self.viewModel.cellIsSelected[indexPath.row] = isSelected
-            
             self.mainView.tableView.reloadData()
         }
         

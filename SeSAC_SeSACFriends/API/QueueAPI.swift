@@ -99,9 +99,10 @@ class QueueAPI {
             
             switch queueStatus {
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                queue { status in
-                    completion(queueStatus)
+                TokenAPI.updateIDToken {
+                    queue { status in
+                        completion(queueStatus)
+                    }
                 }
             default:
                 completion(queueStatus)
@@ -116,9 +117,10 @@ class QueueAPI {
             
             switch dequeueStatus {
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                dequeue { status in
-                    completion(dequeueStatus)
+                TokenAPI.updateIDToken {
+                    dequeue { status in
+                        completion(dequeueStatus)
+                    }
                 }
             default:
                 completion(dequeueStatus)
@@ -140,9 +142,10 @@ class QueueAPI {
             
             switch hobbyRequestStatus {
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                hobbyRequest { status in
-                    completion(status)
+                TokenAPI.updateIDToken{
+                    hobbyRequest { status in
+                        completion(status)
+                    }
                 }
             default:
                 completion(hobbyRequestStatus)
@@ -164,9 +167,10 @@ class QueueAPI {
             
             switch hobbyAcceptStatus {
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                hobbyAccept { status in
-                    completion(status)
+                TokenAPI.updateIDToken{
+                    hobbyAccept { status in
+                        completion(status)
+                    }
                 }
             default:
                 completion(hobbyAcceptStatus)

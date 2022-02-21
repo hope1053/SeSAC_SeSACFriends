@@ -48,10 +48,11 @@ class QueueViewModel {
                 guard let data = data else { return }
                 self.friendData.accept(data)
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                QueueAPI.onQueue { data, status in
-                    guard let data = data else { return }
-                    self.friendData.accept(data)
+                TokenAPI.updateIDToken {
+                    QueueAPI.onQueue { data, status in
+                        guard let data = data else { return }
+                        self.friendData.accept(data)
+                    }
                 }
             default:
                 completion(status)
@@ -93,13 +94,14 @@ class QueueViewModel {
             case .success:
                 completion(queueState, .success)
             case .firebaseTokenError:
-                TokenAPI.updateIDToken()
-                QueueAPI.myQueueState { queueState, status in
-                    guard let queueState = queueState else {
-                        completion(nil, .serverError)
-                        return
+                TokenAPI.updateIDToken{
+                    QueueAPI.myQueueState { queueState, status in
+                        guard let queueState = queueState else {
+                            completion(nil, .serverError)
+                            return
+                        }
+                        completion(queueState, .success)
                     }
-                    completion(queueState, .success)
                 }
             default:
                 completion(nil, status)

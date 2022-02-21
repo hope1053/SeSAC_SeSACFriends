@@ -15,9 +15,11 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Firebase 초기화
         FirebaseApp.configure()
 
+        // 원격 알림 시스템에 앱 등록
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
@@ -33,19 +35,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           application.registerUserNotificationSettings(settings)
         }
         
+        application.registerForRemoteNotifications()
+        
+        // 메시지 대리자 설정
         Messaging.messaging().delegate = self
         
+        // 현재 등록된 토큰 가져오기
         Messaging.messaging().token { token, error in
           if let error = error {
             print("Error fetching FCM registration token: \(error)")
           } else if let token = token {
               UserDefaults.standard.set(token, forKey: "FCMToken")
-            print("FCM registration token: \(token)")
           }
         }
-        
-        UserAPI.signIn { user, status in
-            print(user, status)
+
+        TokenAPI.updateIDToken {
+            UserAPI.signIn { user, status in
+                //
+            }
         }
         
         sleep(2)
@@ -73,6 +80,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    // 포그라운드 수신: willPresent(로컬/푸시 동일)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner, .badge, .sound])
     }
     
 }

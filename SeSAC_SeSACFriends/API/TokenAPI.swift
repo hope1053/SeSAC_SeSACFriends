@@ -9,14 +9,14 @@ import Foundation
 import Firebase
 
 class TokenAPI {
-    static func updateIDToken() {
+    static func updateIDToken(completion: @escaping () -> Void) {
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { token, error in
             if let error = error {
                 return;
             }
             print("ID token: \(token!)")
             UserDefaults.standard.set(token, forKey: "idToken")
-//            completion()
+            completion()
         }
     }
 }
