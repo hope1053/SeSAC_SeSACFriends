@@ -112,7 +112,7 @@ class UserInfoCardView: UIView {
         
         nameView.arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
         requestButton.addTarget(self, action: #selector(requestAcceptButtonTapped), for: .touchUpInside)
-        
+        acceptButton.addTarget(self, action: #selector(requestAcceptButtonTapped), for: .touchUpInside)
     }
     
     @objc func requestAcceptButtonTapped() {

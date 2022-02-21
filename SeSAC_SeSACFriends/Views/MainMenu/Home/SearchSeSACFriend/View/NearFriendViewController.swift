@@ -71,6 +71,13 @@ final class NearFriendViewController: BaseViewController {
                 self.mainView.tableView.reloadData()
             }
             .disposed(by: disposeBag)
+        
+        requestView.okButton
+            .rx.tap
+            .bind { _ in
+                self.sendRequest()
+            }
+            .disposed(by: disposeBag)
     }
         
     func callFriendData() {
@@ -82,6 +89,22 @@ final class NearFriendViewController: BaseViewController {
                 self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
             default:
                 break
+            }
+        }
+    }
+    
+    func sendRequest() {
+        QueueAPI.hobbyRequest { status in
+            switch status {
+            case .success:
+                self.view.makeToast("취미 함께 하기 요청을 보냈습니다", duration: 1.0, position: .top)
+            case .alreadyRequested:
+                self.view.makeToast("상대방도 요청했음!", duration: 1.0, position: .top)
+            case .friendStoppedRequest:
+                self.view.makeToast("친구가 요청 취소함~", duration: 1.0, position: .top)
+                self.callFriendData()
+            default:
+                print(status)
             }
         }
     }
@@ -109,19 +132,7 @@ extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.cardView.requestAcceptButtonTapHandler = {
             self.viewModel.updateFriendUID("near", indexPath.row) {
-                QueueAPI.hobbyRequest { status in
-                    switch status {
-                    case .success:
-                        self.view.makeToast("취미 함께 하기 요청을 보냈습니다", duration: 1.0, position: .top)
-                    case .alreadyRequested:
-                        self.view.makeToast("상대방도 요청했음!", duration: 1.0, position: .top)
-                    case .friendStoppedRequest:
-                        self.view.makeToast("친구가 요청 취소함~", duration: 1.0, position: .top)
-                        self.callFriendData()
-                    default:
-                        print(status)
-                    }
-                }
+                self.requestView.showAlert(title: "취미 같이 하기를 요청할게요!", subTitle: "요청이 수락되면 30분 후에 리뷰를 남길 수 있어요")
             }
         }
         
