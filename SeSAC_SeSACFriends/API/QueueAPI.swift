@@ -133,12 +133,15 @@ class QueueAPI {
         let user = User.shared
         
         let parameter: [String: Any] = [
-            "idtoken": user.friendUID
+            "otheruid": user.friendUID.value
         ]
+        
+        print(user.friendUID)
         
         AF.request(Endpoint.hobbyRequest.url, method: .post, parameters: parameter, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
             let hobbyRequestStatus = HobbyRequestStatus(rawValue: statusCode)!
+            print(statusCode)
             
             switch hobbyRequestStatus {
             case .firebaseTokenError:
@@ -158,7 +161,7 @@ class QueueAPI {
         let user = User.shared
         
         let parameter: [String: Any] = [
-            "idtoken": user.friendUID
+            "otheruid": user.friendUID
         ]
         
         AF.request(Endpoint.hobbyAccept.url, method: .post, parameters: parameter, headers: header).validate().response { response in

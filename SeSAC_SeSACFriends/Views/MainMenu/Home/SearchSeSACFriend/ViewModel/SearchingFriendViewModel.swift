@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
+// 싱글톤 사용
 class SearchingFriendViewModel {
     
     let friendData = BehaviorRelay<FriendSESAC>(value: FriendSESAC(fromQueueDB: [], fromQueueDBRequested: [], fromRecommend: []))
@@ -25,26 +26,26 @@ class SearchingFriendViewModel {
     var nearFriendData: [FromQueueDB] {
         friendData.value.fromQueueDB
     }
-    
+
     var requestedFriendData: [FromQueueDB] {
         friendData.value.fromQueueDBRequested
     }
     
-    var cellIsSelected: [Bool] = []
+    var nearFriendIsSelected: [Bool] = []
+    var requestedFriendIsSelected: [Bool] = []
     
     func callFriendData(completion: @escaping (APIstatus) -> Void) {
         QueueAPI.onQueue { data, status in
             switch status {
             case .success:
                 guard let data = data else { return }
+                
                 self.friendData.accept(data)
-                completion(.success)
             case .firebaseTokenError:
                 TokenAPI.updateIDToken {
                     QueueAPI.onQueue { data, status in
                         guard let data = data else { return }
                         self.friendData.accept(data)
-                        completion(.success)
                     }
                 }
             default:
@@ -55,9 +56,9 @@ class SearchingFriendViewModel {
     
     func updateArray(_ type: String) {
         if type == "near" {
-            cellIsSelected = Array(repeating: false, count: friendData.value.fromQueueDB.count)
+            nearFriendIsSelected = Array(repeating: false, count: friendData.value.fromQueueDB.count)
         } else {
-            cellIsSelected = Array(repeating: false, count: friendData.value.fromQueueDBRequested.count)
+            requestedFriendIsSelected = Array(repeating: false, count: friendData.value.fromQueueDBRequested.count)
         }
     }
     
@@ -76,5 +77,14 @@ class SearchingFriendViewModel {
                 break
             }
         }
+    }
+    
+    func updateFriendUID(_ type: String, _ index: Int, completion: @escaping () -> Void) {
+        if type == "near" {
+            User.shared.friendUID.accept(nearFriendData[index].uid)
+        } else {
+            User.shared.friendUID.accept(requestedFriendData[index].uid)
+        }
+        completion()
     }
 }

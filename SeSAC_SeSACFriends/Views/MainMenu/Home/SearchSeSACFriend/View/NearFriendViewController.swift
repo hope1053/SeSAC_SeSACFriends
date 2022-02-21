@@ -8,20 +8,32 @@
 import RxSwift
 import UIKit
 
-class NearFriendViewController: BaseViewController {
+final class NearFriendViewController: BaseViewController {
     
     var delegate: RefreshUI?
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     let viewModel = SearchingFriendViewModel()
     
     let mainView = SeSACFriendView()
     
+    let requestView = CustomAlertView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bind()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nearFriendNoti), name: NSNotification.Name(rawValue: "nearFriendNoti"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "nearFriendNoti"), object: nil)
+    }
+    
+    @objc func nearFriendNoti() {
+        callFriendData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +47,8 @@ class NearFriendViewController: BaseViewController {
         view.addSubview(mainView)
         mainView.noSeSACLabel.text = "아쉽게도 주변에 새싹이 없어요ㅠ"
         mainView.noSeSACSubLabel.text = "취미를 변경하거나 조금만 더 기다려 주세요"
+        
+        mainView.tableView.register(SeSACFriendRequestCell.self, forCellReuseIdentifier: SeSACFriendRequestCell.identifier)
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
@@ -52,6 +66,7 @@ class NearFriendViewController: BaseViewController {
                 let nearDataArray = data.fromQueueDB
                 
                 self.viewModel.updateArray("near")
+                self.delegate?.updateButtonUI(nearDataArray.isEmpty)
                 self.mainView.updateUI(!nearDataArray.isEmpty)
                 self.mainView.tableView.reloadData()
             }
@@ -61,8 +76,6 @@ class NearFriendViewController: BaseViewController {
     func callFriendData() {
         viewModel.callFriendData { status in
             switch status {
-            case .success:
-                self.delegate?.updateButtonUI(self.viewModel.nearFriendData.isEmpty)
             case .notMember:
                 self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
             case .serverError:
@@ -87,11 +100,29 @@ extension NearFriendViewController: UITableViewDelegate, UITableViewDataSource {
         let data = viewModel.nearFriendData[indexPath.row]
         
         cell.cardView.nameView.userNickNameLabel.text = data.nick
-        cell.updateUI(viewModel.cellIsSelected[indexPath.row])
+        cell.updateUI(viewModel.nearFriendIsSelected[indexPath.row])
         
         cell.cardView.arrowButtonTapHandler = { isSelected in
-            self.viewModel.cellIsSelected[indexPath.row] = isSelected
+            self.viewModel.nearFriendIsSelected[indexPath.row] = isSelected
             self.mainView.tableView.reloadData()
+        }
+        
+        cell.cardView.requestAcceptButtonTapHandler = {
+            self.viewModel.updateFriendUID("near", indexPath.row) {
+                QueueAPI.hobbyRequest { status in
+                    switch status {
+                    case .success:
+                        self.view.makeToast("취미 함께 하기 요청을 보냈습니다", duration: 1.0, position: .top)
+                    case .alreadyRequested:
+                        self.view.makeToast("상대방도 요청했음!", duration: 1.0, position: .top)
+                    case .friendStoppedRequest:
+                        self.view.makeToast("친구가 요청 취소함~", duration: 1.0, position: .top)
+                        self.callFriendData()
+                    default:
+                        print(status)
+                    }
+                }
+            }
         }
         
         return cell

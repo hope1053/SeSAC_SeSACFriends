@@ -17,6 +17,8 @@ enum CardViewType: String {
 class UserInfoCardView: UIView {
     
     var arrowButtonTapHandler: ((Bool) -> Void)?
+    
+    var requestAcceptButtonTapHandler: (() -> Void)?
 
     let backgroundImageView: UIImageView = {
         let image = UIImageView()
@@ -109,6 +111,14 @@ class UserInfoCardView: UIView {
         }
         
         nameView.arrowButton.addTarget(self, action: #selector(arrowTapped), for: .touchUpInside)
+        requestButton.addTarget(self, action: #selector(requestAcceptButtonTapped), for: .touchUpInside)
+        
+    }
+    
+    @objc func requestAcceptButtonTapped() {
+        if let requestAcceptButtonTapHandler = requestAcceptButtonTapHandler {
+            requestAcceptButtonTapHandler()
+        }
     }
     
     @objc func arrowTapped(_ button: UIButton) {

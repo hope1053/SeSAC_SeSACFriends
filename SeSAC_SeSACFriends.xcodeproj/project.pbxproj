@@ -117,6 +117,7 @@
 		CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CBC671A627A01D9A00722D78 /* FirebaseAuth */; };
 		CBC671A927A01D9A00722D78 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CBC671A827A01D9A00722D78 /* FirebaseMessaging */; };
 		CBC671AC27A024C000722D78 /* MainTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC671AB27A024C000722D78 /* MainTextFieldView.swift */; };
+		CBE4426D27C370B2007003F0 /* SeSACFriendProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4426C27C370B2007003F0 /* SeSACFriendProtocol.swift */; };
 		CBEF8AFA27B55AC70040F905 /* queueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEF8AF927B55AC70040F905 /* queueState.swift */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		CBC671A127A0133500722D78 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		CBC671A327A0195F00722D78 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CBC671AB27A024C000722D78 /* MainTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextFieldView.swift; sourceTree = "<group>"; };
+		CBE4426C27C370B2007003F0 /* SeSACFriendProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendProtocol.swift; sourceTree = "<group>"; };
 		CBEF8AF927B55AC70040F905 /* queueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = queueState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -521,6 +523,7 @@
 			children = (
 				CB6C58122797A75D003C0F1E /* BaseViewController.swift */,
 				CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */,
+				CBE4426C27C370B2007003F0 /* SeSACFriendProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */,
+				CBE4426D27C370B2007003F0 /* SeSACFriendProtocol.swift in Sources */,
 				CB11F12B279AB4C300028234 /* UserAPI.swift in Sources */,
 				CBBB276627BD1FB10036ADDC /* NearFriendViewController.swift in Sources */,
 				CB20987027968952005F6A73 /* AppDelegate.swift in Sources */,

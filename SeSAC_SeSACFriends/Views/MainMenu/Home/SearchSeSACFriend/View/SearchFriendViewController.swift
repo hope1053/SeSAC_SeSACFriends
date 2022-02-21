@@ -12,11 +12,7 @@ import Pageboy
 import RxSwift
 import RxCocoa
 
-protocol RefreshUI {
-    func updateButtonUI(_ isEmpty: Bool)
-}
-
-class SearchFriendViewController: TabmanViewController {
+final class SearchFriendViewController: TabmanViewController {
     
     lazy var nearVC: NearFriendViewController = {
         let vc = NearFriendViewController()
@@ -48,8 +44,11 @@ class SearchFriendViewController: TabmanViewController {
         self.dataSource = self
         
         configureView()
+        
         setupConstraints()
+        
         bind()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +67,7 @@ class SearchFriendViewController: TabmanViewController {
         }
     }
     
-    func configureView() {
+    private func configureView() {
         view.backgroundColor = .white
         
         setupBar()
@@ -78,7 +77,7 @@ class SearchFriendViewController: TabmanViewController {
         view.addSubview(changeHobbyView)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         changeHobbyView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -86,11 +85,11 @@ class SearchFriendViewController: TabmanViewController {
         }
     }
     
-    func bind() {
+    private func bind() {
         changeHobbyView.resetButton
             .rx.tap
             .bind { _ in
-                // 현재 ViewController에게 새로고침하라고 알려주기
+                self.currentIndex! == 0 ? NotificationCenter.default.post(name: NSNotification.Name(rawValue: "nearFriendNoti"), object: nil) : NotificationCenter.default.post(name: NSNotification.Name(rawValue: "requestedFriendNoti"), object: nil)
             }
             .disposed(by: disposeBag)
     }
@@ -110,11 +109,24 @@ class SearchFriendViewController: TabmanViewController {
             }
         }
     }
+    
+    func callFriendData() {
+        viewModel.callFriendData { status in
+            switch status {
+            case .notMember:
+                self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
+            case .serverError:
+                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요", duration: 1.0, position: .bottom)
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension SearchFriendViewController {
     
-    func setupBar() {
+    private func setupBar() {
         let bar = TMBar.ButtonBar()
         
         bar.layout.transitionStyle = .snap
@@ -141,10 +153,8 @@ extension SearchFriendViewController {
 extension SearchFriendViewController: RefreshUI{
     // 현재 뷰컨의 data가 비어있는지 아닌지 여부 받아서 버튼 show 업데이트해주기
     func updateButtonUI(_ isEmpty: Bool) {
-        print("실행됨!!!!!!!!!!!!!!!!!!!")
-//        changeHobbyView.resetButton.backgroundColor = .red
+        print(#function, isEmpty)
         changeHobbyView.isHidden = !isEmpty
-//        self.view.layoutIfNeeded()
     }
 }
 
@@ -166,5 +176,4 @@ extension SearchFriendViewController: PageboyViewControllerDataSource, TMBarData
         let title = buttonTitles[index]
         return TMBarItem(title: title)
     }
-    
 }

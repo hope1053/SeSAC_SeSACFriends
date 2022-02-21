@@ -9,11 +9,11 @@ import UIKit
 
 import RxSwift
 
-class RequestedFriendViewController: BaseViewController {
+final class RequestedFriendViewController: BaseViewController {
     
     var delegate: RefreshUI?
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     let viewModel = SearchingFriendViewModel()
     
@@ -23,6 +23,16 @@ class RequestedFriendViewController: BaseViewController {
         super.viewDidLoad()
         
         bind()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(requestedFriendNoti), name: NSNotification.Name(rawValue: "requestedFriendNoti"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "requestedFriendNoti"), object: nil)
+    }
+    
+    @objc func requestedFriendNoti() {
+        callFriendData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +47,8 @@ class RequestedFriendViewController: BaseViewController {
         view.addSubview(mainView)
         mainView.noSeSACLabel.text = "아직 받은 요청이 없어요ㅠ"
         mainView.noSeSACSubLabel.text = "취미를 변경하거나 조금만 더 기다려주세요!"
+        
+        mainView.tableView.register(SeSACFriendAcceptCell.self, forCellReuseIdentifier: SeSACFriendAcceptCell.identifier)
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
@@ -53,6 +65,7 @@ class RequestedFriendViewController: BaseViewController {
             .bind { data in
                 let requestedDataArray = data.fromQueueDBRequested
                 
+                self.delegate?.updateButtonUI(requestedDataArray.isEmpty)
                 self.viewModel.updateArray("requested")
                 self.mainView.updateUI(!requestedDataArray.isEmpty)
                 self.mainView.tableView.reloadData()
@@ -63,8 +76,6 @@ class RequestedFriendViewController: BaseViewController {
     func callFriendData() {
         viewModel.callFriendData { status in
             switch status {
-            case .success:
-                self.delegate?.updateButtonUI(self.viewModel.requestedFriendData.isEmpty)
             case .notMember:
                 self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
             case .serverError:
@@ -83,17 +94,17 @@ extension RequestedFriendViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeSACFriendRequestCell.identifier, for: indexPath) as? SeSACFriendRequestCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeSACFriendAcceptCell.identifier, for: indexPath) as? SeSACFriendAcceptCell else {
             return UITableViewCell()
         }
         
         let data = viewModel.requestedFriendData[indexPath.row]
         
         cell.cardView.nameView.userNickNameLabel.text = data.nick
-        cell.updateUI(viewModel.cellIsSelected[indexPath.row])
+        cell.updateUI(viewModel.requestedFriendIsSelected[indexPath.row])
         
         cell.cardView.arrowButtonTapHandler = { isSelected in
-            self.viewModel.cellIsSelected[indexPath.row] = isSelected
+            self.viewModel.requestedFriendIsSelected[indexPath.row] = isSelected
             self.mainView.tableView.reloadData()
         }
         
