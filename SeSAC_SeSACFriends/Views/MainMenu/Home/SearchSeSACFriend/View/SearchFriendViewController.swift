@@ -12,9 +12,26 @@ import Pageboy
 import RxSwift
 import RxCocoa
 
+protocol RefreshUI {
+    func updateButtonUI(_ isEmpty: Bool)
+}
+
 class SearchFriendViewController: TabmanViewController {
     
-    private var viewControllers = [NearFriendViewController(), RequestedFriendViewController()]
+    lazy var nearVC: NearFriendViewController = {
+        let vc = NearFriendViewController()
+        vc.delegate = self
+        return vc
+    }()
+
+    lazy var requestedVC: RequestedFriendViewController = {
+        let vc = RequestedFriendViewController()
+        vc.delegate = self
+        return vc
+    }()
+    
+    lazy private var viewControllers = [nearVC, requestedVC]
+    
     private let buttonTitles = ["주변 새싹", "받은 요청"]
     
     let disposeBag = DisposeBag()
@@ -121,15 +138,15 @@ extension SearchFriendViewController {
     }
 }
 
-//extension SearchFriendViewController: RefreshUI{
-//    // 현재 뷰컨의 data가 비어있는지 아닌지 여부 받아서 버튼 show 업데이트해주기
-//    func updateButtonUI(_ isEmpty: Bool) {
-//        print("실행됨!!!!!!!!!!!!!!!!!!!")
-////        changeHobbyView.resetButton.backgroundColor = .red
-//        changeHobbyView.isHidden = !isEmpty
+extension SearchFriendViewController: RefreshUI{
+    // 현재 뷰컨의 data가 비어있는지 아닌지 여부 받아서 버튼 show 업데이트해주기
+    func updateButtonUI(_ isEmpty: Bool) {
+        print("실행됨!!!!!!!!!!!!!!!!!!!")
+//        changeHobbyView.resetButton.backgroundColor = .red
+        changeHobbyView.isHidden = !isEmpty
 //        self.view.layoutIfNeeded()
-//    }
-//}
+    }
+}
 
 extension SearchFriendViewController: PageboyViewControllerDataSource, TMBarDataSource {
     

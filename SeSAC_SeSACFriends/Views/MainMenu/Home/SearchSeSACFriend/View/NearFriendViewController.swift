@@ -8,10 +8,6 @@
 import RxSwift
 import UIKit
 
-protocol RefreshUI {
-    func updateButtonUI(_ isEmpty: Bool)
-}
-
 class NearFriendViewController: BaseViewController {
     
     var delegate: RefreshUI?

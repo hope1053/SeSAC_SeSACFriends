@@ -11,6 +11,8 @@ import RxSwift
 
 class RequestedFriendViewController: BaseViewController {
     
+    var delegate: RefreshUI?
+    
     let disposeBag = DisposeBag()
     
     let viewModel = SearchingFriendViewModel()
@@ -61,8 +63,8 @@ class RequestedFriendViewController: BaseViewController {
     func callFriendData() {
         viewModel.callFriendData { status in
             switch status {
-//            case .success:
-//                SearchFriendViewController().updateButtonUI(self.viewModel.nearFriendData.isEmpty)
+            case .success:
+                self.delegate?.updateButtonUI(self.viewModel.requestedFriendData.isEmpty)
             case .notMember:
                 self.view.makeToast("회원이 아닙니다", duration: 1.0, position: .bottom)
             case .serverError:

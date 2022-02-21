@@ -49,9 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           }
         }
 
+        // idToken 업데이트 & 유저 로그인
         TokenAPI.updateIDToken {
             UserAPI.signIn { user, status in
-                //
             }
         }
         
@@ -99,8 +99,6 @@ extension AppDelegate: MessagingDelegate {
         object: nil,
         userInfo: dataDict
       )
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }
 
