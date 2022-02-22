@@ -18,6 +18,7 @@ enum Endpoint {
     case hobbyRequest
     case hobbyAccept
     case sendChat(uid: String)
+    case lastChat(uid: String, lastDate: Date)
 }
 
 extension Endpoint {
@@ -41,6 +42,8 @@ extension Endpoint {
             return .makeEndpoint("queue/hobbyaccept")
         case .sendChat(uid: let uid):
             return .makeEndpoint("chat/\(uid)")
+        case .lastChat(uid: let uid, lastDate: let lastDate):
+            return .makeEndpoint("chat/\(uid)?lastchatDate=\(lastDate)")
         }
     }
 }

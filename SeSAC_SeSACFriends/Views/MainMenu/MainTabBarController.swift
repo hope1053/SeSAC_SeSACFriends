@@ -60,6 +60,6 @@ class MainTabBarController: UITabBarController {
         let thirdNav = UINavigationController(rootViewController: thirdVC)
         let fourthNav = UINavigationController(rootViewController: fourthVC)
         
-        setViewControllers([firstNav, secondNav, thirdNav, fourthNav], animated: true)
+        setViewControllers([firstNav, secondNav, fourthNav], animated: true)
     }
 }

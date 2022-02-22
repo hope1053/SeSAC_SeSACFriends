@@ -42,6 +42,7 @@ class MyPageViewController: BaseViewController {
     }
     
     func bind() {
+
         viewModel.data.title
             .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!

@@ -10,8 +10,13 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxRealm
+import RealmSwift
 
 class ChatViewController: BaseViewController {
+    
+    let localRealm = try! Realm()
+    
+    var chats: Results<ChatLog>!
     
     let viewModel = ChatViewModel()
     
@@ -21,6 +26,8 @@ class ChatViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chats = localRealm.objects(ChatLog.self)
         
         bind()
         
@@ -52,8 +59,8 @@ class ChatViewController: BaseViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
+//        mainView.tableView.delegate = self
+//        mainView.tableView.dataSource = self
         mainView.chatInputView.chatInputTextView.delegate = self
     }
     
@@ -94,6 +101,43 @@ class ChatViewController: BaseViewController {
             .rx.tap
             .bind { _ in
                 self.sendChat()
+            }
+            .disposed(by: disposeBag)
+        
+//        Observable.collection(from: chats)
+//            .bind { chat in
+//                print(chat.count)
+//            }
+//            .disposed(by: disposeBag)
+        
+        Observable.collection(from: chats)
+            .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
+                
+                let senderUID = element.sender
+                
+                if senderUID == UserInfo.shared.uid {
+                    // 내가 보낸 채팅
+                    guard let myCell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.identifier) as? MyChatTableViewCell else {
+                        return UITableViewCell()
+                    }
+
+                    myCell.bubbleView.chatTextLabel.text = element.chat
+                    myCell.selectionStyle = .none
+                    myCell.timeLabel.text = "02:19"
+
+                    return myCell
+                } else {
+                    // 상대방이 보낸 채팅
+                    guard let friendCell = tableView.dequeueReusableCell(withIdentifier: FriendChatTableViewCell.identifier) as? FriendChatTableViewCell else {
+                        return UITableViewCell()
+                    }
+
+                    friendCell.bubbleView.chatTextLabel.text = element.chat
+                    friendCell.selectionStyle = .none
+                    friendCell.timeLabel.text = "10:50"
+
+                    return friendCell
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -162,42 +206,42 @@ class ChatViewController: BaseViewController {
     }
 }
 
-extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row % 2 == 0 {
-            guard let friendCell = tableView.dequeueReusableCell(withIdentifier: FriendChatTableViewCell.identifier, for: indexPath) as? FriendChatTableViewCell else {
-                return UITableViewCell()
-            }
-            
-            friendCell.bubbleView.chatTextLabel.text = "안녕하세요 자전거 언제 타실 생각이세요????"
-            friendCell.selectionStyle = .none
-            friendCell.timeLabel.text = "10:50"
-            
-            return friendCell
-        } else {
-            guard let myCell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.identifier, for: indexPath) as? MyChatTableViewCell else {
-                return UITableViewCell()
-            }
-            
-            myCell.bubbleView.chatTextLabel.text = "아아ㅏ아ㅏ아ㅏㅏ아ㅏ아아아아ㅏ아아ㅏ아아ㅏ아ㅏ아아ㅏ아ㅏ아아ㅏ아아아ㅏ아아ㅏ아아아아아아아ㅏ아ㅏ아ㅏㅏ아ㅏ아아아아ㅏ아아ㅏ아아ㅏ아ㅏ아아ㅏ아ㅏ아아ㅏ아아아ㅏ아아ㅏ아아아아아"
-            myCell.selectionStyle = .none
-            myCell.timeLabel.text = "02:19"
-            
-            return myCell
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
-    
-}
+//extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        10
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        if indexPath.row % 2 == 0 {
+//            guard let friendCell = tableView.dequeueReusableCell(withIdentifier: FriendChatTableViewCell.identifier, for: indexPath) as? FriendChatTableViewCell else {
+//                return UITableViewCell()
+//            }
+//
+//            friendCell.bubbleView.chatTextLabel.text = "안녕하세요 자전거 언제 타실 생각이세요????"
+//            friendCell.selectionStyle = .none
+//            friendCell.timeLabel.text = "10:50"
+//
+//            return friendCell
+//        } else {
+//            guard let myCell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.identifier, for: indexPath) as? MyChatTableViewCell else {
+//                return UITableViewCell()
+//            }
+//
+//            myCell.bubbleView.chatTextLabel.text = "아아ㅏ아ㅏ아ㅏㅏ아ㅏ아아아아ㅏ아아ㅏ아아ㅏ아ㅏ아아ㅏ아ㅏ아아ㅏ아아아ㅏ아아ㅏ아아아아아아아ㅏ아ㅏ아ㅏㅏ아ㅏ아아아아ㅏ아아ㅏ아아ㅏ아ㅏ아아ㅏ아ㅏ아아ㅏ아아아ㅏ아아ㅏ아아아아아"
+//            myCell.selectionStyle = .none
+//            myCell.timeLabel.text = "02:19"
+//
+//            return myCell
+//        }
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        UITableView.automaticDimension
+//    }
+//
+//}
 
 extension ChatViewController: UITextViewDelegate {
     

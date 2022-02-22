@@ -8,7 +8,13 @@
 import Foundation
 import SocketIO
 
+import RxSwift
+import RealmSwift
+import RxRealm
+
 class SocketIOManager: NSObject {
+    
+    let localRealm = try! Realm()
     
     let token = UserInfo.shared.idToken ?? ""
     let uid = UserInfo.shared.uid ?? ""
@@ -56,10 +62,16 @@ class SocketIOManager: NSObject {
             // 이거 DB에 저장하고 테이블뷰 reload 해줘야함..RxRealm을 써야할 것 같은 느낌이다...!
             let data = dataArray[0] as! NSDictionary
             let chat = data["chat"] as! String
-//            let name = data["name"] as! String
-//            let createdAt = data["createdAt"] as! String
-//
+            let sender = data["from"] as! String
+            let createdAt = data["createdAt"] as! String
+            
+            let chatLog = ChatLog(sender: sender, chat: chat, sentDate: Date.stringToDate(createdAt))
+            
+            Observable.from(object: chatLog)
+                .subscribe(self.localRealm.rx.add())
+            
             print(chat)
+            
 //
 //            NotificationCenter.default.post(name: NSNotification.Name("getMessage"), object: self, userInfo: ["chat": chat, "name": name, "createdAt": createdAt])
         }
