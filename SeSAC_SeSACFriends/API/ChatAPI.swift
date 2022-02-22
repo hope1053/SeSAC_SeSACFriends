@@ -14,7 +14,7 @@ class ChatAPI {
     static var header: HTTPHeaders {
         [
             "Content-Type": "application/x-www-form-urlencoded",
-            "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
+            "idtoken": UserInfo.shared.idToken ?? ""
         ]
     }
     

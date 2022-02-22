@@ -23,7 +23,7 @@ class UserAPI {
     static var header: HTTPHeaders {
         [
             "Content-Type": "application/x-www-form-urlencoded",
-            "idtoken": UserDefaults.standard.string(forKey: "idToken") ?? ""
+            "idtoken": UserInfo.shared.idToken ?? ""
         ]
     }
     
@@ -71,9 +71,10 @@ class UserAPI {
                     let result = try JSONDecoder().decode(SignInUser.self, from: value!)
                     print("uid!!!!!!!!!", result.uid)
                     print("fcm!!!!!!!!!", result.fcMtoken)
-                    let uid = result.uid
-                    UserDefaults.standard.set(uid, forKey: "uid")
+                    
+                    UserInfo.shared.uid = result.uid
                     user.gender.accept(Gender(rawValue: result.gender)!)
+                    
                     completion(result, APIStatus.success)
                 } catch {
                     completion(nil, APIStatus.serverError)
@@ -139,8 +140,8 @@ class UserAPI {
             switch statusCode {
             case 200:
                 // 회원 탈퇴 성공 시, 저장된 uid, idToken 모두 삭제
-                UserDefaults.standard.set(nil, forKey: "uid")
-                UserDefaults.standard.set(nil, forKey: "idToken")
+                UserInfo.shared.uid = nil
+                UserInfo.shared.idToken = nil
                 completion(APIStatus.success)
             case 401:
                 // firebase token error

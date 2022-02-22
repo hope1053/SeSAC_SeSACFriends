@@ -25,8 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 둘 다 없으면 아무것도 안했기 때문에 온보딩 화면으로
         
         let isFirstLaunch = UserDefaults.standard.string(forKey: "isFirstLaunch")
-        let idToken = UserDefaults.standard.string(forKey: "idToken")
-        let uid = UserDefaults.standard.string(forKey: "uid")
+        let idToken = UserInfo.shared.idToken
+        let uid = UserInfo.shared.uid
         print(idToken)
 
         if isFirstLaunch != "no" {

@@ -15,7 +15,7 @@ class TokenAPI {
                 return;
             }
             print("ID token: \(token!)")
-            UserDefaults.standard.set(token, forKey: "idToken")
+            UserInfo.shared.idToken = token
             completion()
         }
     }

@@ -56,4 +56,22 @@ class UserInfo {
             UserDefaults.standard.set(newValue.rawValue, forKey: "currentQueueState")
         }
     }
+    
+    var idToken: String? {
+        get {
+            UserDefaults.standard.string(forKey: "idToken") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "idToken")
+        }
+    }
+    
+    var uid: String? {
+        get {
+            UserDefaults.standard.string(forKey: "uid") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "uid")
+        }
+    }
 }

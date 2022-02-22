@@ -62,6 +62,7 @@
 		CB40A7C427C5078A007EF51B /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7C327C5078A007EF51B /* ChatAPI.swift */; };
 		CB40A7C627C513D2007EF51B /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7C527C513D2007EF51B /* Chat.swift */; };
 		CB40A7C927C528F6007EF51B /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7C827C528F6007EF51B /* SocketIO */; };
+		CB40A7CB27C52BA9007EF51B /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -184,6 +185,7 @@
 		CB40A7C127C4D93D007EF51B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CB40A7C327C5078A007EF51B /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		CB40A7C527C513D2007EF51B /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				CB40A7C127C4D93D007EF51B /* ChatViewModel.swift */,
+				CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				CB20988727968E87005F6A73 /* UIColor+Extension.swift in Sources */,
 				CB51ED1B27AF76F90097D2B5 /* HomeMapView.swift in Sources */,
 				CB6C58132797A75D003C0F1E /* BaseViewController.swift in Sources */,
+				CB40A7CB27C52BA9007EF51B /* SocketIOManager.swift in Sources */,
 				CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */,
 				CB936D45279E7F0A0047D4F5 /* OnBoardingViewModel.swift in Sources */,
 				CB29DD2127AD056300F1540D /* PhoneNumSearchView.swift in Sources */,
