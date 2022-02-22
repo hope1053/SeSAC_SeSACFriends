@@ -11,6 +11,7 @@ import SocketIO
 class SocketIOManager: NSObject {
     
     let token = UserInfo.shared.idToken ?? ""
+    let uid = UserInfo.shared.uid ?? ""
     
     static let shared = SocketIOManager()
     
@@ -32,6 +33,7 @@ class SocketIOManager: NSObject {
         manager = SocketManager(socketURL: url, config: [
             .log(false),
             .compress,
+            .forceWebsockets(true),
             .extraHeaders(["auth" : token])
         ])
         
@@ -41,6 +43,7 @@ class SocketIOManager: NSObject {
         // 통로만 만들었어도 통로가 열려있어서 요청한적이 없어도 계속 데이터가 들어옴
         socket.on(clientEvent: .connect) { data, ack in
             print("socket connected", data, ack)
+            self.socket.emit("changesocketid", self.uid)
         }
         
         // 소켓 연결 해제 메서드
@@ -50,6 +53,7 @@ class SocketIOManager: NSObject {
         
         socket.on("chat") { dataArray, ack in
             print("SESAC RECEIVED", dataArray, ack)
+            // 이거 DB에 저장하고 테이블뷰 reload 해줘야함..RxRealm을 써야할 것 같은 느낌이다...!
 //            let data = dataArray[0] as! NSDictionary
 //            let chat = data["text"] as! String
 //            let name = data["name"] as! String

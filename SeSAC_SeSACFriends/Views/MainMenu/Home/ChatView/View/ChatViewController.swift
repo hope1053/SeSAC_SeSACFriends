@@ -26,12 +26,16 @@ class ChatViewController: BaseViewController {
         addKeyboardNotification()
         
         checkStatus()
+        
+        SocketIOManager.shared.establishConnection()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         removeKeyboardNotification()
+        
+        SocketIOManager.shared.closeConnection()
     }
     
     override func configureView() {

@@ -14,7 +14,7 @@ class QueueAPI {
     static var header: HTTPHeaders {
         [
             "Content-Type": "application/x-www-form-urlencoded",
-            "idtoken": UserInfo.shared.idToken
+            "idtoken": UserInfo.shared.idToken ?? ""
         ]
     }
     
