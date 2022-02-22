@@ -7,12 +7,27 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 class ChatViewController: BaseViewController {
+    
+    let disposeBag = DisposeBag()
     
     let mainView = ChatView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bind()
+        
+        addKeyboardNotification()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        removeKeyboardNotification()
     }
     
     override func configureView() {
@@ -26,13 +41,56 @@ class ChatViewController: BaseViewController {
         
         view.addSubview(mainView)
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
+        
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        mainView.chatInputView.chatInputTextView.delegate = self
     }
     
     override func setupConstraints() {
         mainView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func bind() {
+        mainView.chatInputView.sendButton
+            .rx.tap
+            .bind { _ in
+                self.mainView.chatInputView.chatInputTextView.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func moreButtonTapped() {
+        print("tapped")
+    }
+    
+    @objc func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            mainView.chatInputView.snp.updateConstraints {
+                $0.bottom.equalToSuperview().inset(adjustmentHeight)
+            }
+        } else {
+            mainView.chatInputView.snp.updateConstraints {
+                $0.bottom.equalToSuperview()
+            }
         }
     }
 }
@@ -72,4 +130,16 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         UITableView.automaticDimension
     }
     
+}
+
+// return key tapped
+
+extension ChatViewController: UITextViewDelegate {
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+//            textView.resignFirstResponder()
+//            return false
+//        }
+//        return true
+//    }
 }

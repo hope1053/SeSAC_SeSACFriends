@@ -56,6 +56,8 @@
 		CB3E544D27C3F0C600ECED24 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */; };
 		CB3E544F27C3F1A600ECED24 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E544E27C3F1A600ECED24 /* ChatView.swift */; };
 		CB40A7B827C4B4E2007EF51B /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */; };
+		CB40A7BD27C4C020007EF51B /* ChatInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */; };
+		CB40A7C027C4CB7B007EF51B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7BF27C4CB7B007EF51B /* IQKeyboardManagerSwift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -174,6 +176,7 @@
 		CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		CB3E544E27C3F1A600ECED24 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
+		CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputTextFieldView.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 				CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
+				CB40A7C027C4CB7B007EF51B /* IQKeyboardManagerSwift in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,9 +521,10 @@
 			isa = PBXGroup;
 			children = (
 				CB3E544E27C3F1A600ECED24 /* ChatView.swift */,
-				CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */,
+				CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */,
 				CB3E544A27C3F0BC00ECED24 /* FriendChatTableViewCell.swift */,
 				CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */,
+				CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				CB29DD2527AD090400F1540D /* MultiSlider */,
 				CBBB275A27BCC02A0036ADDC /* RxKeyboard */,
 				CBBB275D27BD0CBC0036ADDC /* Tabman */,
+				CB40A7BF27C4CB7B007EF51B /* IQKeyboardManagerSwift */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -816,6 +822,7 @@
 				CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				CBBB275927BCC0290036ADDC /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 				CBBB275C27BD0CBB0036ADDC /* XCRemoteSwiftPackageReference "Tabman" */,
+				CB40A7BE27C4CB7A007EF51B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -921,6 +928,7 @@
 				CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */,
 				CB29DD2327AD06B100F1540D /* FriendAgeView.swift in Sources */,
 				CBBB276A27BD22EA0036ADDC /* ChangeHobbyView.swift in Sources */,
+				CB40A7BD27C4C020007EF51B /* ChatInputTextFieldView.swift in Sources */,
 				CB29DD0827ABA1D600F1540D /* BasicViewProtocol.swift in Sources */,
 				CB6C58082797A3C2003C0F1E /* UIButton+Extension.swift in Sources */,
 				CB29DD0227AB943F00F1540D /* ManageInfoView.swift in Sources */,
@@ -1184,6 +1192,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		CB40A7BE27C4CB7A007EF51B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1241,6 +1257,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB29DD2427AD090300F1540D /* XCRemoteSwiftPackageReference "MultiSlider" */;
 			productName = MultiSlider;
+		};
+		CB40A7BF27C4CB7B007EF51B /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB40A7BE27C4CB7A007EF51B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		CB6C581F2799050D003C0F1E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

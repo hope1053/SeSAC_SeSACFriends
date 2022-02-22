@@ -23,7 +23,7 @@ class MyChatTableViewCell: UITableViewCell, BaseView {
         
         return label
     }()
-    
+
     static let identifier = "MyChatTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

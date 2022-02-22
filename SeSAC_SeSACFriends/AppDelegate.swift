@@ -10,6 +10,7 @@ import UserNotifications
 
 import Firebase
 import FirebaseMessaging
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Firebase 초기화
         FirebaseApp.configure()
+        
+        // IQKeyboardManager 설정
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enableAutoToolbar = false
 
         // 원격 알림 시스템에 앱 등록
         if #available(iOS 10.0, *) {
