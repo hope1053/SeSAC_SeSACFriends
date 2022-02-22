@@ -20,6 +20,7 @@ class ChatInputTextFieldView: UIView, BaseView {
         let view = UITextView()
         view.backgroundColor = .gray1
         view.font = .Body3_R14
+        view.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return view
     }()
     
@@ -58,6 +59,7 @@ class ChatInputTextFieldView: UIView, BaseView {
             $0.leading.equalToSuperview().inset(12)
             $0.top.bottom.equalToSuperview().inset(14)
             $0.trailing.equalTo(sendButton.snp.leading).offset(-5)
+            $0.height.equalTo(20.333333333333332)
         }
         
         sendButton.snp.makeConstraints {

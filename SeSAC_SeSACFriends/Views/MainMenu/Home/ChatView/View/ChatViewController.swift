@@ -142,4 +142,20 @@ extension ChatViewController: UITextViewDelegate {
 //        }
 //        return true
 //    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let frame = textView.frame
+        let size = CGSize(width: frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+    
+        if estimatedSize.height > 61 {
+            mainView.chatInputView.chatInputTextView.snp.updateConstraints {
+                $0.height.equalTo(61)
+            }
+        } else {
+            mainView.chatInputView.chatInputTextView.snp.updateConstraints {
+                $0.height.equalTo(estimatedSize.height)
+            }
+        }
+    }
 }
