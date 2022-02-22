@@ -17,6 +17,7 @@ enum Endpoint {
     case myQueueState
     case hobbyRequest
     case hobbyAccept
+    case sendChat(uid: String)
 }
 
 extension Endpoint {
@@ -38,6 +39,8 @@ extension Endpoint {
             return .makeEndpoint("queue/hobbyrequest")
         case .hobbyAccept:
             return .makeEndpoint("queue/hobbyaccept")
+        case .sendChat(uid: let uid):
+            return .makeEndpoint("chat/\(uid)")
         }
     }
 }
