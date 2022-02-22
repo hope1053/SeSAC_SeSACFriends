@@ -63,6 +63,8 @@
 		CB40A7C627C513D2007EF51B /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7C527C513D2007EF51B /* Chat.swift */; };
 		CB40A7C927C528F6007EF51B /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7C827C528F6007EF51B /* SocketIO */; };
 		CB40A7CB27C52BA9007EF51B /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */; };
+		CB40A7CE27C53786007EF51B /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7CD27C53786007EF51B /* RxRealm */; };
+		CB40A7D127C537D9007EF51B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7D027C537D9007EF51B /* RealmModel.swift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -186,6 +188,7 @@
 		CB40A7C327C5078A007EF51B /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		CB40A7C527C513D2007EF51B /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		CB40A7D027C537D9007EF51B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 				CBC671A727A01D9A00722D78 /* FirebaseAuth in Frameworks */,
 				CB6C58222799050D003C0F1E /* RxSwift in Frameworks */,
 				CB6C58202799050D003C0F1E /* RxCocoa in Frameworks */,
+				CB40A7CE27C53786007EF51B /* RxRealm in Frameworks */,
 				CB40A7C027C4CB7B007EF51B /* IQKeyboardManagerSwift in Frameworks */,
 				CB2098952796A0EA005F6A73 /* SnapKit in Frameworks */,
 			);
@@ -393,6 +397,7 @@
 		CB20986E27968952005F6A73 /* SeSAC_SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				CB40A7CF27C537D3007EF51B /* Realm */,
 				CBC67192279FC77600722D78 /* Views */,
 				CB1C361F27A0498700AF90DB /* Struct */,
 				CB6C58112797A751003C0F1E /* Protocol */,
@@ -541,6 +546,14 @@
 				CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		CB40A7CF27C537D3007EF51B /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CB40A7D027C537D9007EF51B /* RealmModel.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		CB4902DD27B109F400878ED2 /* ViewModel */ = {
@@ -799,6 +812,7 @@
 				CBBB275D27BD0CBC0036ADDC /* Tabman */,
 				CB40A7BF27C4CB7B007EF51B /* IQKeyboardManagerSwift */,
 				CB40A7C827C528F6007EF51B /* SocketIO */,
+				CB40A7CD27C53786007EF51B /* RxRealm */,
 			);
 			productName = SeSAC_SeSACFriends;
 			productReference = CB20986C27968952005F6A73 /* SeSAC_SeSACFriends.app */;
@@ -839,6 +853,7 @@
 				CBBB275C27BD0CBB0036ADDC /* XCRemoteSwiftPackageReference "Tabman" */,
 				CB40A7BE27C4CB7A007EF51B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CB40A7C727C528F5007EF51B /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				CB40A7CC27C53786007EF51B /* XCRemoteSwiftPackageReference "RxRealm" */,
 			);
 			productRefGroup = CB20986D27968952005F6A73 /* Products */;
 			projectDirPath = "";
@@ -909,6 +924,7 @@
 				CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */,
 				CB40A7C427C5078A007EF51B /* ChatAPI.swift in Sources */,
 				CB936D3A279E4B880047D4F5 /* TextFieldStatus.swift in Sources */,
+				CB40A7D127C537D9007EF51B /* RealmModel.swift in Sources */,
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
@@ -1228,6 +1244,14 @@
 				version = 16.0.1;
 			};
 		};
+		CB40A7CC27C53786007EF51B /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CB6C581E2799050D003C0F1E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1295,6 +1319,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB40A7C727C528F5007EF51B /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		CB40A7CD27C53786007EF51B /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB40A7CC27C53786007EF51B /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
 		};
 		CB6C581F2799050D003C0F1E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

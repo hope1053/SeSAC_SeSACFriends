@@ -146,12 +146,39 @@
         }
       },
       {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "9dff9f2862240d521ad6ad599541269177ddb993",
+          "version": "10.22.0"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "6b81f1a7a2d421f9e0b9e7f04e76bcf736a54409",
+          "version": "11.9.0"
+        }
+      },
+      {
         "package": "RxKeyboard",
         "repositoryURL": "https://github.com/RxSwiftCommunity/RxKeyboard.git",
         "state": {
           "branch": null,
           "revision": "085fd99d7bb4f98e671904fcfe7ff561e66574ad",
           "version": "2.0.0"
+        }
+      },
+      {
+        "package": "RxRealm",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxRealm.git",
+        "state": {
+          "branch": null,
+          "revision": "63d00c6349b31d4e26fd5b5a5e428400b6b91356",
+          "version": "5.0.4"
         }
       },
       {

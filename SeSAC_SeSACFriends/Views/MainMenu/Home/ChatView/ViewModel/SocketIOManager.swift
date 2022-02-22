@@ -54,12 +54,12 @@ class SocketIOManager: NSObject {
         socket.on("chat") { dataArray, ack in
             print("SESAC RECEIVED", dataArray, ack)
             // 이거 DB에 저장하고 테이블뷰 reload 해줘야함..RxRealm을 써야할 것 같은 느낌이다...!
-//            let data = dataArray[0] as! NSDictionary
-//            let chat = data["text"] as! String
+            let data = dataArray[0] as! NSDictionary
+            let chat = data["chat"] as! String
 //            let name = data["name"] as! String
 //            let createdAt = data["createdAt"] as! String
 //
-//            print(chat, name, createdAt)
+            print(chat)
 //
 //            NotificationCenter.default.post(name: NSNotification.Name("getMessage"), object: self, userInfo: ["chat": chat, "name": name, "createdAt": createdAt])
         }
