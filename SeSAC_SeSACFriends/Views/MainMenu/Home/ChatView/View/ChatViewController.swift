@@ -12,12 +12,15 @@ import RxSwift
 
 class ChatViewController: BaseViewController {
     
+    let viewModel = ChatViewModel()
+    
     let disposeBag = DisposeBag()
     
     let mainView = ChatView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         bind()
         
@@ -59,6 +62,19 @@ class ChatViewController: BaseViewController {
             .rx.tap
             .bind { _ in
                 self.mainView.chatInputView.chatInputTextView.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.chatInputView.chatInputTextView
+            .rx.text
+            .orEmpty
+            .bind(to: viewModel.inputChatText)
+            .disposed(by: disposeBag)
+
+        viewModel.inputChatText
+            .map { $0 == "" }
+            .bind { [self] isEmpty in
+                mainView.chatInputView.sendButton.isEnabled = !isEmpty && viewModel.currentTextColorIsBlack
             }
             .disposed(by: disposeBag)
     }
@@ -132,17 +148,9 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// return key tapped
-
 extension ChatViewController: UITextViewDelegate {
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if text == "\n" {
-//            textView.resignFirstResponder()
-//            return false
-//        }
-//        return true
-//    }
     
+    // 입력 3줄까지 제한
     func textViewDidChange(_ textView: UITextView) {
         let frame = textView.frame
         let size = CGSize(width: frame.width, height: .infinity)
@@ -163,6 +171,7 @@ extension ChatViewController: UITextViewDelegate {
         if textView.textColor == .gray7 {
             textView.text = nil
             textView.textColor = .customBlack
+            viewModel.currentTextColorIsBlack = true
         }
     }
     
@@ -170,6 +179,7 @@ extension ChatViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "메세지를 입력하세요"
             textView.textColor = .gray7
+            viewModel.currentTextColorIsBlack = false
         }
     }
 }

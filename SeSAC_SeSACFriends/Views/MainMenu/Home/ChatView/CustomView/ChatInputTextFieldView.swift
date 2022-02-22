@@ -28,8 +28,9 @@ class ChatInputTextFieldView: UIView, BaseView {
     
     let sendButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "send_inact"), for: .normal)
-        button.setImage(UIImage(named: "send_act"), for: .focused)
+        button.setImage(UIImage(named: "send_inact"), for: .disabled)
+        button.setImage(UIImage(named: "send_act"), for: .normal)
+        button.isEnabled = false
         return button
     }()
     

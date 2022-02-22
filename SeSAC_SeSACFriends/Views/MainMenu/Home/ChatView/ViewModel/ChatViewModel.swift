@@ -13,4 +13,5 @@ import RxRelay
 class ChatViewModel {
     
     let inputChatText = BehaviorRelay<String>(value: "")
+    var currentTextColorIsBlack: Bool = false
 }
