@@ -158,4 +158,18 @@ extension ChatViewController: UITextViewDelegate {
             }
         }
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .gray7 {
+            textView.text = nil
+            textView.textColor = .customBlack
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = .gray7
+        }
+    }
 }

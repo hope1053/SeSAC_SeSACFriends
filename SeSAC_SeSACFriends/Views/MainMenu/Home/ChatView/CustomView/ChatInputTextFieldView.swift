@@ -20,6 +20,8 @@ class ChatInputTextFieldView: UIView, BaseView {
         let view = UITextView()
         view.backgroundColor = .gray1
         view.font = .Body3_R14
+        view.text = "메세지를 입력하세요"
+        view.textColor = .gray7
         view.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return view
     }()
@@ -52,7 +54,8 @@ class ChatInputTextFieldView: UIView, BaseView {
     
     func setupConstraints() {
         containerView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.bottom.equalToSuperview().inset(8)
         }
         
         chatInputTextView.snp.makeConstraints {

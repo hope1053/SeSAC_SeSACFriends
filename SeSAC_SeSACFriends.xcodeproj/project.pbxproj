@@ -58,6 +58,7 @@
 		CB40A7B827C4B4E2007EF51B /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */; };
 		CB40A7BD27C4C020007EF51B /* ChatInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */; };
 		CB40A7C027C4CB7B007EF51B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7BF27C4CB7B007EF51B /* IQKeyboardManagerSwift */; };
+		CB40A7C227C4D93D007EF51B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7C127C4D93D007EF51B /* ChatViewModel.swift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -177,6 +178,7 @@
 		CB3E544E27C3F1A600ECED24 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputTextFieldView.swift; sourceTree = "<group>"; };
+		CB40A7C127C4D93D007EF51B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 		CB3E544727C3EAB300ECED24 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB40A7C127C4D93D007EF51B /* ChatViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				CB29DD0027AB865400F1540D /* UIViewController+Extension.swift in Sources */,
 				CB6C58342799B9B5003C0F1E /* UserNameViewController.swift in Sources */,
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
+				CB40A7C227C4D93D007EF51B /* ChatViewModel.swift in Sources */,
 				CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */,
 				CBBB277227BE4C1D0036ADDC /* HomeAnnotationView.swift in Sources */,
 				CB3E544F27C3F1A600ECED24 /* ChatView.swift in Sources */,
