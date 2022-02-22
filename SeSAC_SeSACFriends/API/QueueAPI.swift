@@ -161,7 +161,7 @@ class QueueAPI {
         let user = User.shared
         
         let parameter: [String: Any] = [
-            "otheruid": user.friendUID
+            "otheruid": user.friendUID.value
         ]
         
         AF.request(Endpoint.hobbyAccept.url, method: .post, parameters: parameter, headers: header).validate().response { response in

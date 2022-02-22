@@ -119,15 +119,12 @@ final class HomeViewController: BaseViewController {
             .bind { _ in
                 let navVC = self.tabBarController?.viewControllers![3] as! UINavigationController
                 // topVC가 MyPageViewController이면 completion 처리해주기
-                print(navVC.topVC)
                 if let myPageViewController = navVC.topVC as? MyPageViewController {
-                    print("current MypageView")
                     myPageViewController.setGenderCompletion = {
                         let manageView = ManageInfoViewController()
                         myPageViewController.navigationController?.pushViewController(manageView, animated: true)
                     }
                 }
-
                 self.tabBarController?.selectedIndex = 3
             }
             .disposed(by: disposeBag)

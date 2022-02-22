@@ -52,6 +52,10 @@
 		CB29DD2627AD090400F1540D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = CB29DD2527AD090400F1540D /* MultiSlider */; };
 		CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */; };
 		CB29DD2A27AD134300F1540D /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29DD2927AD134300F1540D /* WithDrawView.swift */; };
+		CB3E544B27C3F0BC00ECED24 /* FriendChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E544A27C3F0BC00ECED24 /* FriendChatTableViewCell.swift */; };
+		CB3E544D27C3F0C600ECED24 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */; };
+		CB3E544F27C3F1A600ECED24 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E544E27C3F1A600ECED24 /* ChatView.swift */; };
+		CB40A7B827C4B4E2007EF51B /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -166,6 +170,10 @@
 		CB29DD2227AD06B100F1540D /* FriendAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAgeView.swift; sourceTree = "<group>"; };
 		CB29DD2727AD099000F1540D /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
 		CB29DD2927AD134300F1540D /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
+		CB3E544A27C3F0BC00ECED24 /* FriendChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatTableViewCell.swift; sourceTree = "<group>"; };
+		CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
+		CB3E544E27C3F1A600ECED24 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -266,10 +274,9 @@
 		CB11F131279B0D1700028234 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CB3E544527C3EA8C00ECED24 /* Map & AddHobbyView */,
 				CBBB276127BD0DC30036ADDC /* SearchSeSACFriend */,
-				CB4902DD27B109F400878ED2 /* ViewModel */,
-				CB11F132279B0D1B00028234 /* View */,
-				CB51ED1927AF76E70097D2B5 /* CustomView */,
+				CB3E544627C3EAA500ECED24 /* ChatView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -279,7 +286,6 @@
 			children = (
 				CB11F133279B0D2300028234 /* HomeViewController.swift */,
 				CBBB274D27BABD350036ADDC /* AddHobbyViewController.swift */,
-				CBBB275127BABF7B0036ADDC /* ChatViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +476,52 @@
 				CB29DD2927AD134300F1540D /* WithDrawView.swift */,
 			);
 			path = DetailStackView;
+			sourceTree = "<group>";
+		};
+		CB3E544527C3EA8C00ECED24 /* Map & AddHobbyView */ = {
+			isa = PBXGroup;
+			children = (
+				CB4902DD27B109F400878ED2 /* ViewModel */,
+				CB11F132279B0D1B00028234 /* View */,
+				CB51ED1927AF76E70097D2B5 /* CustomView */,
+			);
+			path = "Map & AddHobbyView";
+			sourceTree = "<group>";
+		};
+		CB3E544627C3EAA500ECED24 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				CB3E544727C3EAB300ECED24 /* ViewModel */,
+				CB3E544827C3EAB700ECED24 /* View */,
+				CB3E544927C3EABA00ECED24 /* CustomView */,
+			);
+			path = ChatView;
+			sourceTree = "<group>";
+		};
+		CB3E544727C3EAB300ECED24 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB3E544827C3EAB700ECED24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBBB275127BABF7B0036ADDC /* ChatViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB3E544927C3EABA00ECED24 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CB3E544E27C3F1A600ECED24 /* ChatView.swift */,
+				CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */,
+				CB3E544A27C3F0BC00ECED24 /* FriendChatTableViewCell.swift */,
+				CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		CB4902DD27B109F400878ED2 /* ViewModel */ = {
@@ -837,6 +889,7 @@
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
 				CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */,
 				CBBB277227BE4C1D0036ADDC /* HomeAnnotationView.swift in Sources */,
+				CB3E544F27C3F1A600ECED24 /* ChatView.swift in Sources */,
 				CBEF8AFA27B55AC70040F905 /* queueState.swift in Sources */,
 				CB29DD0627ABA1A100F1540D /* UserInfoCardView.swift in Sources */,
 				CB6C58302799B8A7003C0F1E /* RequestStatus.swift in Sources */,
@@ -857,9 +910,12 @@
 				CBBB275627BACBA20036ADDC /* HobbyHeaderView.swift in Sources */,
 				CBBB274E27BABD350036ADDC /* AddHobbyViewController.swift in Sources */,
 				CB29DD1427ABB57500F1540D /* UserHobbyView.swift in Sources */,
+				CB3E544B27C3F0BC00ECED24 /* FriendChatTableViewCell.swift in Sources */,
+				CB3E544D27C3F0C600ECED24 /* MyChatTableViewCell.swift in Sources */,
 				CBBB276027BD0CFC0036ADDC /* SeSACFriendView.swift in Sources */,
 				CBBB274C27BAB4260036ADDC /* QueueState.swift in Sources */,
 				CB6C582E2799B05B003C0F1E /* PhoneNumAuthStatus.swift in Sources */,
+				CB40A7B827C4B4E2007EF51B /* SpeechBubbleView.swift in Sources */,
 				CBC6718E279FC49B00722D78 /* UserEmailView.swift in Sources */,
 				CB936D4B279E80B00047D4F5 /* OnBoardingCollectionViewCell.swift in Sources */,
 				CB29DD0C27ABAFFE00F1540D /* RequestButton.swift in Sources */,
