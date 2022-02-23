@@ -16,6 +16,7 @@ enum chatCurrentStatus {
     case appointmentCancelled
     case matchingStopped
     case serverError
+    case success
 }
 
 enum chatSendStatus {
@@ -29,11 +30,11 @@ class ChatViewModel {
     let inputChatText = BehaviorRelay<String>(value: "")
     var currentTextColorIsBlack: Bool = false
     
-    var friendUID: String = ""
+//    var friendUID: String = ""
     let friendName = BehaviorRelay<String>(value: "")
     
     func sendChat(completion: @escaping (chatSendStatus) -> Void) {
-        ChatAPI.sendChat(text: inputChatText.value, uid: friendUID) { status in
+        ChatAPI.sendChat(text: inputChatText.value, uid: User.shared.friendUID.value) { status in
             switch status {
             case .success:
                 completion(.success)
@@ -54,9 +55,10 @@ class ChatViewModel {
                 if myStateData?.dodged == 1 || myStateData?.reviewed == 1 {
                     completion(.appointmentCancelled)
                 } else if myStateData?.matched == 1 {
-                    self.friendUID = myStateData?.matchedUid ?? ""
+                    User.shared.friendUID.accept(myStateData?.matchedUid ?? "")
                     self.friendName.accept(myStateData?.matchedNick ?? "")
                 }
+                completion(.success)
             case .matchingStopped:
                 completion(.matchingStopped)
             case .serverError:

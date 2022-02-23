@@ -32,10 +32,11 @@ class ChatViewController: BaseViewController {
         bind()
         
         addKeyboardNotification()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         checkStatus()
-        
-        viewModel.lastChatRequest()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -147,6 +148,8 @@ class ChatViewController: BaseViewController {
     func checkStatus() {
         viewModel.checkMyStatus { status in
             switch status {
+            case .success:
+                self.viewModel.lastChatRequest()
             case .appointmentCancelled:
                 self.view.makeToast("약속이 종료되어 채팅을 보낼 수 없습니다", duration: 1.0, position: .bottom) { _ in
                     self.navigationController?.popViewController(animated: true)

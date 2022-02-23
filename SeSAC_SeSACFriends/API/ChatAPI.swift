@@ -32,6 +32,7 @@ class ChatAPI {
         
         AF.request(Endpoint.chat(uid: uid).url, method: .post, parameters: parameter, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
+            print(statusCode)
             let APIStatus = MyQueueStatus(rawValue: statusCode)!
             
             switch APIStatus {
@@ -82,9 +83,11 @@ class ChatAPI {
             "lastchatDate": Date.dateToString(lastDate)
         ]
         
-        AF.request(Endpoint.chat(uid: UserInfo.shared.uid ?? "").url, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: header).validate().response { response in
+        let friendUID = User.shared.friendUID.value
+        
+        AF.request(Endpoint.chat(uid: friendUID).url, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
-            let APIStatus = APIstatus(rawValue: statusCode)!
+            let APIStatus = APIstatus(rawValue: statusCode) ?? .serverError
             
             switch APIStatus {
             case .success:
@@ -95,8 +98,9 @@ class ChatAPI {
                 var chatLogList: [ChatLog] = []
                 
                 data["payload"].arrayValue.forEach { chatData in
-                    let sentDate = Date.stringToDate(data["createdAt"].stringValue)
-                    let chatLog = ChatLog(sender: data["from"].stringValue, chat: data["chat"].stringValue, sentDate: sentDate)
+
+                    let sentDate = Date.stringToDate(chatData["createdAt"].stringValue)
+                    let chatLog = ChatLog(sender: chatData["from"].stringValue, chat: chatData["chat"].stringValue, sentDate: sentDate)
                     
                     chatLogList.append(chatLog)
                 }
@@ -112,8 +116,9 @@ class ChatAPI {
                     var chatLogList: [ChatLog] = []
                     
                     data["payload"].arrayValue.forEach { chatData in
-                        let sentDate = Date.stringToDate(data["createdAt"].stringValue)
-                        let chatLog = ChatLog(sender: data["from"].stringValue, chat: data["chat"].stringValue, sentDate: sentDate)
+
+                        let sentDate = Date.stringToDate(chatData["createdAt"].stringValue)
+                        let chatLog = ChatLog(sender: chatData["from"].stringValue, chat: chatData["chat"].stringValue, sentDate: sentDate)
                         
                         chatLogList.append(chatLog)
                     }
