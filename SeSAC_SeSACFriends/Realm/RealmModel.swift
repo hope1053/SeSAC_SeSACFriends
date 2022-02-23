@@ -15,6 +15,7 @@ class ChatLog: Object {
     @Persisted var sender: String // 보낸 사람의 uid
     @Persisted var chat: String // 내용
     @Persisted var sentDate = Date() // 날짜
+//    @Persisted var sentDate: String // 날짜
     
     convenience init(sender: String, chat:String, sentDate: Date) {
         self.init()

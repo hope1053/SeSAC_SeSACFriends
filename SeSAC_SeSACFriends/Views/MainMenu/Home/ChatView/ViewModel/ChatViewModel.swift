@@ -9,6 +9,8 @@ import Foundation
 
 import RxSwift
 import RxRelay
+import RealmSwift
+import RxRealm
 
 enum chatCurrentStatus {
     case appointmentCancelled
@@ -63,5 +65,15 @@ class ChatViewModel {
                 break
             }
         }
+    }
+    
+    func lastChatRequest() {
+        
+        let localRealm = try! Realm()
+        
+        let lastChatDate = localRealm.objects(ChatLog.self).last?.sentDate ?? Date.stringToDate("2000-01-01T00:00:00.000Z")
+        
+        ChatAPI.lastChatRequest(uid: UserInfo.shared.uid ?? "", lastDate: lastChatDate)
+
     }
 }

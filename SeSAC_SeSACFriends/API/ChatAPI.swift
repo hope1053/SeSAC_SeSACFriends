@@ -30,7 +30,7 @@ class ChatAPI {
             "chat": text
         ]
         
-        AF.request(Endpoint.sendChat(uid: uid).url, method: .post, parameters: parameter, headers: header).validate().response { response in
+        AF.request(Endpoint.chat(uid: uid).url, method: .post, parameters: parameter, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
             let APIStatus = MyQueueStatus(rawValue: statusCode)!
             
@@ -72,17 +72,25 @@ class ChatAPI {
         }
     }
     
-    static func lastChatRequest(uid: String, lastDate: Date, completion: @escaping (APIstatus) -> Void) {
+    static func lastChatRequest(uid: String, lastDate: Date) {
         
         let localRealm = try! Realm()
         
-        AF.request(Endpoint.lastChat(uid: uid, lastDate: lastDate).url, method: .get, headers: header).validate().response { response in
+        print(lastDate)
+        
+        let parameters: Parameters = [
+            "lastchatDate": Date.dateToString(lastDate)
+        ]
+        
+        AF.request(Endpoint.chat(uid: UserInfo.shared.uid ?? "").url, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: header).validate().response { response in
             let statusCode = response.response?.statusCode ?? 500
             let APIStatus = APIstatus(rawValue: statusCode)!
             
             switch APIStatus {
             case .success:
                 let data = JSON(response.value)
+                
+                print("추가 데이터!!!!!!!!!", data)
                 
                 var chatLogList: [ChatLog] = []
                 
@@ -96,6 +104,7 @@ class ChatAPI {
                 Observable.from(chatLogList)
                     .subscribe(localRealm.rx.add())
                 
+                SocketIOManager.shared.establishConnection()
             case .firebaseTokenError:
                 TokenAPI.updateIDToken {
                     let data = JSON(response.value)
@@ -113,7 +122,7 @@ class ChatAPI {
                         .subscribe(localRealm.rx.add())
                 }
             default:
-                completion(APIStatus)
+                break
             }
         }
     }

@@ -17,8 +17,9 @@ enum Endpoint {
     case myQueueState
     case hobbyRequest
     case hobbyAccept
-    case sendChat(uid: String)
-    case lastChat(uid: String, lastDate: Date)
+    case chat(uid: String)
+    case updateFCMToken
+//    case lastChat(uid: String, lastDate: Date)
 }
 
 extension Endpoint {
@@ -40,10 +41,12 @@ extension Endpoint {
             return .makeEndpoint("queue/hobbyrequest")
         case .hobbyAccept:
             return .makeEndpoint("queue/hobbyaccept")
-        case .sendChat(uid: let uid):
+        case .chat(uid: let uid):
             return .makeEndpoint("chat/\(uid)")
-        case .lastChat(uid: let uid, lastDate: let lastDate):
-            return .makeEndpoint("chat/\(uid)?lastchatDate=\(lastDate)")
+//        case .lastChat(uid: let uid, lastDate: let lastDate):
+//            return .makeEndpoint("chat/\(uid)?lastchatDate=\(lastDate)")
+        case .updateFCMToken:
+            return .makeEndpoint("user/update_fcm_token")
         }
     }
 }

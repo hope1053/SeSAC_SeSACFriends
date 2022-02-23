@@ -74,4 +74,13 @@ class UserInfo {
             UserDefaults.standard.set(newValue, forKey: "uid")
         }
     }
+    
+    var fcmToken: String {
+        get {
+            UserDefaults.standard.string(forKey: "fcmToken") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "fcmToken")
+        }
+    }
 }

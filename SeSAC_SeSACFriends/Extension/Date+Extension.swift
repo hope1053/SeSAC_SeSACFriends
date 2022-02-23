@@ -44,4 +44,11 @@ extension Date {
         return date
     }
     
+    static func dateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.string(from: date)
+        return date
+    }
+    
 }

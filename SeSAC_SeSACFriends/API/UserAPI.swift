@@ -75,6 +75,10 @@ class UserAPI {
                     UserInfo.shared.uid = result.uid
                     user.gender.accept(Gender(rawValue: result.gender)!)
                     
+                    if result.fcMtoken != UserInfo.shared.fcmToken {
+                        TokenAPI.updateFCMToken()
+                    }
+                    
                     completion(result, APIStatus.success)
                 } catch {
                     completion(nil, APIStatus.serverError)
@@ -106,7 +110,7 @@ class UserAPI {
         
         let parameter: [String: Any] = [
             "phoneNumber": "+82\(user.phoneNumber.value)",
-            "FCMtoken": UserDefaults.standard.string(forKey: "FCMToken")!,
+            "FCMtoken": UserInfo.shared.fcmToken,
             "nick": user.userName.value,
             "birth": "\(user.birth.value)",
             "email": user.email.value,
