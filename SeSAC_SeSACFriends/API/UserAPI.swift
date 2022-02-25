@@ -126,7 +126,9 @@ class UserAPI {
             case 401:
                 // firebase token error
                 TokenAPI.updateIDToken {
-                    print("updated")
+                    signUp { status in
+                        completion(status)
+                    }
                 }
             case 406:
                 completion(APIStatus.alreadyWithdraw)
@@ -178,7 +180,17 @@ class UserAPI {
         
         AF.request(Endpoint.update.url, method: .post, parameters: parameter, headers: header).validate().response { response in
             let APIStatus = APIstatus(rawValue: response.response?.statusCode ?? 500) ?? APIstatus.serverError
-            completion(APIStatus)
+            
+            switch APIStatus {
+            case .firebaseTokenError:
+                TokenAPI.updateIDToken {
+                    updateInfo { status in
+                        completion(status)
+                    }
+                }
+            default:
+                completion(APIStatus)
+            }
         }
     }
 }

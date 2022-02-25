@@ -153,7 +153,6 @@ extension SearchFriendViewController {
 extension SearchFriendViewController: RefreshUI{
     // 현재 뷰컨의 data가 비어있는지 아닌지 여부 받아서 버튼 show 업데이트해주기
     func updateButtonUI(_ isEmpty: Bool) {
-        print(#function, isEmpty)
         changeHobbyView.isHidden = !isEmpty
     }
 }

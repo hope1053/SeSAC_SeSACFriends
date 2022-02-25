@@ -35,7 +35,6 @@ class MyPageViewController: BaseViewController {
         title = "내 정보"
         
         if let setGenderCompletion = setGenderCompletion {
-            print("completion 전달 완료!")
             setGenderCompletion()
         }
         setGenderCompletion = nil

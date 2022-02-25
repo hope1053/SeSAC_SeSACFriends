@@ -73,7 +73,7 @@ class ChatAPI {
         }
     }
     
-    static func lastChatRequest(uid: String, lastDate: Date) {
+    static func lastChatRequest(uid: String, lastDate: Date, completion: @escaping () -> Void) {
         
         let localRealm = try! Realm()
         
@@ -109,6 +109,8 @@ class ChatAPI {
                     .subscribe(localRealm.rx.add())
                 
                 SocketIOManager.shared.establishConnection()
+                
+                completion()
             case .firebaseTokenError:
                 TokenAPI.updateIDToken {
                     let data = JSON(response.value)

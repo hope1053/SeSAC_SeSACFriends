@@ -30,7 +30,6 @@ class ChatViewModel {
     let inputChatText = BehaviorRelay<String>(value: "")
     var currentTextColorIsBlack: Bool = false
     
-//    var friendUID: String = ""
     let friendName = BehaviorRelay<String>(value: "")
     
     func sendChat(completion: @escaping (chatSendStatus) -> Void) {
@@ -56,7 +55,8 @@ class ChatViewModel {
                     completion(.appointmentCancelled)
                 } else if myStateData?.matched == 1 {
                     User.shared.friendUID.accept(myStateData?.matchedUid ?? "")
-                    self.friendName.accept(myStateData?.matchedNick ?? "")
+                    User.shared.friendName.accept(myStateData?.matchedNick ?? "")
+//                    self.friendName.accept(myStateData?.matchedNick ?? "")
                 }
                 completion(.success)
             case .matchingStopped:
@@ -69,13 +69,15 @@ class ChatViewModel {
         }
     }
     
-    func lastChatRequest() {
+    func lastChatRequest(completion: @escaping () -> Void) {
         
         let localRealm = try! Realm()
         
         let lastChatDate = localRealm.objects(ChatLog.self).last?.sentDate ?? Date.stringToDate("2000-01-01T00:00:00.000Z")
         
-        ChatAPI.lastChatRequest(uid: UserInfo.shared.uid ?? "", lastDate: lastChatDate)
+        ChatAPI.lastChatRequest(uid: UserInfo.shared.uid ?? "", lastDate: lastChatDate) {
+            completion()
+        }
 
     }
 }

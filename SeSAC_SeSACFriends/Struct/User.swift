@@ -32,6 +32,7 @@ struct User {
     let hobbyList = BehaviorRelay<[String]>(value: [])
     let preferGender = 2
     
+    let friendName = BehaviorRelay<String>(value: "")
     let friendUID = BehaviorRelay<String>(value: "")
 }
 

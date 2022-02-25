@@ -12,7 +12,7 @@ import RxSwift
 import RealmSwift
 import RxRealm
 
-class SocketIOManager: NSObject {
+final class SocketIOManager: NSObject {
     
     let localRealm = try! Realm()
     
@@ -45,21 +45,19 @@ class SocketIOManager: NSObject {
         
         socket = manager.defaultSocket
         
-        // 소켓 연결 요청 메서드(listener) -> 통로를 만드는 과정
-        // 통로만 만들었어도 통로가 열려있어서 요청한적이 없어도 계속 데이터가 들어옴
+        // 소켓 연결될 때 불리는 메서드
         socket.on(clientEvent: .connect) { data, ack in
             print("socket connected", data, ack)
             self.socket.emit("changesocketid", self.uid)
         }
         
-        // 소켓 연결 해제 메서드
+        // 소켓 연결 해제될 때 불리는 메서드
         socket.on(clientEvent: .disconnect) { data, ack in
             print("socket disconnected", data, ack)
         }
         
+        // Socket으로 들어온 데이터 DB에 저장
         socket.on("chat") { dataArray, ack in
-            print("SESAC RECEIVED", dataArray, ack)
-            // 이거 DB에 저장하고 테이블뷰 reload 해줘야함..RxRealm을 써야할 것 같은 느낌이다...!
             let data = dataArray[0] as! NSDictionary
             let chat = data["chat"] as! String
             let sender = data["from"] as! String
@@ -69,11 +67,6 @@ class SocketIOManager: NSObject {
             
             Observable.from(object: chatLog)
                 .subscribe(self.localRealm.rx.add())
-            
-            print(chat)
-            
-//
-//            NotificationCenter.default.post(name: NSNotification.Name("getMessage"), object: self, userInfo: ["chat": chat, "name": name, "createdAt": createdAt])
         }
     }
     

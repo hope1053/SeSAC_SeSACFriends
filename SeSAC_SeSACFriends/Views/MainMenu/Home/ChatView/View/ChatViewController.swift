@@ -24,6 +24,20 @@ class ChatViewController: BaseViewController {
     
     let mainView = ChatView()
     
+    let chatMenuView: ChatMenuView = {
+        let view = ChatMenuView()
+        view.isHidden = true
+        return view
+    }()
+    
+    let bgView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .customBlack
+        view.layer.opacity = 0.5
+        view.isHidden = true
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +50,7 @@ class ChatViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         checkStatus()
     }
     
@@ -56,7 +71,9 @@ class ChatViewController: BaseViewController {
         // 타이틀 설정
         title = "고래밥"
         
-        view.addSubview(mainView)
+        [mainView, bgView, chatMenuView].forEach { subView in
+            view.addSubview(subView)
+        }
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
@@ -67,6 +84,16 @@ class ChatViewController: BaseViewController {
         mainView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        bgView.snp.makeConstraints {
+            $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
+        }
+        
+        chatMenuView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalToSuperview().multipliedBy(0.1)
+        }
     }
     
     func bind() {
@@ -74,6 +101,7 @@ class ChatViewController: BaseViewController {
             .rx.tap
             .bind { _ in
                 self.mainView.chatInputView.chatInputTextView.resignFirstResponder()
+                self.sendChat()
             }
             .disposed(by: disposeBag)
         
@@ -90,16 +118,9 @@ class ChatViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.friendName
-            .bind { name in
+        User.shared.friendName
+            .bind { [self] name in
                 self.title = name
-            }
-            .disposed(by: disposeBag)
-        
-        mainView.chatInputView.sendButton
-            .rx.tap
-            .bind { _ in
-                self.sendChat()
             }
             .disposed(by: disposeBag)
         
@@ -149,7 +170,9 @@ class ChatViewController: BaseViewController {
         viewModel.checkMyStatus { status in
             switch status {
             case .success:
-                self.viewModel.lastChatRequest()
+                self.viewModel.lastChatRequest() {
+                    self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chats.count - 1, section: 0), at: .bottom, animated: false)
+                }
             case .appointmentCancelled:
                 self.view.makeToast("약속이 종료되어 채팅을 보낼 수 없습니다", duration: 1.0, position: .bottom) { _ in
                     self.navigationController?.popViewController(animated: true)
@@ -168,9 +191,8 @@ class ChatViewController: BaseViewController {
         viewModel.sendChat { status in
             switch status {
             case .success:
-                // tableView reload
                 self.resetTextView()
-                print(status)
+//                self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chats.count - 1, section: 0), at: .bottom, animated: false)
             case .matachingStopped:
                 self.view.makeToast("약속이 종료되어 채팅을 보낼 수 없습니다", duration: 1.0, position: .bottom)
             case .serverError:
@@ -180,7 +202,8 @@ class ChatViewController: BaseViewController {
     }
     
     @objc func moreButtonTapped() {
-        print("tapped")
+        chatMenuView.isHidden.toggle()
+        bgView.isHidden.toggle()
     }
     
     @objc func adjustInputView(noti: Notification) {

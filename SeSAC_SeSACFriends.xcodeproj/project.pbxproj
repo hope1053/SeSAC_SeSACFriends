@@ -65,6 +65,7 @@
 		CB40A7CE27C53786007EF51B /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7CD27C53786007EF51B /* RxRealm */; };
 		CB40A7D127C537D9007EF51B /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40A7D027C537D9007EF51B /* RealmModel.swift */; };
 		CB40A7D427C53E8C007EF51B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = CB40A7D327C53E8C007EF51B /* SwiftyJSON */; };
+		CB44A2CA27C8836600F7E46C /* ChatMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44A2C927C8836600F7E46C /* ChatMenuView.swift */; };
 		CB4902DA27B1043800878ED2 /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902D927B1043800878ED2 /* QueueAPI.swift */; };
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
@@ -188,6 +189,7 @@
 		CB40A7C327C5078A007EF51B /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		CB40A7CA27C52BA9007EF51B /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		CB40A7D027C537D9007EF51B /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		CB44A2C927C8836600F7E46C /* ChatMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMenuView.swift; sourceTree = "<group>"; };
 		CB4902D927B1043800878ED2 /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 			children = (
 				CB3E544E27C3F1A600ECED24 /* ChatView.swift */,
 				CB40A7BC27C4C020007EF51B /* ChatInputTextFieldView.swift */,
+				CB44A2C927C8836600F7E46C /* ChatMenuView.swift */,
 				CB3E544A27C3F0BC00ECED24 /* FriendChatTableViewCell.swift */,
 				CB3E544C27C3F0C600ECED24 /* MyChatTableViewCell.swift */,
 				CB40A7B727C4B4E2007EF51B /* SpeechBubbleView.swift */,
@@ -973,6 +976,7 @@
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
+				CB44A2CA27C8836600F7E46C /* ChatMenuView.swift in Sources */,
 				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
 				CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */,
 				CB6C58102797A740003C0F1E /* PhoneNumInputViewController.swift in Sources */,

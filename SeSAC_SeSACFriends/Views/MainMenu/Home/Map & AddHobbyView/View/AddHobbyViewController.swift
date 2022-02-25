@@ -63,7 +63,6 @@ class AddHobbyViewController: BaseViewController {
         
         viewModel.hobbyFromServer
             .bind { hobby in
-                print(hobby)
                 self.hobbyView.collectionView.reloadData()
             }
             .disposed(by: disposeBag)

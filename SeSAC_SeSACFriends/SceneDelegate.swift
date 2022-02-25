@@ -32,9 +32,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if isFirstLaunch != "no" {
             window?.rootViewController = OnBoardingViewController()
         } else {
-            if idToken != nil && uid != nil {
+            if idToken != "" && uid != "" {
                 window?.rootViewController = MainTabBarController()
-            } else if idToken != nil && uid == nil {
+            } else if idToken != "" && uid == "" {
                 window?.rootViewController = UINavigationController(rootViewController: UserNameViewController())
             } else {
                 window?.rootViewController = UINavigationController(rootViewController: PhoneNumInputViewController())
