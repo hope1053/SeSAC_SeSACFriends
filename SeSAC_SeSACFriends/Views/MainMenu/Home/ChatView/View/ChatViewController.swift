@@ -192,7 +192,6 @@ class ChatViewController: BaseViewController {
             switch status {
             case .success:
                 self.resetTextView()
-//                self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chats.count - 1, section: 0), at: .bottom, animated: false)
             case .matachingStopped:
                 self.view.makeToast("약속이 종료되어 채팅을 보낼 수 없습니다", duration: 1.0, position: .bottom)
             case .serverError:
