@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatView: UIView, BaseView {
+final class ChatView: UIView, BaseView {
     
     let tableView = UITableView()
     

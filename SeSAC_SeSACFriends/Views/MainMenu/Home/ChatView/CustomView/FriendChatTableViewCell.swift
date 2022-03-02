@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FriendChatTableViewCell: UITableViewCell, BaseView {
+final class FriendChatTableViewCell: UITableViewCell, BaseCell {
     
     let bubbleView: SpeechBubbleView = {
         let view = SpeechBubbleView()
@@ -17,33 +17,31 @@ class FriendChatTableViewCell: UITableViewCell, BaseView {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        
         label.font = .Title6_R12
         label.textColor = .gray6
-        
         return label
     }()
     
-    static let identifier = "FriendChatTableViewCell"
+    static var identifier = "FriendChatTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureView()
-        setupConstraints()
+        configureCell()
+        setupCellConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
+    func configureCell() {
         [bubbleView, timeLabel].forEach { subView in
             self.addSubview(subView)
         }
     }
     
-    func setupConstraints() {
+    func setupCellConstraint() {
         bubbleView.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()

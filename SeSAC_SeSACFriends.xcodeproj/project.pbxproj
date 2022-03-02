@@ -70,6 +70,8 @@
 		CB4902DC27B1061700878ED2 /* FriendSeSAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */; };
 		CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */; };
 		CB4902E327B176CC00878ED2 /* SeSACFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4902E227B176CC00878ED2 /* SeSACFace.swift */; };
+		CB4A93E927CF477C00C43D7E /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A93E827CF477C00C43D7E /* ViewType.swift */; };
+		CB4A93EB27CF489E00C43D7E /* CustomCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4A93EA27CF489E00C43D7E /* CustomCellProtocol.swift */; };
 		CB51ED1427AD7ECE0097D2B5 /* TokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */; };
 		CB51ED1627AD88030097D2B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1527AD88030097D2B5 /* NetworkManager.swift */; };
 		CB51ED1827AD92FA0097D2B5 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */; };
@@ -194,6 +196,8 @@
 		CB4902DB27B1061700878ED2 /* FriendSeSAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSeSAC.swift; sourceTree = "<group>"; };
 		CB4902DE27B109FE00878ED2 /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
 		CB4902E227B176CC00878ED2 /* SeSACFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFace.swift; sourceTree = "<group>"; };
+		CB4A93E827CF477C00C43D7E /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
+		CB4A93EA27CF489E00C43D7E /* CustomCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellProtocol.swift; sourceTree = "<group>"; };
 		CB51ED1327AD7ECE0097D2B5 /* TokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAPI.swift; sourceTree = "<group>"; };
 		CB51ED1527AD88030097D2B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB51ED1727AD92FA0097D2B5 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
@@ -590,6 +594,7 @@
 				CBC671A127A0133500722D78 /* Gender.swift */,
 				CB4902E227B176CC00878ED2 /* SeSACFace.swift */,
 				CBEF8AF927B55AC70040F905 /* queueState.swift */,
+				CB4A93E827CF477C00C43D7E /* ViewType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				CB6C58122797A75D003C0F1E /* BaseViewController.swift */,
 				CB29DD0727ABA1D600F1540D /* BasicViewProtocol.swift */,
 				CBE4426C27C370B2007003F0 /* SeSACFriendProtocol.swift */,
+				CB4A93EA27CF489E00C43D7E /* CustomCellProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -933,6 +939,7 @@
 				CB1C362127A0499100AF90DB /* User.swift in Sources */,
 				CB40A7C227C4D93D007EF51B /* ChatViewModel.swift in Sources */,
 				CBBB275427BAC3560036ADDC /* HobbyView.swift in Sources */,
+				CB4A93E927CF477C00C43D7E /* ViewType.swift in Sources */,
 				CBBB277227BE4C1D0036ADDC /* HomeAnnotationView.swift in Sources */,
 				CB3E544F27C3F1A600ECED24 /* ChatView.swift in Sources */,
 				CBEF8AFA27B55AC70040F905 /* queueState.swift in Sources */,
@@ -976,6 +983,7 @@
 				CB6C58192797AF2D003C0F1E /* PhoneNumAuthViewController.swift in Sources */,
 				CB4902DF27B109FE00878ED2 /* QueueViewModel.swift in Sources */,
 				CB6C581D279904CF003C0F1E /* PhoneNumAuthViewModel.swift in Sources */,
+				CB4A93EB27CF489E00C43D7E /* CustomCellProtocol.swift in Sources */,
 				CB44A2CA27C8836600F7E46C /* ChatMenuView.swift in Sources */,
 				CB29DD2827AD099000F1540D /* ManageInfoViewModel.swift in Sources */,
 				CBBB275027BABF5D0036ADDC /* SearchFriendViewController.swift in Sources */,

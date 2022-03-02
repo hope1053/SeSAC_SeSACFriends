@@ -12,7 +12,7 @@ import RxSwift
 import RxRealm
 import RealmSwift
 
-class ChatViewController: BaseViewController {
+final class ChatViewController: BaseViewController {
     
     let localRealm = try! Realm()
     

@@ -7,12 +7,7 @@
 
 import UIKit
 
-enum BubbleType {
-    case myBubble
-    case friendBubble
-}
-
-class SpeechBubbleView: UIView, BaseView {
+final class SpeechBubbleView: UIView, BaseView {
     
     var bubbleType: BubbleType = .myBubble {
         didSet {
@@ -20,7 +15,6 @@ class SpeechBubbleView: UIView, BaseView {
             case .myBubble:
                 containerView.layer.borderWidth = 0
                 containerView.backgroundColor = .brandWhitegreen
-                
             case .friendBubble:
                 containerView.layer.borderWidth = 1
                 containerView.layer.borderColor = UIColor.gray4?.cgColor

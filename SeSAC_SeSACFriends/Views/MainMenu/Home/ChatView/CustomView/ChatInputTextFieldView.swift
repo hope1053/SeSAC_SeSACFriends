@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatInputTextFieldView: UIView, BaseView {
+final class ChatInputTextFieldView: UIView, BaseView {
     
     let containerView: UIView = {
         let view = UIView()
