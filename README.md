@@ -1,4 +1,3 @@
-# 수정 중
 # SeSACFriends
 `SnapKit` `MapKit` `MVVM` `Alamofire` `Codable` `Firebase(Auth, Messaging)` `RxSwift` `Socket`
 
@@ -85,19 +84,13 @@
 - 좌측 상단의 플로팅 버튼을 통해 사용자를 성별로 필터링하여 확인할 수 있습니다.
 
 ### 5. 취미 설정
-<img src = "https://user-images.githubusercontent.com/22907483/158496429-3507063d-0241-4d8a-92ab-68b1553ac266.PNG" width= "25%">  <img src = "https://user-images.githubusercontent.com/22907483/158548136-d8c7c3f0-ee2b-45cb-a6fc-0be34a424002.jpeg" width= "25%"> 
 
-- 세부설명
 
 ### 6. 취미 친구 요청, 요청 수락
-<img src = "https://user-images.githubusercontent.com/22907483/158496429-3507063d-0241-4d8a-92ab-68b1553ac266.PNG" width= "25%">  <img src = "https://user-images.githubusercontent.com/22907483/158548136-d8c7c3f0-ee2b-45cb-a6fc-0be34a424002.jpeg" width= "25%"> 
 
-- 세부설명
 
 ### 7. 채팅
-<img src = "https://user-images.githubusercontent.com/22907483/158496429-3507063d-0241-4d8a-92ab-68b1553ac266.PNG" width= "25%">  <img src = "https://user-images.githubusercontent.com/22907483/158548136-d8c7c3f0-ee2b-45cb-a6fc-0be34a424002.jpeg" width= "25%"> 
 
-- 세부설명
 
 ### 8. 회원 정보
 <img src = "https://user-images.githubusercontent.com/22907483/158761031-d5827c92-0a98-4b7b-a7e7-fade67f29e0d.PNG" width= "25%">  <img src = "https://user-images.githubusercontent.com/22907483/158761050-89a86088-24b1-476d-90f9-ccfeca68be7c.PNG" width= "25%"> 
